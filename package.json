@@ -1,0 +1,28 @@
+{
+  "name": "gramatyka",
+  "version": "1.0.0",
+  "description": "Polish grammar app with Firebase Hosting and Firestore",
+  "main": "src/firebase-admin.js",
+  "scripts": {
+    "dev": "firebase emulators:start",
+    "dev:hosting": "firebase emulators:start --only hosting",
+    "dev:firestore": "firebase emulators:start --only firestore",
+    "serve": "firebase serve",
+    "deploy": "firebase deploy",
+    "deploy:hosting": "firebase deploy --only hosting",
+    "deploy:firestore": "firebase deploy --only firestore:rules,firestore:indexes",
+    "firebase:login": "firebase login",
+    "firebase:use": "firebase use --add"
+  },
+  "keywords": ["firebase", "firestore", "hosting", "gramatyka"],
+  "author": "Yevhenii Oliinyk",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "firebase": "^12.18.0",
+    "firebase-admin": "^14.3.0"
+  },
+  "devDependencies": {
+    "firebase-tools": "^15.28.2"
+  }
+}
