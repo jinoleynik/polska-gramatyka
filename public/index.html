@@ -31,6 +31,7 @@
   html{
     scroll-behavior:smooth;
     overflow-x:clip;
+    scroll-padding-top:12px;
   }
   body{
     margin:0;
@@ -49,7 +50,12 @@
   a{color:inherit;}
 
   /* ---------- LAYOUT ---------- */
-  .wrap{max-width:920px;margin:0 auto;padding:0 24px 80px;}
+  .page{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 24px 80px;
+  }
+  .wrap{min-width:0;}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -96,32 +102,107 @@
   .chip:hover{background:rgba(255,255,255,0.15);}
 
   /* ---------- NAV / TOC ---------- */
-  .toc{
+  .side-nav{
     background:var(--card);
     border:1px solid var(--line);
     border-radius:10px;
-    padding:18px 22px;
-    margin:32px 0 44px;
+    padding:16px 18px 14px;
+    margin:28px 0 40px;
   }
-  .toc h2{
-    font-size:0.8rem;
+  .side-nav > h2{
+    font-size:0.78rem;
     text-transform:uppercase;
     letter-spacing:1.5px;
     color:var(--ink-soft);
+    margin:0 0 12px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  .nav-block{
+    border-top:1px solid var(--line);
+  }
+  .nav-block:first-of-type{border-top:0;}
+  .nav-block > summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px 2px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-weight:700;
+    font-size:0.98rem;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+  .nav-block > summary::-webkit-details-marker{display:none;}
+  .nav-block > summary::after{
+    content:"";
+    width:0.45em;
+    height:0.45em;
+    border-right:2px solid var(--ink-soft);
+    border-bottom:2px solid var(--ink-soft);
+    transform:rotate(45deg);
+    transition:transform .18s ease;
+    flex:0 0 auto;
+    margin-right:4px;
+    opacity:0.7;
+  }
+  .nav-block[open] > summary::after{
+    transform:rotate(-135deg);
+    margin-top:4px;
+  }
+  .nav-block .block-title{display:flex;flex-direction:column;gap:1px;min-width:0;}
+  .nav-block .block-title .pl{font-style:normal;}
+  .nav-block .block-title .uk-sub{
+    font-weight:500;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+  .side-nav ol{
     margin:0 0 10px;
+    padding:0 0 4px 18px;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:0.88rem;
+    line-height:1.35;
   }
-  .toc ol{
-    columns:2;
-    -webkit-columns:2;
-    margin:0;
-    padding-left:20px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.95rem;
+  .side-nav li{margin-bottom:7px;}
+  .side-nav a{
+    text-decoration:none;
+    border-bottom:1px dotted transparent;
+    color:var(--ink);
   }
-  .toc li{margin-bottom:6px;break-inside:avoid;}
-  .toc a{text-decoration:none;border-bottom:1px dotted var(--line);}
-  .toc a:hover{border-color:var(--ink);}
+  .side-nav a:hover{border-color:var(--ink-soft);}
+  .side-nav a .num{
+    display:inline-block;
+    min-width:1.35em;
+    color:var(--ink-soft);
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* Desktop: sticky left index */
+  @media (min-width:1024px){
+    .page{
+      display:grid;
+      grid-template-columns:minmax(240px,280px) minmax(0,920px);
+      gap:36px;
+      max-width:1280px;
+      padding:24px 28px 80px;
+      align-items:start;
+    }
+    .side-nav{
+      position:sticky;
+      top:20px;
+      max-height:calc(100vh - 40px);
+      overflow:auto;
+      margin:0;
+      padding:18px 16px 16px;
+      overscroll-behavior:contain;
+    }
+    .hero-inner{max-width:1280px;}
+    .side-nav ol{font-size:0.84rem;}
+    .side-nav li{margin-bottom:6px;}
+  }
 
   /* ---------- SECTION HEADERS ---------- */
   section.case{margin-bottom:64px;}
@@ -448,8 +529,7 @@
   }
 
   @media (max-width:640px){
-    .wrap{padding:0 16px 64px;}
-    .toc ol{columns:1;}
+    .page{padding:0 16px 64px;}
     .usage-grid, .prep-grid{grid-template-columns:1fr;}
 
     .case-head{
@@ -569,38 +649,60 @@
   </div>
 </div>
 
-<div class="wrap">
+<div class="page">
 
-  <div class="toc">
+  <aside class="side-nav" aria-label="Зміст">
     <h2>Зміст</h2>
-    <ol>
-      <li><a href="#system">0. Система відмінків, рід, живість</a></li>
-      <li><a href="#mianownik">1. Mianownik — Називний</a></li>
-      <li><a href="#dopelniacz">2. Dopełniacz — Родовий</a></li>
-      <li><a href="#celownik">3. Celownik — Давальний</a></li>
-      <li><a href="#biernik">4. Biernik — Знахідний</a></li>
-      <li><a href="#narzednik">5. Narzędnik — Орудний</a></li>
-      <li><a href="#miejscownik">6. Miejscownik — Місцевий</a></li>
-      <li><a href="#wolacz">7. Wołacz — Кличний</a></li>
-      <li><a href="#summary">8. Зведені таблиці</a></li>
-      <li><a href="#cheatsheet">9. Шпаргалка на одну сторінку</a></li>
-      <li><a href="#czasowniki">10. Дієслова — огляд</a></li>
-      <li><a href="#aspekt">11. Доконані і недоконані</a></li>
-      <li><a href="#osoby">12. Особові форми</a></li>
-      <li><a href="#koniugacja-e-esz">13. Теперішній: -ę, -esz</a></li>
-      <li><a href="#koniugacja-e-isz">14. Теперішній: -ę, -isz/ysz</a></li>
-      <li><a href="#koniugacja-m-sz">15. Теперішній: -m, -sz</a></li>
-      <li><a href="#nieregularne">16. Неправильні дієслова</a></li>
-      <li><a href="#przeszly">17. Минулий час</a></li>
-      <li><a href="#przyszly-zlozony">18. Складений майбутній</a></li>
-      <li><a href="#przyszly-prosty">19. Простий майбутній</a></li>
-      <li><a href="#tryb-rozkazujacy">20. Наказовий спосіб</a></li>
-      <li><a href="#tryb-przypuszczajacy">21. Умовний спосіб</a></li>
-      <li><a href="#strona-bierna">22. Пасивні дієслова</a></li>
-      <li><a href="#bezosobowe">23. Безособові форми</a></li>
-      <li><a href="#imieslowy">24. Дієприкметники та дієприслівники</a></li>
-    </ol>
-  </div>
+
+    <details class="nav-block" open>
+      <summary>
+        <span class="block-title">
+          <span class="pl">Przypadki</span>
+          <span class="uk-sub">Відмінки</span>
+        </span>
+      </summary>
+      <ol>
+        <li><a href="#system"><span class="num">0.</span> System przypadków</a></li>
+        <li><a href="#mianownik"><span class="num">1.</span> Mianownik — Називний</a></li>
+        <li><a href="#dopelniacz"><span class="num">2.</span> Dopełniacz — Родовий</a></li>
+        <li><a href="#celownik"><span class="num">3.</span> Celownik — Давальний</a></li>
+        <li><a href="#biernik"><span class="num">4.</span> Biernik — Знахідний</a></li>
+        <li><a href="#narzednik"><span class="num">5.</span> Narzędnik — Орудний</a></li>
+        <li><a href="#miejscownik"><span class="num">6.</span> Miejscownik — Місцевий</a></li>
+        <li><a href="#wolacz"><span class="num">7.</span> Wołacz — Кличний</a></li>
+        <li><a href="#summary"><span class="num">8.</span> Зведені таблиці</a></li>
+        <li><a href="#cheatsheet"><span class="num">9.</span> Шпаргалка</a></li>
+      </ol>
+    </details>
+
+    <details class="nav-block" open>
+      <summary>
+        <span class="block-title">
+          <span class="pl">Czasowniki</span>
+          <span class="uk-sub">Дієслова</span>
+        </span>
+      </summary>
+      <ol>
+        <li><a href="#czasowniki"><span class="num">10.</span> Огляд</a></li>
+        <li><a href="#aspekt"><span class="num">11.</span> Доконані і недоконані</a></li>
+        <li><a href="#osoby"><span class="num">12.</span> Особові форми</a></li>
+        <li><a href="#koniugacja-e-esz"><span class="num">13.</span> Теперішній: -ę, -esz</a></li>
+        <li><a href="#koniugacja-e-isz"><span class="num">14.</span> Теперішній: -ę, -isz/ysz</a></li>
+        <li><a href="#koniugacja-m-sz"><span class="num">15.</span> Теперішній: -m, -sz</a></li>
+        <li><a href="#nieregularne"><span class="num">16.</span> Неправильні дієслова</a></li>
+        <li><a href="#przeszly"><span class="num">17.</span> Минулий час</a></li>
+        <li><a href="#przyszly-zlozony"><span class="num">18.</span> Складений майбутній</a></li>
+        <li><a href="#przyszly-prosty"><span class="num">19.</span> Простий майбутній</a></li>
+        <li><a href="#tryb-rozkazujacy"><span class="num">20.</span> Наказовий спосіб</a></li>
+        <li><a href="#tryb-przypuszczajacy"><span class="num">21.</span> Умовний спосіб</a></li>
+        <li><a href="#strona-bierna"><span class="num">22.</span> Пасивні дієслова</a></li>
+        <li><a href="#bezosobowe"><span class="num">23.</span> Безособові форми</a></li>
+        <li><a href="#imieslowy"><span class="num">24.</span> Дієприкметники</a></li>
+      </ol>
+    </details>
+  </aside>
+
+  <div class="wrap">
 
   <!-- ========================= SECTION 0 ========================= -->
   <section id="system" class="case">
@@ -1985,7 +2087,8 @@
     Довідник: відмінки + дієслова · матеріал адаптовано з polski.info · переклад і приклади українською
   </footer>
 
-</div>
+  </div><!-- /.wrap -->
+</div><!-- /.page -->
 <script>
   document.querySelectorAll('table.grid-t').forEach(function (table) {
     var headerRow = table.rows[0];
