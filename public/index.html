@@ -292,6 +292,8 @@
     background:#f2ede3;
     padding:10px 14px;
   }
+  .cols1{grid-template-columns:1fr;}
+  .cols2{grid-template-columns:repeat(2,1fr);}
   .cols3{grid-template-columns:repeat(3,1fr);}
   .cols4{grid-template-columns:repeat(4,1fr);}
   .end-table .genders{
@@ -299,6 +301,8 @@
     gap:1px;
     background:var(--line);
   }
+  .genders.cols1{grid-template-columns:1fr;}
+  .genders.cols2{grid-template-columns:repeat(2,1fr);}
   .genders.cols3{grid-template-columns:repeat(3,1fr);}
   .genders.cols4{grid-template-columns:repeat(4,1fr);}
   .gender-col{background:var(--card);padding:14px;}
@@ -340,6 +344,25 @@
     margin:14px 0 6px;
   }
   .adj-hdr{margin-top:0;}
+
+  /* Examples nested inside ending-rule columns */
+  .gender-col .col-examples{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px dashed var(--line);
+  }
+  .gender-col .ex,
+  .usage-card .ex{
+    padding:8px 10px;
+    background:#faf7f1;
+  }
+  .gender-col .ex .pl-line,
+  .usage-card .ex .pl-line{font-size:0.95rem;}
+  .gender-col .ex .uk-line,
+  .usage-card .ex .uk-line{font-size:0.82rem;}
 
   /* ---------- EXAMPLE CARDS ---------- */
   .examples{
@@ -431,6 +454,14 @@
     color:var(--ink-soft);
     font-size:0.9rem;
   }
+  table.alt .rule-sent{
+    display:block;
+    margin-top:6px;
+    font-weight:400;
+    font-size:0.9rem;
+    line-height:1.35;
+  }
+  table.alt .rule-sent.uk-cell{margin-top:2px;font-size:0.82rem;}
 
   /* ---------- USAGE GRID ---------- */
   .usage-grid{
@@ -568,7 +599,10 @@
       background:rgba(255,255,255,0.25);
     }
 
-    .end-table .genders.cols3, .end-table .genders.cols4{grid-template-columns:1fr;}
+    .end-table .genders.cols1,
+    .end-table .genders.cols2,
+    .end-table .genders.cols3,
+    .end-table .genders.cols4{grid-template-columns:1fr;}
     .end-table .row-labels{display:none;}
     .end-table .row-labels + .genders .g-label{
       display:block;
@@ -788,7 +822,7 @@
 
     <div class="note info">
       <h4>Як користуватися довідником</h4>
-      <p>Кожен відмінок має однакову структуру: карта-схема → таблиця закінчень (однина) → множина → чергування → вживання → приклади. Червоні картки — закінчення іменника, жовті — закінчення прикметника.</p>
+      <p>Кожен відмінок має однакову структуру: карта-схема → таблиця закінчень (з прикладами речень у колонках) → множина → чергування → вживання. Червоні картки — закінчення іменника, жовті — закінчення прикметника.</p>
     </div>
   </section>
 
@@ -812,6 +846,11 @@
           <div class="end-block end-adj">–y / –i<small>–i після k, g і м'яких</small></div>
           <div class="noun-hdr">Rzeczownik</div>
           <div class="end-block end-noun">–Ø<small>винятки: -a (kolega, artysta, poeta)</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>nowy</b> <b>student</b>.</div><div class="uk-line">Це новий студент.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>drogi</b> <b>samochód</b>.</div><div class="uk-line">Це дорога машина.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>mój</b> <b>brat</b>.</div><div class="uk-line">Це мій брат.</div></div>
+          </div>
         </div>
         <div class="gender-col">
           <div class="g-label">rodzaj żeński ONA</div>
@@ -819,6 +858,11 @@
           <div class="end-block end-adj">–a</div>
           <div class="noun-hdr">Rzeczownik</div>
           <div class="end-block end-noun">–a<small>також -i (pani); -Ø (noc, mysz)</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>miła</b> <b>kobieta</b>.</div><div class="uk-line">Це приємна жінка.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>ciemna</b> <b>noc</b>.</div><div class="uk-line">Це темна ніч.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>polska</b> <b>gazeta</b>.</div><div class="uk-line">Це польська газета.</div></div>
+          </div>
         </div>
         <div class="gender-col">
           <div class="g-label">rodzaj nijaki ONO</div>
@@ -826,20 +870,13 @@
           <div class="end-block end-adj">–e</div>
           <div class="noun-hdr">Rzeczownik</div>
           <div class="end-block end-noun">–o/–e/–ę/–um<small>okno, pole, imię, muzeum</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>duże</b> <b>okno</b>.</div><div class="uk-line">Це велике вікно.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>stare</b> <b>muzeum</b>.</div><div class="uk-line">Це старий музей.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>małe</b> <b>dziecko</b>.</div><div class="uk-line">Це маленька дитина.</div></div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>nowy</b> <b>student</b>.</div><div class="uk-line">Це новий студент.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>drogi</b> <b>samochód</b>.</div><div class="uk-line">Це дорога машина.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>miła</b> <b>kobieta</b>.</div><div class="uk-line">Це приємна жінка.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>ciemna</b> <b>noc</b>.</div><div class="uk-line">Це темна ніч.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>duże</b> <b>okno</b>.</div><div class="uk-line">Це велике вікно.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>stare</b> <b>muzeum</b>.</div><div class="uk-line">Це старий музей.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>polska</b> <b>gazeta</b>. </div><div class="uk-line">Це польська газета.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>małe</b> <b>dziecko</b>. </div><div class="uk-line">Це маленька дитина.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To jest <b>mój</b> <b>brat</b>. </div><div class="uk-line">Це мій брат.</div></div>
     </div>
 
     <div class="note info">
@@ -851,38 +888,71 @@
     <h3 class="sub-head">1.2 Множина: rzeczowniki męskoosobowe</h3>
     <p>Це найважчий фрагмент польської граматики. Іменники <b>męskoosobowe</b> — назви осіб чоловічої статі та груп, до складу яких входить чоловік. Займенник — <i class="pl">oni</i>, вказівний — <i class="pl">ci, tamci</i>, питальний — <i class="pl">jacy? którzy?</i></p>
 
+    <div class="end-table">
+      <div class="row-labels cols4"><div>–i</div><div>–y</div><div>–e</div><div>–owie</div></div>
+      <div class="genders cols4">
+        <div class="gender-col">
+          <div class="g-label">–i</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–i<small>тверді, крім k, g, r · з чергуванням</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">Ci <b>studenci</b> są bardzo zdolni.</div><div class="uk-line">Ці студенти дуже здібні.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">Nasi <b>sąsiedzi</b> wyjechali na wakacje.</div><div class="uk-line">Наші сусіди поїхали у відпустку.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">student → <b>studenci</b>, artysta → <b>artyści</b></div><div class="uk-line">студент → студенти, артист → артисти</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">–y</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–y<small>після k, g, r, c, -ec, -ca</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>punktualni fachowcy</b>.</div><div class="uk-line">Це пунктуальні фахівці.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">fizyk → <b>fizycy</b>, kolega → <b>koledzy</b></div><div class="uk-line">фізик → фізики, колега → колеги</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">aktor → <b>aktorzy</b>, kierowca → <b>kierowcy</b></div><div class="uk-line">актор → актори, водій → водії</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">–e</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–e<small>м'які / стверділі, -anin</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są moi <b>przyjaciele</b> z pracy.</div><div class="uk-line">Це мої друзі з роботи.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">lekarz → <b>lekarze</b>, gość → <b>goście</b></div><div class="uk-line">лікар → лікарі, гість → гості</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">Amerykanin → <b>Amerykanie</b></div><div class="uk-line">американець → американці</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">–owie</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–owie<small>родина, титул, престиж, нація (1 склад)</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">syn → <b>synowie</b>, król → <b>królowie</b></div><div class="uk-line">син → сини, король → королі</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">pan → <b>panowie</b>, mąż → <b>mężowie</b></div><div class="uk-line">пан → панове, чоловік → чоловіки</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="sub-head" style="font-size:1rem;margin-top:0.4rem;">Чергування основи перед –i / –y</h4>
     <table class="alt">
       <tr><th>Чергування</th><th>Група</th><th>Приклад</th><th class="uk-cell">Переклад</th></tr>
-      <tr><td><b>t : ci</b></td><td rowspan="5">–i (тверді, крім k,g,r)</td><td class="pl">student → studenci</td><td class="uk-cell">студент → студенти</td></tr>
+      <tr><td><b>t : ci</b></td><td rowspan="5">–i</td><td class="pl">student → studenci</td><td class="uk-cell">студент → студенти</td></tr>
       <tr><td><b>d : dzi</b></td><td class="pl">sąsiad → sąsiedzi</td><td class="uk-cell">сусід → сусіди</td></tr>
       <tr><td><b>ch : si</b></td><td class="pl">mnich → mnisi</td><td class="uk-cell">монах → монахи</td></tr>
       <tr><td><b>st : ści</b></td><td class="pl">artysta → artyści</td><td class="uk-cell">артист → артисти</td></tr>
       <tr><td><b>p : pi</b></td><td class="pl">chłop → chłopi</td><td class="uk-cell">селянин → селяни</td></tr>
-      <tr><td><b>k : cy</b></td><td rowspan="5">–y (k,g,r,c, -ec,-ca)</td><td class="pl">fizyk → fizycy</td><td class="uk-cell">фізик → фізики</td></tr>
+      <tr><td><b>k : cy</b></td><td rowspan="5">–y</td><td class="pl">fizyk → fizycy</td><td class="uk-cell">фізик → фізики</td></tr>
       <tr><td><b>g : dzy</b></td><td class="pl">kolega → koledzy</td><td class="uk-cell">колега → колеги</td></tr>
       <tr><td><b>r : rzy</b></td><td class="pl">aktor → aktorzy</td><td class="uk-cell">актор → актори</td></tr>
       <tr><td><b>ec : cy</b></td><td class="pl">chłopiec → chłopcy</td><td class="uk-cell">хлопець → хлопці</td></tr>
       <tr><td><b>ca : cy</b></td><td class="pl">kierowca → kierowcy</td><td class="uk-cell">водій → водії</td></tr>
-      <tr><td>—</td><td rowspan="4">–e (м'які/стверділі, -anin)</td><td class="pl">lekarz → lekarze</td><td class="uk-cell">лікар → лікарі</td></tr>
-      <tr><td>—</td><td class="pl">gość → goście</td><td class="uk-cell">гість → гості</td></tr>
-      <tr><td><b>anin : anie</b></td><td class="pl">Amerykanin → Amerykanie</td><td class="uk-cell">американець → американці</td></tr>
-      <tr><td>—</td><td class="pl">nauczyciel → nauczyciele</td><td class="uk-cell">вчитель → вчителі</td></tr>
-      <tr><td>—</td><td rowspan="3">–owie (родина, титул, престиж, нація 1 склад)</td><td class="pl">syn → synowie</td><td class="uk-cell">син → сини</td></tr>
-      <tr><td>—</td><td class="pl">król → królowie</td><td class="uk-cell">король → королі</td></tr>
-      <tr><td>—</td><td class="pl">pan → panowie, mąż → mężowie</td><td class="uk-cell">пан → панове, чоловік → чоловіки</td></tr>
+      <tr><td><b>anin : anie</b></td><td>–e</td><td class="pl">Amerykanin → Amerykanie</td><td class="uk-cell">американець → американці</td></tr>
     </table>
 
     <div class="note warn">
       <h4>Нерегулярні форми — вивчити напам'ять</h4>
       <p class="pl">brat → bracia · ksiądz → księża · człowiek → ludzie · Hiszpan → Hiszpanie · Cygan → Cyganie · przyjaciel → przyjaciele · rok → lata</p>
       <p class="uk-line">брат → брати · ксьондз → ксьондзи · людина → люди · іспанець → іспанці · циган → цигани · друг → друзі · рік → роки</p>
-    </div>
-
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>punktualni fachowcy</b>.</div><div class="uk-line">Це пунктуальні фахівці.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">Ci <b>studenci</b> są bardzo zdolni. </div><div class="uk-line">Ці студенти дуже здібні.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">Nasi <b>sąsiedzi</b> wyjechali na wakacje. </div><div class="uk-line">Наші сусіди поїхали у відпустку.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są moi <b>przyjaciele</b> z pracy. </div><div class="uk-line">Це мої друзі з роботи.</div></div>
     </div>
 
     <div class="note pink">
@@ -892,15 +962,32 @@
     </div>
 
     <h3 class="sub-head">1.3 Множина: przymiotniki męskoosobowe</h3>
-    <p>Прикметник має тільки <b>два</b> закінчення: <b>-i</b> (з чергуванням основи) або <b>-y</b> (після k, g, r, c, cz, dz, ż). Ті самі закінчення беруть дієприкметники: <i class="pl">zmęczony → zmęczeni</i> (втомлений → втомлені).</p>
+    <p>Прикметник має тільки <b>два</b> закінчення. Ті самі закінчення беруть дієприкметники: <i class="pl">zmęczony → zmęczeni</i> (втомлений → втомлені).</p>
 
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>punktualni</b> fachowcy.</div><div class="uk-line">Це пунктуальні фахівці.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>mili</b> profesorowie.</div><div class="uk-line">Це приємні професори.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>dobrzy</b> koledzy.</div><div class="uk-line">Це хороші колеги.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>weseli</b> Włosi.</div><div class="uk-line">Це веселі італійці.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>bogaci</b> biznesmeni. </div><div class="uk-line">Це багаті бізнесмени.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>zajęci</b> lekarze. </div><div class="uk-line">Це зайняті лікарі.</div></div>
+    <div class="end-table">
+      <div class="row-labels cols2"><div>–i</div><div>–y</div></div>
+      <div class="genders cols2">
+        <div class="gender-col">
+          <div class="g-label">–i</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–i<small>з чергуванням основи</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>punktualni</b> fachowcy.</div><div class="uk-line">Це пунктуальні фахівці.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>mili</b> profesorowie.</div><div class="uk-line">Це приємні професори.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>weseli</b> Włosi.</div><div class="uk-line">Це веселі італійці.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>bogaci</b> biznesmeni.</div><div class="uk-line">Це багаті бізнесмени.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>zajęci</b> lekarze.</div><div class="uk-line">Це зайняті лікарі.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">–y</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–y<small>після k, g, r, c, cz, dz, ż</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>dobrzy</b> koledzy.</div><div class="uk-line">Це хороші колеги.</div></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="note warn"><p><b>Виняток:</b> <i class="pl">duży → duzi</i> <span class="uk-line">(великий → великі)</span></p></div>
 
@@ -910,19 +997,40 @@
     <div class="end-table">
       <div class="row-labels cols3"><div>rodzaj męski nieosobowy ONE</div><div>rodzaj żeński ONE</div><div>rodzaj nijaki ONE</div></div>
       <div class="genders cols3">
-        <div class="gender-col"><div class="g-label">rodzaj męski nieosobowy ONE</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–e</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–y<small>–i після k,g</small></div></div>
-        <div class="gender-col"><div class="g-label">rodzaj żeński ONE</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–e</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–y / –e</div></div>
-        <div class="gender-col"><div class="g-label">rodzaj nijaki ONE</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–e</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–a</div></div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj męski nieosobowy ONE</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–e</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–y<small>–i після k,g</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>czarne koty</b>.</div><div class="uk-line">Це чорні коти.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>ładne kwiaty</b>.</div><div class="uk-line">Це гарні квіти.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>smaczne owoce</b>.</div><div class="uk-line">Це смачні фрукти.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj żeński ONE</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–e</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–y / –e</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>nowe płyty</b>.</div><div class="uk-line">Це нові платівки.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj nijaki ONE</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–e</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–a</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>zielone jabłka</b>.</div><div class="uk-line">Це зелені яблука.</div></div>
+            <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>małe dzieci</b>.</div><div class="uk-line">Це маленькі діти.</div></div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>czarne koty</b>.</div><div class="uk-line">Це чорні коти.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>nowe płyty</b>.</div><div class="uk-line">Це нові платівки.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>zielone jabłka</b>.</div><div class="uk-line">Це зелені яблука.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>smaczne owoce</b>. </div><div class="uk-line">Це смачні фрукти.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>ładne kwiaty</b>. </div><div class="uk-line">Це гарні квіти.</div></div>
-      <div class="ex" style="--accent:var(--c-mian)"><div class="pl-line">To są <b>małe dzieci</b>. </div><div class="uk-line">Це маленькі діти.</div></div>
     </div>
 
     <table class="alt">
@@ -957,21 +1065,50 @@
     <div class="end-table">
       <div class="row-labels cols4"><div>męski żywotny</div><div>męski nieżywotny</div><div>żeński</div><div>nijaki</div></div>
       <div class="genders cols4">
-        <div class="gender-col"><div class="g-label">męski żywotny</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ego<small>= biernik</small></div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–a</div></div>
-        <div class="gender-col"><div class="g-label">męski nieżywotny</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ego</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–a / –u</div></div>
-        <div class="gender-col"><div class="g-label">żeński</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ej</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–y<small>–i після k,g,м'яких</small></div></div>
-        <div class="gender-col"><div class="g-label">nijaki</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ego</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–a</div></div>
+        <div class="gender-col">
+          <div class="g-label">męski żywotny</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ego<small>= biernik</small></div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–a</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie mam <b>starszego brata</b>.</div><div class="uk-line">У мене немає старшого брата.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">męski nieżywotny</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ego</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–a / –u</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie lubię <b>ciemnego chleba</b>.</div><div class="uk-line">Я не люблю чорного хліба.</div></div>
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie mam <b>nowego telefonu</b>.</div><div class="uk-line">У мене немає нового телефона.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">żeński</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ej</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–y<small>–i після k,g,м'яких</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie lubię <b>zimnej zupy</b>.</div><div class="uk-line">Я не люблю холодного супу.</div></div>
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Szukam <b>dobrej pracy</b>.</div><div class="uk-line">Я шукаю хорошу роботу.</div></div>
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">To jest dom <b>mojej siostry</b>.</div><div class="uk-line">Це будинок моєї сестри.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">nijaki</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ego</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–a</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie chcę <b>gorącego mleka</b>.</div><div class="uk-line">Я не хочу гарячого молока.</div></div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie mam <b>starszego brata</b>.</div><div class="uk-line">У мене немає старшого брата.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie lubię <b>ciemnego chleba</b>.</div><div class="uk-line">Я не люблю чорного хліба.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie lubię <b>zimnej zupy</b>.</div><div class="uk-line">Я не люблю холодного супу.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie chcę <b>gorącego mleka</b>.</div><div class="uk-line">Я не хочу гарячого молока.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie mam <b>nowego telefonu</b>. </div><div class="uk-line">У мене немає нового телефона.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Szukam <b>dobrej pracy</b>. </div><div class="uk-line">Я шукаю хорошу роботу.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">To jest dom <b>mojej siostry</b>. </div><div class="uk-line">Це будинок моєї сестри.</div></div>
     </div>
 
     <div class="note danger">
@@ -990,20 +1127,18 @@
         <span class="uk-name">місяці, спорт/ігри, танці, посуд, знаряддя, фрукти/овочі, валюти, марки авто, міста</span>
         <div class="pl-ex">stycznia, tenisa, walca, talerza, młotka, banana, dolara, Fiata</div>
         <div class="uk-ex">січня, тенісу, вальсу, тарілки, молотка, банана, долара, Фіата</div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:10px"><div class="pl-line">Nie ma <b>chleba</b>.</div><div class="uk-line">Немає хліба.</div></div>
       </div>
       <div class="usage-card" style="--accent:var(--c-cel)">
         <h4 class="pl">–u</h4>
         <span class="uk-name">транспорт, абстрактні/збірні поняття, рідини, дні тижня, гази й сипкі речовини</span>
         <div class="pl-ex">samochodu, problemu, soku, poniedziałku, piasku</div>
         <div class="uk-ex">машини, проблеми, соку, понеділка, піску</div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:10px"><div class="pl-line">Jest dużo <b>ryżu</b>.</div><div class="uk-line">Є багато рису.</div></div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:8px"><div class="pl-line">Boję się <b>egzaminu</b> z matematyki.</div><div class="uk-line">Я боюся іспиту з математики.</div></div>
       </div>
     </div>
     <div class="note info"><p><b>Обидві форми правильні:</b> <i class="pl">krawata / krawatu, przystanka / przystanku</i> <span class="uk-line">(краватки, зупинки)</span>. Сумнів → перевіряй у словнику: позначка D. -u.</p></div>
-
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie ma <b>chleba</b>, ale jest dużo <b>ryżu</b>. </div><div class="uk-line">Немає хліба, але є багато рису.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Boję się <b>egzaminu</b> z matematyki. </div><div class="uk-line">Я боюся іспиту з математики.</div></div>
-    </div>
 
     <table class="alt">
       <tr><th>Чергування</th><th>Приклад</th><th class="uk-cell">Переклад</th></tr>
@@ -1013,19 +1148,44 @@
     </table>
 
     <h3 class="sub-head">2.3 Множина</h3>
-    <table class="alt">
-      <tr><th>Рід</th><th>Закінчення</th><th>Приклад</th><th class="uk-cell">Переклад</th></tr>
-      <tr><td class="pl">męski</td><td>–ów</td><td class="pl">student → studentów</td><td class="uk-cell">студент → студентів</td></tr>
-      <tr><td class="pl">męski м'який</td><td>–i</td><td class="pl">gość → gości</td><td class="uk-cell">гість → гостей</td></tr>
-      <tr><td class="pl">żeński на -a</td><td>–Ø</td><td class="pl">książka → książek</td><td class="uk-cell">книга → книг</td></tr>
-      <tr><td class="pl">żeński на приголосний</td><td>–i / –y</td><td class="pl">noc → nocy</td><td class="uk-cell">ніч → ночей</td></tr>
-      <tr><td class="pl">nijaki</td><td>–Ø</td><td class="pl">okno → okien</td><td class="uk-cell">вікно → вікон</td></tr>
-      <tr><td class="pl">przymiotnik</td><td>–ych / –ich</td><td class="pl">nowych, drogich</td><td class="uk-cell">нових, дорогих</td></tr>
-    </table>
-
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie mam <b>nowych butów</b>. </div><div class="uk-line">У мене немає нового взуття.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Tu nie ma <b>dobrych restauracji</b>. </div><div class="uk-line">Тут немає хороших ресторанів.</div></div>
+    <div class="end-table">
+      <div class="row-labels cols3"><div>rodzaj męski</div><div>rodzaj żeński</div><div>rodzaj nijaki</div></div>
+      <div class="genders cols3">
+        <div class="gender-col">
+          <div class="g-label">rodzaj męski</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ych / –ich</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–ów / –i<small>–i після м'яких</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Nie mam <b>nowych butów</b>.</div><div class="uk-line">У мене немає нового взуття.</div></div>
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">student → <b>studentów</b></div><div class="uk-line">студент → студентів</div></div>
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">gość → <b>gości</b></div><div class="uk-line">гість → гостей</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj żeński</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ych / –ich</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–Ø / –i / –y<small>–Ø на -a; -i/-y на приголосний</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Tu nie ma <b>dobrych restauracji</b>.</div><div class="uk-line">Тут немає хороших ресторанів.</div></div>
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">książka → <b>książek</b></div><div class="uk-line">книга → книг</div></div>
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">noc → <b>nocy</b></div><div class="uk-line">ніч → ночей</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj nijaki</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ych / –ich</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–Ø</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">okno → <b>okien</b></div><div class="uk-line">вікно → вікон</div></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="note warn">
@@ -1042,16 +1202,10 @@
       <div class="usage-card" style="--accent:var(--c-dop)"><h4>Ilości</h4><span class="uk-name">кількість</span><div class="pl-ex">dużo ludzi, kilka osób</div><div class="uk-ex">багато людей, кілька осіб</div></div>
       <div class="usage-card" style="--accent:var(--c-dop)"><h4>Miary</h4><span class="uk-name">міри</span><div class="pl-ex">kilogram ziemniaków</div><div class="uk-ex">кілограм картоплі</div></div>
       <div class="usage-card" style="--accent:var(--c-dop)"><h4>Opakowania</h4><span class="uk-name">упаковки</span><div class="pl-ex">butelka wody, słoik dżemu</div><div class="uk-ex">пляшка води, банка джему</div></div>
-      <div class="usage-card" style="--accent:var(--c-dop)"><h4>Czasowniki</h4><span class="uk-name">дієслова</span><div class="pl-ex">słuchać, szukać, bać się</div><div class="uk-ex">слухати, шукати, боятися</div></div>
+      <div class="usage-card" style="--accent:var(--c-dop)"><h4>Czasowniki</h4><span class="uk-name">дієслова</span><div class="pl-ex">słuchać, szukać, bać się</div><div class="uk-ex">слухати, шукати, боятися</div><div class="ex" style="--accent:var(--c-dop);margin-top:10px"><div class="pl-line">Boję się <b>pająków</b>.</div><div class="uk-line">Я боюся павуків.</div></div><div class="ex" style="--accent:var(--c-dop);margin-top:8px"><div class="pl-line">Uczę się <b>polskiego</b> od roku.</div><div class="uk-line">Я вчу польську мову рік.</div></div></div>
       <div class="usage-card" style="--accent:var(--c-dop)"><h4>Przyimki</h4><span class="uk-name">прийменники</span><div class="pl-ex">do, od, z, u, koło, bez, dla</div><div class="uk-ex">до, від, з, у, коло, без, для</div></div>
       <div class="usage-card" style="--accent:var(--c-dop)"><h4>Wyrażenia przyimkowe</h4><span class="uk-name">прийменникові вирази</span><div class="pl-ex">z powodu, w razie, w ciągu</div><div class="uk-ex">через, у разі, протягом</div></div>
-      <div class="usage-card" style="--accent:var(--c-dop)"><h4>Przysłówki</h4><span class="uk-name">прислівники</span><div class="pl-ex">blisko domu, niedaleko parku</div><div class="uk-ex">близько до дому, недалеко від парку</div></div>
-    </div>
-
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Boję się <b>pająków</b>. <span class="extra-tag">додатковий приклад: dieslowo</span></div><div class="uk-line">Я боюся павуків.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Uczę się <b>polskiego</b> od roku. <span class="extra-tag">додатковий приклад: dieslowo</span></div><div class="uk-line">Я вчу польську мову рік.</div></div>
-      <div class="ex" style="--accent:var(--c-dop)"><div class="pl-line">Mieszkam <b>niedaleko dworca</b>. <span class="extra-tag">додатковий приклад: prysłówek</span></div><div class="uk-line">Я живу недалеко від вокзалу.</div></div>
+      <div class="usage-card" style="--accent:var(--c-dop)"><h4>Przysłówki</h4><span class="uk-name">прислівники</span><div class="pl-ex">blisko domu, niedaleko parku</div><div class="uk-ex">близько до дому, недалеко від парку</div><div class="ex" style="--accent:var(--c-dop);margin-top:10px"><div class="pl-line">Mieszkam <b>niedaleko dworca</b>.</div><div class="uk-line">Я живу недалеко від вокзалу.</div></div></div>
     </div>
 
     <h3 class="sub-head">2.5 Кількості, міри, упаковки</h3>
@@ -1073,68 +1227,162 @@
     <p class="questions pl">Komu? Czemu? · <i>Przyglądam się…</i></p>
     <p class="lede">Найрідший з відмінків — і водночас найлегший: він майже завжди означає адресата дії (кому щось дають, кажуть, допомагають). В українській це той самий давальний, тож логіка збігається на 95%.</p>
 
-    <h3 class="sub-head">3.1 Однина</h3>
+    <h3 class="sub-head">3.1 Однина — схема закінчень</h3>
     <div class="end-table">
       <div class="row-labels cols3"><div>rodzaj męski</div><div>rodzaj żeński</div><div>rodzaj nijaki</div></div>
       <div class="genders cols3">
-        <div class="gender-col"><div class="g-label">rodzaj męski</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–emu</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–owi<small>виняткова група: -u</small></div></div>
-        <div class="gender-col"><div class="g-label">rodzaj żeński</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ej</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–e<small>з чергуванням; -i/-y після м'яких</small></div></div>
-        <div class="gender-col"><div class="g-label">rodzaj nijaki</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–emu</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–u</div></div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj męski</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–emu</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–owi<small>виняткова група: -u</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Daję <b>młodemu studentowi</b> książkę.</div><div class="uk-line">Даю молодому студенту книгу.</div></div>
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Pomagam <b>starszemu panu</b>.</div><div class="uk-line">Допомагаю старшому пану.</div></div>
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Wierzę <b>temu lekarzowi</b>.</div><div class="uk-line">Я вірю цьому лікарю.</div></div>
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Opowiadam <b>koledze</b> o podróży.</div><div class="uk-line">Розповідаю колезі про подорож.</div></div>
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Podaj <b>ojcu</b> gazetę.</div><div class="uk-line">Подай батькові газету.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj żeński</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ej</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–e / –y / –i<small>–e з чергуванням; -y/-i після м'яких</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Mówię <b>miłej siostrze</b> prawdę.</div><div class="uk-line">Кажу приємній сестрі правду.</div></div>
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Dziękuję <b>tej pani</b>.</div><div class="uk-line">Дякую цій пані.</div></div>
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Pożycz <b>koleżance</b> zeszyt.</div><div class="uk-line">Позич подрузі зошит.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj nijaki</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–emu</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–u</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Kupuję <b>małemu dziecku</b> lody.</div><div class="uk-line">Купую маленькій дитині морозиво.</div></div>
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Przyglądam się <b>oknu</b>.</div><div class="uk-line">Придивляюся до вікна.</div></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Daję <b>młodemu studentowi</b> książkę.</div><div class="uk-line">Даю молодому студенту книгу.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Pomagam <b>starszemu panu</b>.</div><div class="uk-line">Допомагаю старшому пану.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Mówię <b>miłej siostrze</b> prawdę.</div><div class="uk-line">Кажу приємній сестрі правду.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Dziękuję <b>tej pani</b>.</div><div class="uk-line">Дякую цій пані.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Kupuję <b>małemu dziecku</b> lody.</div><div class="uk-line">Купую маленькій дитині морозиво.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Przyglądam się <b>oknu</b>.</div><div class="uk-line">Придивляюся до вікна.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Wierzę <b>temu lekarzowi</b>. </div><div class="uk-line">Я вірю цьому лікарю.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Opowiadam <b>koledze</b> o podróży. </div><div class="uk-line">Розповідаю колезі про подорож.</div></div>
-    </div>
+    <h3 class="sub-head">3.2 Rodzaj męski: –owi чи –u?</h3>
+    <p><b>–owi</b> — домінуюче закінчення майже всіх чоловічих іменників: <i class="pl">studentowi, lekarzowi, nauczycielowi, sąsiadowi, Piotrowi</i>. <b>–u</b> має лише невелика група слів (часто односкладові) — їх треба запам'ятати.</p>
 
     <div class="note warn">
       <h4>Чоловічі іменники на -u — список для запам'ятовування</h4>
-      <p class="pl">brat → bratu · ojciec → ojcu · chłop → chłopu · pan → panu · pies → psu · kot → kotu · Bóg → Bogu · ksiądz → księdzu · świat → światu · lew → lwu · diabeł → diabłu · kat → katu</p>
-      <p class="uk-line">брат → брату · батько → батьку · селянин → селянину · пан → пану · пес → псу · кіт → коту · Бог → Богу · ксьондз → ксьондзу · світ → світу · лев → леву · диявол → дияволу · кат → кату</p>
-      <p>Усі інші чоловічі — регулярно на -owi: <i class="pl">studentowi, lekarzowi, nauczycielowi, sąsiadowi, Piotrowi</i>.</p>
+      <p class="pl">pan → panu · brat → bratu · Bóg → Bogu · ksiądz → księdzu · książę → księciu · czart → czartu · chłop → chłopu · pies → psu · lew → lwu · kot → kotu · świat → światu · ojciec → ojcu · chłopiec → chłopcu · diabeł → diabłu</p>
+      <p class="uk-line">пан → пану · брат → брату · Бог → Богу · ксьондз → ксьондзу · князь → князю · чорт → чорту · селянин → селянину · пес → псу · лев → леву · кіт → коту · світ → світу · батько → батьку · хлопець → хлопцю · диявол → дияволу</p>
     </div>
 
+    <div class="note pink">
+      <h4>Końcówki fakultatywne — обидві форми правильні</h4>
+      <p class="pl">orzeł → orłu / orłowi · osioł → osłu / osłowi · kat → katu / katowi · człek → człeku / człekowi</p>
+      <p class="uk-line">орел, осел, кат, чоловік (заст.). У переносному значенні частіше вживається <b>-owi</b>.</p>
+    </div>
+
+    <div class="note danger">
+      <h4>Типова помилка: dzień і rok</h4>
+      <p>Часто помилково дають форму на <b>-u</b>. Правильно:</p>
+      <p class="pl">dzień → <b>dniowi</b> · rok → <b>rokowi</b></p>
+      <p class="uk-line">день → дневі · рік → рокові</p>
+    </div>
+
+    <h3 class="sub-head">3.3 Rodzaj żeński: –e / –y / –i</h3>
+    <p>Прикметник завжди на <b>–ej</b>. У іменника три варіанти — залежно від кінцевого приголосного основи:</p>
+
+    <div class="usage-grid">
+      <div class="usage-card" style="--accent:var(--c-cel)">
+        <h4 class="pl">–e</h4>
+        <span class="uk-name">твердий приголосний — з фонетичними змінами</span>
+        <div class="pl-ex">kobieta → kobiecie, woda → wodzie, Polska → Polsce</div>
+        <div class="uk-ex">жінка → жінці, вода → воді, Польща → Польщі</div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-cel)">
+        <h4 class="pl">–y</h4>
+        <span class="uk-name">функціонально м'які: -sz, -cz, -dz, -dż, -ż, -rz, -c</span>
+        <div class="pl-ex">mysz → myszy, rzecz → rzeczy, praca → pracy</div>
+        <div class="uk-ex">миша → миші, річ → речі, робота → роботі</div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-cel)">
+        <h4 class="pl">–i</h4>
+        <span class="uk-name">м'які: -ś, -ć, -ź, -dź, -ń, а також -l, -j</span>
+        <div class="pl-ex">wieś → wsi, nić → nici, pani → pani, sól → soli</div>
+        <div class="uk-ex">село → селу, нитка → нитці, пані → пані, сіль → солі</div>
+      </div>
+    </div>
+
+    <h4 class="sub-head" style="font-size:1rem;margin-top:1.2rem;">Чергування перед закінченням –e</h4>
     <table class="alt">
       <tr><th>Чергування</th><th>Приклад</th><th class="uk-cell">Переклад</th></tr>
-      <tr><td>t : ci</td><td class="pl">kobieta – kobiecie</td><td class="uk-cell">жінка – жінці</td></tr>
+      <tr><td>p : pi</td><td class="pl">Europa – Europie</td><td class="uk-cell">Європа – Європі</td></tr>
+      <tr><td>b : bi</td><td class="pl">torba – torbie</td><td class="uk-cell">сумка – сумці</td></tr>
+      <tr><td>f : fi</td><td class="pl">żyrafa – żyrafie</td><td class="uk-cell">жирафа – жирафі</td></tr>
+      <tr><td>w : wi</td><td class="pl">kawa – kawie</td><td class="uk-cell">кава – каві</td></tr>
+      <tr><td>m : mi</td><td class="pl">mama – mamie</td><td class="uk-cell">мама – мамі</td></tr>
+      <tr><td>n : ni</td><td class="pl">wanna – wannie</td><td class="uk-cell">ванна – ванні</td></tr>
+      <tr><td>s : si</td><td class="pl">trasa – trasie</td><td class="uk-cell">траса – трасі</td></tr>
+      <tr><td>z : zi</td><td class="pl">koza – kozie</td><td class="uk-cell">коза – козі</td></tr>
+      <tr><td>t : ci</td><td class="pl">gazeta – gazecie</td><td class="uk-cell">газета – газеті</td></tr>
       <tr><td>d : dzi</td><td class="pl">woda – wodzie</td><td class="uk-cell">вода – воді</td></tr>
-      <tr><td>r : rz</td><td class="pl">siostra – siostrze</td><td class="uk-cell">сестра – сестрі</td></tr>
-      <tr><td>k : c</td><td class="pl">matka – matce</td><td class="uk-cell">мати – матері</td></tr>
-      <tr><td>g : dz</td><td class="pl">noga – nodze</td><td class="uk-cell">нога – нозі</td></tr>
+      <tr><td>r : rz</td><td class="pl">góra – górze</td><td class="uk-cell">гора – горі</td></tr>
+      <tr><td>ł : l</td><td class="pl">szkoła – szkole</td><td class="uk-cell">школа – школі</td></tr>
+      <tr><td>k : c</td><td class="pl">Polska – Polsce</td><td class="uk-cell">Польща – Польщі</td></tr>
+      <tr><td>g : dz</td><td class="pl">droga – drodze</td><td class="uk-cell">дорога – дорозі</td></tr>
       <tr><td>ch : sz</td><td class="pl">mucha – musze</td><td class="uk-cell">муха – мусі</td></tr>
     </table>
 
-    <h3 class="sub-head">3.2 Множина</h3>
-    <table class="alt">
-      <tr><th>Частина мови</th><th>Закінчення</th><th>Приклади</th><th class="uk-cell">Переклад</th></tr>
-      <tr><td class="pl">rzeczownik</td><td>–om</td><td class="pl">studentom, kobietom, dzieciom</td><td class="uk-cell">студентам, жінкам, дітям</td></tr>
-      <tr><td class="pl">przymiotnik</td><td>–ym / –im</td><td class="pl">nowym, drogim</td><td class="uk-cell">новим, дорогим</td></tr>
-    </table>
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Przyglądam się <b>tym nowym studentom</b>.</div><div class="uk-line">Придивляюся до цих нових студентів.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Kupiłem prezenty <b>moim dzieciom</b>.</div><div class="uk-line">Купив подарунки моїм дітям.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Dziękuję <b>wszystkim gościom</b>. </div><div class="uk-line">Дякую всім гостям.</div></div>
+    <div class="note info">
+      <h4>Celownik = Miejscownik (і часто = Dopełniacz)</h4>
+      <p>У жіночому роді однини форми <b>celownika</b> і <b>miejscownika</b> завжди збігаються: <i class="pl">daję siostrze / myślę o siostrze</i>.</p>
+      <p>Те саме для чоловічих іменників жіночого типу відмінювання: <i class="pl">tacie, artyście, koledze, kierowcy</i>.</p>
+      <p>Після м'яких / функціонально м'яких приголосних форма на <b>-i / -y</b> збігається ще й з <b>dopełniaczem</b> однини: <i class="pl">pracy, nocy, pani</i>.</p>
     </div>
 
-    <h3 class="sub-head">3.3 Вживання</h3>
-    <div class="usage-grid">
-      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Dieslowa adresata</h4><span class="uk-name">дієслова адресата</span><div class="pl-ex">dawać, pomagać, dziękować, wierzyć</div><div class="uk-ex">давати, допомагати, дякувати, вірити</div></div>
-      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Konstrukcje bezosobowe</h4><span class="uk-name">безособові конструкції</span><div class="pl-ex">Jest mi zimno. Udało mu się.</div><div class="uk-ex">Мені холодно. Йому вдалося.</div></div>
-      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Przyimki</h4><span class="uk-name">прийменники</span><div class="pl-ex">dzięki tobie, wbrew pozorom</div><div class="uk-ex">завдяки тобі, всупереч видимості</div></div>
-      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Zaimki celownika</h4><span class="uk-name">займенники давального</span><div class="pl-ex">mi, ci, mu, jej, nam, wam, im</div><div class="uk-ex">мені, тобі, йому, їй, нам, вам, їм</div></div>
+    <h3 class="sub-head">3.4 Множина</h3>
+    <div class="end-table">
+      <div class="row-labels cols1"><div>liczba mnoga — усі роди</div></div>
+      <div class="genders cols1">
+        <div class="gender-col">
+          <div class="g-label">liczba mnoga — усі роди</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ym / –im</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–om</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Przyglądam się <b>tym nowym studentom</b>.</div><div class="uk-line">Придивляюся до цих нових студентів.</div></div>
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Kupiłem prezenty <b>moim dzieciom</b>.</div><div class="uk-line">Купив подарунки моїм дітям.</div></div>
+            <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Dziękuję <b>wszystkim gościom</b>.</div><div class="uk-line">Дякую всім гостям.</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Brakuje <b>nam</b> czasu.</div><div class="uk-line">Нам не вистачає часу.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Podoba <b>jej się</b> ten film.</div><div class="uk-line">Їй подобається цей фільм.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Śpieszy <b>mi się</b>. </div><div class="uk-line">Я поспішаю.</div></div>
-      <div class="ex" style="--accent:var(--c-cel)"><div class="pl-line">Przeszkadza <b>ci</b> hałas? </div><div class="uk-line">Тобі заважає шум?</div></div>
+
+    <h3 class="sub-head">3.5 Займенники вказівні та питальні</h3>
+    <table class="alt">
+      <tr><th>Рід</th><th class="pl">ten / tamten / jaki</th><th class="uk-cell">Переклад</th></tr>
+      <tr><td class="pl">męski</td><td class="pl">temu, tamtemu, jakiemu</td><td class="uk-cell">цьому, тому, якому</td></tr>
+      <tr><td class="pl">żeński</td><td class="pl">tej, tamtej, jakiej</td><td class="uk-cell">цій, тій, якій</td></tr>
+      <tr><td class="pl">nijaki</td><td class="pl">temu, tamtemu, jakiemu</td><td class="uk-cell">цьому, тому, якому</td></tr>
+    </table>
+    <div class="note info">
+      <h4>Особові займенники давального</h4>
+      <p class="pl">mi, ci, mu, jej · nam, wam, im</p>
+      <p class="uk-line">мені, тобі, йому, їй · нам, вам, їм</p>
+    </div>
+
+    <h3 class="sub-head">3.6 Вживання</h3>
+    <p>Celownik майже завжди позначає <b>непрямий додаток</b> — адресата дії. Поєднується з обмеженою кількістю прийменників.</p>
+    <div class="usage-grid">
+      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Czasowniki adresata</h4><span class="uk-name">дієслова адресата</span><div class="pl-ex">dawać, pomagać, dziękować, wierzyć, pożyczać</div><div class="uk-ex">давати, допомагати, дякувати, вірити, позичати</div></div>
+      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Konstrukcje bezosobowe</h4><span class="uk-name">безособові конструкції</span><div class="pl-ex">Jest mi zimno. Udało mu się.</div><div class="uk-ex">Мені холодно. Йому вдалося.</div><div class="ex" style="--accent:var(--c-cel);margin-top:10px"><div class="pl-line">Śpieszy <b>mi się</b>.</div><div class="uk-line">Я поспішаю.</div></div><div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Przeszkadza <b>ci</b> hałas?</div><div class="uk-line">Тобі заважає шум?</div></div></div>
+      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Przyimki</h4><span class="uk-name">прийменники</span><div class="pl-ex">dzięki tobie, wbrew pozorom, przeciwko nam</div><div class="uk-ex">завдяки тобі, всупереч видимості, проти нас</div></div>
+      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Zaimki celownika</h4><span class="uk-name">займенники давального</span><div class="pl-ex">mi, ci, mu, jej, nam, wam, im</div><div class="uk-ex">мені, тобі, йому, їй, нам, вам, їм</div><div class="ex" style="--accent:var(--c-cel);margin-top:10px"><div class="pl-line">Brakuje <b>nam</b> czasu.</div><div class="uk-line">Нам не вистачає часу.</div></div><div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Podoba <b>jej się</b> ten film.</div><div class="uk-line">Їй подобається цей фільм.</div></div></div>
     </div>
   </section>
 
@@ -1159,24 +1407,54 @@
     <div class="end-table">
       <div class="row-labels cols4"><div>męski żywotny</div><div>męski nieżywotny</div><div>żeński</div><div>nijaki</div></div>
       <div class="genders cols4">
-        <div class="gender-col"><div class="g-label">męski żywotny</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ego</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–a<small>= dopełniacz</small></div></div>
-        <div class="gender-col"><div class="g-label">męski nieżywotny</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–y / –i<small>= mianownik</small></div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–Ø<small>= mianownik</small></div></div>
-        <div class="gender-col"><div class="g-label">żeński</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ą</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–ę<small>на приголосний: -Ø</small></div></div>
-        <div class="gender-col"><div class="g-label">nijaki</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–e<small>= mianownik</small></div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–Ø<small>= mianownik</small></div></div>
+        <div class="gender-col">
+          <div class="g-label">męski żywotny</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ego</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–a<small>= dopełniacz</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Widzę <b>miłego brata</b>.</div><div class="uk-line">Бачу приємного брата.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Mam <b>dużego psa</b>.</div><div class="uk-line">Маю великого пса.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Kocham <b>dobrego psa</b>.</div><div class="uk-line">Люблю доброго пса.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">męski nieżywotny</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–y / –i<small>= mianownik</small></div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–Ø<small>= mianownik</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Mam <b>nowy dom</b>.</div><div class="uk-line">Маю новий будинок.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Kupuję <b>tani bilet</b>.</div><div class="uk-line">Купую дешевий квиток.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Kocham <b>duży dom</b>.</div><div class="uk-line">Люблю великий будинок.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">żeński</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ą</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–ę<small>на приголосний: -Ø</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Piję <b>gorącą kawę</b>.</div><div class="uk-line">П'ю гарячу каву.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Znam <b>tę panią</b>.</div><div class="uk-line">Знаю цю пані.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Czytam ciekawą <b>książkę</b>.</div><div class="uk-line">Читаю цікаву книгу.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">nijaki</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–e<small>= mianownik</small></div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–Ø<small>= mianownik</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Widzę <b>duże okno</b>.</div><div class="uk-line">Бачу велике вікно.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Mam <b>małe dziecko</b>.</div><div class="uk-line">Маю маленьку дитину.</div></div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Widzę <b>miłego brata</b>.</div><div class="uk-line">Бачу приємного брата.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Mam <b>dużego psa</b>.</div><div class="uk-line">Маю великого пса.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Mam <b>nowy dom</b>.</div><div class="uk-line">Маю новий будинок.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Kupuję <b>tani bilet</b>.</div><div class="uk-line">Купую дешевий квиток.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Piję <b>gorącą kawę</b>.</div><div class="uk-line">П'ю гарячу каву.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Znam <b>tę panią</b>.</div><div class="uk-line">Знаю цю пані.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Widzę <b>duże okno</b>.</div><div class="uk-line">Бачу велике вікно.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Mam <b>małe dziecko</b>.</div><div class="uk-line">Маю маленьку дитину.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Kocham <b>dobrego psa</b> i <b>duży dom</b>. </div><div class="uk-line">Люблю доброго пса й великий будинок.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Czytam ciekawą <b>książkę</b>. </div><div class="uk-line">Читаю цікаву книгу.</div></div>
     </div>
 
     <div class="note danger">
@@ -1191,32 +1469,45 @@
     </div>
 
     <h3 class="sub-head">4.3 Множина</h3>
-    <table class="alt">
-      <tr><th>Група</th><th>Правило</th><th>Приклад</th><th class="uk-cell">Переклад</th></tr>
-      <tr><td class="pl">męskoosobowy</td><td>= DOPEŁNIACZ</td><td class="pl">Widzę tych nowych studentów.</td><td class="uk-cell">Бачу цих нових студентів.</td></tr>
-      <tr><td class="pl">niemęskoosobowy</td><td>= MIANOWNIK</td><td class="pl">Widzę te nowe książki.</td><td class="uk-cell">Бачу ці нові книги.</td></tr>
-    </table>
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Znam <b>dobrych lekarzy</b>.</div><div class="uk-line">Знаю хороших лікарів.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Mam <b>czarne koty</b>.</div><div class="uk-line">Маю чорних котів.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Lubię <b>zielone jabłka</b>.</div><div class="uk-line">Люблю зелені яблука.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Zaprosiłem <b>wszystkich kolegów</b>. </div><div class="uk-line">Я запросив усіх колег.</div></div>
+    <div class="end-table">
+      <div class="row-labels cols2"><div>męskoosobowy</div><div>niemęskoosobowy</div></div>
+      <div class="genders cols2">
+        <div class="gender-col">
+          <div class="g-label">męskoosobowy</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ych / –ich<small>= dopełniacz</small></div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">= dopełniacz</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Znam <b>dobrych lekarzy</b>.</div><div class="uk-line">Знаю хороших лікарів.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Zaprosiłem <b>wszystkich kolegów</b>.</div><div class="uk-line">Я запросив усіх колег.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Widzę <b>tych nowych studentów</b>.</div><div class="uk-line">Бачу цих нових студентів.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">niemęskoosobowy</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–e<small>= mianownik</small></div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">= mianownik</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Mam <b>czarne koty</b>.</div><div class="uk-line">Маю чорних котів.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Lubię <b>zielone jabłka</b>.</div><div class="uk-line">Люблю зелені яблука.</div></div>
+            <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Widzę <b>te nowe książki</b>.</div><div class="uk-line">Бачу ці нові книги.</div></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <h3 class="sub-head">4.4 Коли вживаємо Biernik</h3>
     <div class="usage-grid">
-      <div class="usage-card" style="--accent:var(--c-bier)"><h4>Dieslowa</h4><span class="uk-name">прямий додаток</span><div class="pl-ex">mieć, lubić, kochać, widzieć, znać</div><div class="uk-ex">мати, любити, кохати, бачити, знати</div></div>
-      <div class="usage-card" style="--accent:var(--c-bier)"><h4>Przyimki</h4><span class="uk-name">рух, напрямок</span><div class="pl-ex">Idę na koncert. Jadę przez most.</div><div class="uk-ex">Іду на концерт. Їду через міст.</div></div>
+      <div class="usage-card" style="--accent:var(--c-bier)"><h4>Dieslowa</h4><span class="uk-name">прямий додаток</span><div class="pl-ex">mieć, lubić, kochać, widzieć, znać</div><div class="uk-ex">мати, любити, кохати, бачити, знати</div><div class="ex" style="--accent:var(--c-bier);margin-top:10px"><div class="pl-line">Zapraszam <b>cię</b> na obiad.</div><div class="uk-line">Запрошую тебе на обід.</div></div></div>
+      <div class="usage-card" style="--accent:var(--c-bier)"><h4>Przyimki</h4><span class="uk-name">рух, напрямок</span><div class="pl-ex">Idę na koncert. Jadę przez most.</div><div class="uk-ex">Іду на концерт. Їду через міст.</div><div class="ex" style="--accent:var(--c-bier);margin-top:10px"><div class="pl-line">Proszę <b>o kawę</b>.</div><div class="uk-line">Прошу каву.</div></div></div>
       <div class="usage-card" style="--accent:var(--c-bier)"><h4>Stałe wyrażenia</h4><span class="uk-name">сталі вирази</span><div class="pl-ex">ze względu na, w zamian za</div><div class="uk-ex">з огляду на, в обмін на</div></div>
-      <div class="usage-card" style="--accent:var(--c-bier)"><h4>Czas i miara</h4><span class="uk-name">час і міра</span><div class="pl-ex">Czekam godzinę. Cały tydzień.</div><div class="uk-ex">Чекаю годину. Цілий тиждень.</div></div>
+      <div class="usage-card" style="--accent:var(--c-bier)"><h4>Czas i miara</h4><span class="uk-name">час і міра</span><div class="pl-ex">Czekam godzinę. Cały tydzień.</div><div class="uk-ex">Чекаю годину. Цілий тиждень.</div><div class="ex" style="--accent:var(--c-bier);margin-top:10px"><div class="pl-line">Czekam na <b>niego</b> godzinę.</div><div class="uk-line">Чекаю на нього годину.</div></div></div>
     </div>
     <div class="note warn">
       <p><b>Заперечення «перемикає» відмінок:</b> <i class="pl">Mam samochód → Nie mam samochodu</i> (dop.) <span class="uk-line">Маю машину → Не маю машини.</span></p>
-    </div>
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Proszę <b>o kawę</b>. </div><div class="uk-line">Прошу каву.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Zapraszam <b>cię</b> na obiad. </div><div class="uk-line">Запрошую тебе на обід.</div></div>
-      <div class="ex" style="--accent:var(--c-bier)"><div class="pl-line">Czekam na <b>niego</b> godzinę. </div><div class="uk-line">Чекаю на нього годину.</div></div>
     </div>
   </section>
 
@@ -1234,35 +1525,63 @@
     <div class="end-table">
       <div class="row-labels cols3"><div>rodzaj męski</div><div>rodzaj żeński</div><div>rodzaj nijaki</div></div>
       <div class="genders cols3">
-        <div class="gender-col"><div class="g-label">rodzaj męski</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ym / –im<small>–im po k, g, м'яких</small></div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–em<small>po k,g → -kiem,-giem</small></div></div>
-        <div class="gender-col"><div class="g-label">rodzaj żeński</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ą</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–ą</div></div>
-        <div class="gender-col"><div class="g-label">rodzaj nijaki</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ym / –im</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–em</div></div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj męski</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ym / –im<small>–im po k, g, м'яких</small></div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–em<small>po k,g → -kiem,-giem</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Jestem <b>dobrym lekarzem</b>.</div><div class="uk-line">Я хороший лікар.</div></div>
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Jadę <b>pociągiem</b>.</div><div class="uk-line">Їду потягом.</div></div>
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Piszę <b>ołówkiem</b>.</div><div class="uk-line">Пишу олівцем.</div></div>
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Krojemy chleb <b>nożem</b>.</div><div class="uk-line">Ріжемо хліб ножем.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj żeński</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ą</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–ą</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Jestem <b>miłą osobą</b>.</div><div class="uk-line">Я приємна людина.</div></div>
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Idę z <b>siostrą</b>.</div><div class="uk-line">Іду з сестрою.</div></div>
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Interesuję się <b>muzyką</b>.</div><div class="uk-line">Я цікавлюся музикою.</div></div>
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Płacę <b>kartą</b>.</div><div class="uk-line">Плачу карткою.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj nijaki</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ym / –im</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–em</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Zajmuję się <b>dzieckiem</b>.</div><div class="uk-line">Я займаюся дитиною.</div></div>
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Nad <b>morzem</b> jest pięknie.</div><div class="uk-line">Біля моря красиво.</div></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Jestem <b>dobrym lekarzem</b>.</div><div class="uk-line">Я хороший лікар.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Jadę <b>pociągiem</b>.</div><div class="uk-line">Їду потягом.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Piszę <b>ołówkiem</b>.</div><div class="uk-line">Пишу олівцем.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Jestem <b>miłą osobą</b>.</div><div class="uk-line">Я приємна людина.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Idę z <b>siostrą</b>.</div><div class="uk-line">Іду з сестрою.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Interesuję się <b>muzyką</b>.</div><div class="uk-line">Я цікавлюся музикою.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Zajmuję się <b>dzieckiem</b>.</div><div class="uk-line">Я займаюся дитиною.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Nad <b>morzem</b> jest pięknie. </div><div class="uk-line">Біля моря красиво.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Krojemy chleb <b>nożem</b>. </div><div class="uk-line">Ріжемо хліб ножем.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Płacę <b>kartą</b>. </div><div class="uk-line">Плачу карткою.</div></div>
-    </div>
-
     <h3 class="sub-head">5.2 Множина</h3>
-    <table class="alt">
-      <tr><th>Частина мови</th><th>Закінчення</th><th>Приклади</th><th class="uk-cell">Переклад</th></tr>
-      <tr><td class="pl">rzeczownik</td><td>–ami</td><td class="pl">studentami, oknami</td><td class="uk-cell">студентами, вікнами</td></tr>
-      <tr><td class="pl">rzeczownik — винятки</td><td>–mi</td><td class="pl">ludźmi, dziećmi, końmi, pieniędzmi</td><td class="uk-cell">людьми, дітьми, кіньми, грошима</td></tr>
-      <tr><td class="pl">przymiotnik</td><td>–ymi / –imi</td><td class="pl">nowymi, drogimi</td><td class="uk-cell">новими, дорогими</td></tr>
-    </table>
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Rozmawiam z <b>przyjaciółmi</b>. </div><div class="uk-line">Розмовляю з друзями.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Interesuję się <b>starymi mapami</b>. </div><div class="uk-line">Я цікавлюся старими картами.</div></div>
+    <div class="end-table">
+      <div class="row-labels cols1"><div>liczba mnoga — усі роди</div></div>
+      <div class="genders cols1">
+        <div class="gender-col">
+          <div class="g-label">liczba mnoga — усі роди</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ymi / –imi</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–ami<small>винятки: –mi (ludźmi, dziećmi, końmi, pieniędzmi, przyjaciółmi)</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Interesuję się <b>starymi mapami</b>.</div><div class="uk-line">Я цікавлюся старими картами.</div></div>
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Rozmawiam z <b>przyjaciółmi</b>.</div><div class="uk-line">Розмовляю з друзями.</div></div>
+            <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">studentami, oknami</div><div class="uk-line">студентами, вікнами</div></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <h3 class="sub-head">5.3 Вживання</h3>
@@ -1271,14 +1590,10 @@
       <div class="usage-card" style="--accent:var(--c-narz)"><h4>Narzędzie</h4><span class="uk-name">знаряддя</span><div class="pl-ex">piszę długopisem, kroję nożem</div><div class="uk-ex">пишу ручкою, ріжу ножем</div></div>
       <div class="usage-card" style="--accent:var(--c-narz)"><h4>Transport</h4><span class="uk-name">транспорт</span><div class="pl-ex">jadę autobusem, lecę samolotem</div><div class="uk-ex">їду автобусом, лечу літаком</div></div>
       <div class="usage-card" style="--accent:var(--c-narz)"><h4>Czas</h4><span class="uk-name">час</span><div class="pl-ex">rankiem, nocą, latem, zimą</div><div class="uk-ex">вранці, вночі, влітку, взимку</div></div>
-      <div class="usage-card" style="--accent:var(--c-narz)"><h4>Czasowniki zwrotne</h4><span class="uk-name">зворотні дієслова</span><div class="pl-ex">interesować się, opiekować się</div><div class="uk-ex">цікавитися, опікуватися</div></div>
+      <div class="usage-card" style="--accent:var(--c-narz)"><h4>Czasowniki zwrotne</h4><span class="uk-name">зворотні дієслова</span><div class="pl-ex">interesować się, opiekować się</div><div class="uk-ex">цікавитися, опікуватися</div><div class="ex" style="--accent:var(--c-narz);margin-top:10px"><div class="pl-line">Cieszę się <b>twoim sukcesem</b>.</div><div class="uk-line">Я радію твоєму успіху.</div></div><div class="ex" style="--accent:var(--c-narz);margin-top:8px"><div class="pl-line">Martwię się <b>twoim zdrowiem</b>.</div><div class="uk-line">Я хвилююся за твоє здоров'я.</div></div></div>
       <div class="usage-card" style="--accent:var(--c-narz)"><h4>Przyimki</h4><span class="uk-name">прийменники</span><div class="pl-ex">Idę z bratem. Mieszkam nad jeziorem.</div><div class="uk-ex">Іду з братом. Живу над озером.</div></div>
     </div>
     <div class="note info"><p><b>Увага:</b> <i class="pl">z</i> + narzędnik = «разом з»; <i class="pl">z</i> + dopełniacz = «з, звідки».</p></div>
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Cieszę się <b>twoim sukcesem</b>. </div><div class="uk-line">Я радію твоєму успіху.</div></div>
-      <div class="ex" style="--accent:var(--c-narz)"><div class="pl-line">Martwię się <b>twoim zdrowiem</b>. </div><div class="uk-line">Я хвилююся за твоє здоров'я.</div></div>
-    </div>
   </section>
 
   <!-- ========================= 6. MIEJSCOWNIK ========================= -->
@@ -1295,23 +1610,44 @@
     <div class="end-table">
       <div class="row-labels cols3"><div>rodzaj męski</div><div>rodzaj żeński</div><div>rodzaj nijaki</div></div>
       <div class="genders cols3">
-        <div class="gender-col"><div class="g-label">rodzaj męski</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ym / –im</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–e<small>–u після k,g,ch,м'яких</small></div></div>
-        <div class="gender-col"><div class="g-label">rodzaj żeński</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ej</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–e<small>–i/–y після м'яких</small></div></div>
-        <div class="gender-col"><div class="g-label">rodzaj nijaki</div><div class="adj-hdr">Przymiotnik</div><div class="end-block end-adj">–ym / –im</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–e<small>–u після k,g,ch</small></div></div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj męski</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ym / –im</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–e<small>–u після k,g,ch,м'яких</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">o <b>nowym stole</b></div><div class="uk-line">про новий стіл</div></div>
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">w <b>parku</b>, o <b>lekarzu</b></div><div class="uk-line">у парку, про лікаря</div></div>
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">w <b>Krakowie</b></div><div class="uk-line">у Кракові</div></div>
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">Mieszkam w <b>Warszawie</b>.</div><div class="uk-line">Я живу у Варшаві.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj żeński</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ej</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–e<small>–i/–y після м'яких</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">w <b>dobrej szkole</b></div><div class="uk-line">у хорошій школі</div></div>
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">o <b>siostrze</b>, w <b>Polsce</b></div><div class="uk-line">про сестру, у Польщі</div></div>
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">Rozmawiamy o <b>naszej pracy</b>.</div><div class="uk-line">Ми розмовляємо про нашу роботу.</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj nijaki</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ym / –im</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–e<small>–u після k,g,ch</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">w <b>dużym oknie</b></div><div class="uk-line">у великому вікні</div></div>
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">o <b>dziecku</b></div><div class="uk-line">про дитину</div></div>
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">Myślę o <b>tobie</b> cały czas.</div><div class="uk-line">Я думаю про тебе весь час.</div></div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">o <b>nowym stole</b></div><div class="uk-line">про новий стіл</div></div>
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">w <b>parku</b>, o <b>lekarzu</b></div><div class="uk-line">у парку, про лікаря</div></div>
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">w <b>Krakowie</b></div><div class="uk-line">у Кракові</div></div>
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">w <b>dobrej szkole</b></div><div class="uk-line">у хорошій школі</div></div>
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">o <b>siostrze</b>, w <b>Polsce</b></div><div class="uk-line">про сестру, у Польщі</div></div>
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">w <b>dużym oknie</b></div><div class="uk-line">у великому вікні</div></div>
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">o <b>dziecku</b></div><div class="uk-line">про дитину</div></div>
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">Myślę o <b>tobie</b> cały czas. </div><div class="uk-line">Я думаю про тебе весь час.</div></div>
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">Mieszkam w <b>Warszawie</b>. </div><div class="uk-line">Я живу у Варшаві.</div></div>
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">Rozmawiamy o <b>naszej pracy</b>. </div><div class="uk-line">Ми розмовляємо про нашу роботу.</div></div>
     </div>
 
     <h3 class="sub-head">6.2 Головна схема: -e чи -u?</h3>
@@ -1330,14 +1666,21 @@
     </div>
 
     <h3 class="sub-head">6.3 Множина та прийменники</h3>
-    <table class="alt">
-      <tr><th>Частина мови</th><th>Закінчення</th><th>Приклад</th><th class="uk-cell">Переклад</th></tr>
-      <tr><td class="pl">rzeczownik</td><td>–ach</td><td class="pl">o studentach, w książkach</td><td class="uk-cell">про студентів, у книгах</td></tr>
-      <tr><td class="pl">przymiotnik</td><td>–ych / –ich</td><td class="pl">o nowych, w drogich</td><td class="uk-cell">про нових, у дорогих</td></tr>
-      <tr><td class="pl">винятки (країни)</td><td>–ech</td><td class="pl">w Niemczech, we Włoszech</td><td class="uk-cell">у Німеччині, в Італії</td></tr>
-    </table>
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">Mówimy o <b>dobrych filmach</b>. </div><div class="uk-line">Ми говоримо про хороші фільми.</div></div>
+    <div class="end-table">
+      <div class="row-labels cols1"><div>liczba mnoga — усі роди</div></div>
+      <div class="genders cols1">
+        <div class="gender-col">
+          <div class="g-label">liczba mnoga — усі роди</div>
+          <div class="adj-hdr">Przymiotnik</div>
+          <div class="end-block end-adj">–ych / –ich</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–ach<small>винятки (країни): –ech — w Niemczech, we Włoszech</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">Mówimy o <b>dobrych filmach</b>.</div><div class="uk-line">Ми говоримо про хороші фільми.</div></div>
+            <div class="ex" style="--accent:var(--c-miej)"><div class="pl-line">o <b>studentach</b>, w <b>książkach</b></div><div class="uk-line">про студентів, у книгах</div></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="prep-grid">
@@ -1359,29 +1702,56 @@
     <div class="end-table">
       <div class="row-labels cols3"><div>rodzaj męski</div><div>rodzaj żeński</div><div>rodzaj nijaki</div></div>
       <div class="genders cols3">
-        <div class="gender-col"><div class="g-label">rodzaj męski</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–e / –u<small>–u після k,g,ch,м'яких, стверділих, демінутиви</small></div></div>
-        <div class="gender-col"><div class="g-label">rodzaj żeński</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">–o / –u / –i<small>–u в демінутивах і після м'яких</small></div></div>
-        <div class="gender-col"><div class="g-label">rodzaj nijaki</div><div class="noun-hdr">Rzeczownik</div><div class="end-block end-noun">= Mianownik</div></div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj męski</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–e / –u<small>–u після k,g,ch,м'яких, стверділих, демінутиви</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Panie <b>doktorze</b>!</div><div class="uk-line">Пане докторе!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Piotrze</b>! <b>Boże</b>!</div><div class="uk-line">Петре! Боже!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Marku</b>! <b>Synu</b>!</div><div class="uk-line">Марку! Сину!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Ojciec → <b>ojcze</b>! chłopiec → <b>chłopcze</b>!</div><div class="uk-line">Батько → батьку! хлопець → хлопче!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Cześć, <b>Tomku</b>!</div><div class="uk-line">Привіт, Томку!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Kochany <b>Przyjacielu</b>! <span class="extra-tag">лист</span></div><div class="uk-line">Дорогий друже!</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj żeński</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">–o / –u / –i<small>–u в демінутивах і після м'яких</small></div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Mamo</b>! <b>Siostro</b>!</div><div class="uk-line">Мамо! Сестро!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Ewo</b>! <b>Pani</b>!</div><div class="uk-line">Єво! Пані!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Aniu</b>! <b>Kasiu</b>! <b>Babciu</b>!</div><div class="uk-line">Аню! Касю! Бабусю!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Szanowna <b>Pani Dyrektor</b>! <span class="extra-tag">лист</span></div><div class="uk-line">Шановна пані директор!</div></div>
+          </div>
+        </div>
+        <div class="gender-col">
+          <div class="g-label">rodzaj nijaki</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">= Mianownik</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Dziecko</b>! <b>Kochanie</b>!</div><div class="uk-line">Дитино! Кохання моє!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Słońce moje</b>!</div><div class="uk-line">Сонце моє!</div></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="examples">
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Panie <b>doktorze</b>!</div><div class="uk-line">Пане докторе!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Piotrze</b>! <b>Boże</b>!</div><div class="uk-line">Петре! Боже!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Marku</b>! <b>Synu</b>!</div><div class="uk-line">Марку! Сину!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Ojciec → <b>ojcze</b>! chłopiec → <b>chłopcze</b>!</div><div class="uk-line">Батько → батьку! хлопець → хлопче!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Mamo</b>! <b>Siostro</b>!</div><div class="uk-line">Мамо! Сестро!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Ewo</b>! <b>Pani</b>!</div><div class="uk-line">Єво! Пані!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Aniu</b>! <b>Kasiu</b>! <b>Babciu</b>!</div><div class="uk-line">Аню! Касю! Бабусю!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Dziecko</b>! <b>Kochanie</b>!</div><div class="uk-line">Дитино! Кохання моє!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Słońce moje</b>!</div><div class="uk-line">Сонце моє!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Cześć, <b>Tomku</b>! </div><div class="uk-line">Привіт, Томку!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Kochany <b>Przyjacielu</b>! <span class="extra-tag">додатковий приклад (лист)</span></div><div class="uk-line">Дорогий друже!</div></div>
-      <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line">Szanowna <b>Pani Dyrektor</b>! <span class="extra-tag">додатковий приклад (лист)</span></div><div class="uk-line">Шановна пані директор!</div></div>
-    </div>
-
-    <div class="note info">
-      <p><b>Множина: Wołacz = Mianownik</b> — <i class="pl">Drodzy państwo! Kochani!</i> <span class="uk-line">(Шановні пані та панове! Дорогі!)</span></p>
+    <h3 class="sub-head">Множина</h3>
+    <div class="end-table">
+      <div class="row-labels cols1"><div>liczba mnoga — усі роди</div></div>
+      <div class="genders cols1">
+        <div class="gender-col">
+          <div class="g-label">liczba mnoga — усі роди</div>
+          <div class="noun-hdr">Rzeczownik</div>
+          <div class="end-block end-noun">= Mianownik</div>
+          <div class="col-examples">
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Drodzy państwo</b>!</div><div class="uk-line">Шановні пані та панове!</div></div>
+            <div class="ex" style="--accent:var(--c-wol)"><div class="pl-line"><b>Kochani</b>!</div><div class="uk-line">Дорогі!</div></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="note pink">
