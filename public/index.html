@@ -4,664 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Polska gramatyka — Відмінки і дієслова</title>
-<style>
-  :root{
-    --paper:#faf6f0;
-    --ink:#241f1a;
-    --ink-soft:#5b5148;
-    --line:#e4dcd0;
-    --card:#ffffff;
-
-    --c-mian:#b8203f;   --c-mian-soft:#fbe9ec;
-    --c-dop:#5c6b2e;    --c-dop-soft:#eef2e2;
-    --c-cel:#5b3a8e;    --c-cel-soft:#efe7f8;
-    --c-bier:#1c5f8a;   --c-bier-soft:#e5f0f6;
-    --c-narz:#b05a10;   --c-narz-soft:#faeee0;
-    --c-miej:#0e7a6e;   --c-miej-soft:#e2f4f1;
-    --c-wol:#9c2469;    --c-wol-soft:#f8e6f0;
-    --c-verb:#8a3d1a;   --c-verb-soft:#f7ebe3;
-
-    --gold:#d1a02e;
-    --gold-soft:#fbf1da;
-    --red:#b8203f;
-    --red-soft:#fbe9ec;
-  }
-
-  *{box-sizing:border-box;}
-  html{
-    scroll-behavior:smooth;
-    overflow-x:clip;
-    scroll-padding-top:12px;
-  }
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-    line-height:1.55;
-    overflow-x:clip;
-    max-width:100vw;
-  }
-  .uk{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  }
-  .pl{ font-style:italic; }
-
-  a{color:inherit;}
-
-  /* ---------- LAYOUT ---------- */
-  .page{
-    max-width:920px;
-    margin:0 auto;
-    padding:0 24px 80px;
-  }
-  .wrap{min-width:0;}
-
-  /* ---------- HERO ---------- */
-  .hero{
-    background:linear-gradient(160deg,#7d1230,#b8203f 55%,#c94a63);
-    color:#fff0ee;
-    padding:64px 24px 48px;
-    margin-bottom:8px;
-  }
-  .hero-inner{max-width:920px;margin:0 auto;}
-  .hero .eyebrow{
-    font-family:"Iowan Old Style",Georgia,serif;
-    font-style:italic;
-    color:#f3c9d0;
-    font-size:1.05rem;
-    margin:0 0 6px;
-  }
-  .hero h1{
-    font-family:"Georgia",serif;
-    font-weight:800;
-    letter-spacing:0.5px;
-    font-size:clamp(2.4rem,6vw,3.6rem);
-    margin:0 0 18px;
-    line-height:1.02;
-    text-transform:uppercase;
-  }
-  .hero p.sub{
-    font-style:italic;
-    max-width:640px;
-    font-size:1.15rem;
-    color:#fbe3e7;
-    margin:0 0 22px;
-  }
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
-  .chip{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.85rem;
-    padding:6px 14px;
-    border:1px solid rgba(255,255,255,0.55);
-    border-radius:999px;
-    color:#fff;
-    text-decoration:none;
-    transition:background .15s;
-  }
-  .chip:hover{background:rgba(255,255,255,0.15);}
-
-  /* ---------- NAV / TOC ---------- */
-  .side-nav{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:16px 18px 14px;
-    margin:28px 0 40px;
-  }
-  .side-nav > h2{
-    font-size:0.78rem;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-    color:var(--ink-soft);
-    margin:0 0 12px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  }
-  .nav-block{
-    border-top:1px solid var(--line);
-  }
-  .nav-block:first-of-type{border-top:0;}
-  .nav-block > summary{
-    list-style:none;
-    cursor:pointer;
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    gap:10px;
-    padding:12px 2px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-weight:700;
-    font-size:0.98rem;
-    user-select:none;
-    -webkit-user-select:none;
-  }
-  .nav-block > summary::-webkit-details-marker{display:none;}
-  .nav-block > summary::after{
-    content:"";
-    width:0.45em;
-    height:0.45em;
-    border-right:2px solid var(--ink-soft);
-    border-bottom:2px solid var(--ink-soft);
-    transform:rotate(45deg);
-    transition:transform .18s ease;
-    flex:0 0 auto;
-    margin-right:4px;
-    opacity:0.7;
-  }
-  .nav-block[open] > summary::after{
-    transform:rotate(-135deg);
-    margin-top:4px;
-  }
-  .nav-block .block-title{display:flex;flex-direction:column;gap:1px;min-width:0;}
-  .nav-block .block-title .pl{font-style:normal;}
-  .nav-block .block-title .uk-sub{
-    font-weight:500;
-    font-size:0.78rem;
-    color:var(--ink-soft);
-  }
-  .side-nav ol{
-    margin:0 0 10px;
-    padding:0 0 4px 18px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.88rem;
-    line-height:1.35;
-  }
-  .side-nav li{margin-bottom:7px;}
-  .side-nav a{
-    text-decoration:none;
-    border-bottom:1px dotted transparent;
-    color:var(--ink);
-  }
-  .side-nav a:hover{border-color:var(--ink-soft);}
-  .side-nav a .num{
-    display:inline-block;
-    min-width:1.35em;
-    color:var(--ink-soft);
-    font-variant-numeric:tabular-nums;
-  }
-
-  /* Desktop: sticky left index */
-  @media (min-width:1024px){
-    .page{
-      display:grid;
-      grid-template-columns:minmax(240px,280px) minmax(0,920px);
-      gap:36px;
-      max-width:1280px;
-      padding:24px 28px 80px;
-      align-items:start;
-    }
-    .side-nav{
-      position:sticky;
-      top:20px;
-      max-height:calc(100vh - 40px);
-      overflow:auto;
-      margin:0;
-      padding:18px 16px 16px;
-      overscroll-behavior:contain;
-    }
-    .hero-inner{max-width:1280px;}
-    .side-nav ol{font-size:0.84rem;}
-    .side-nav li{margin-bottom:6px;}
-  }
-
-  /* ---------- SECTION HEADERS ---------- */
-  section.case{margin-bottom:64px;}
-  .case-head{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:baseline;
-    gap:6px 12px;
-    border-radius:8px;
-    padding:10px 16px;
-    color:#fff;
-    margin-bottom:22px;
-    position:-webkit-sticky;
-    position:sticky;
-    top:0;
-    z-index:10;
-    box-shadow:0 2px 8px rgba(36,31,26,0.12);
-    max-width:100%;
-  }
-  .case-head .num{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.95rem;
-    opacity:0.75;
-    font-weight:600;
-    flex:0 0 auto;
-  }
-  .case-head h2{
-    margin:0;
-    font-size:1.9rem;
-    letter-spacing:0.3px;
-    flex:0 1 auto;
-    min-width:0;
-  }
-  .case-head .uk-name{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-weight:600;
-    font-size:1.05rem;
-    opacity:0.9;
-    flex:1 1 auto;
-    min-width:0;
-  }
-  .case-head .to-top{
-    display:none;
-  }
-  .questions{
-    font-style:italic;
-    font-size:1.15rem;
-    margin:-8px 0 20px;
-    color:var(--ink-soft);
-  }
-  .lede{margin-bottom:26px;}
-
-  .h-mian{background:linear-gradient(120deg,var(--c-mian),#8e1830);}
-  .h-dop{background:linear-gradient(120deg,var(--c-dop),#485624);}
-  .h-cel{background:linear-gradient(120deg,var(--c-cel),#432a6c);}
-  .h-bier{background:linear-gradient(120deg,var(--c-bier),#123f5c);}
-  .h-narz{background:linear-gradient(120deg,var(--c-narz),#7e3f0a);}
-  .h-miej{background:linear-gradient(120deg,var(--c-miej),#0a5850);}
-  .h-wol{background:linear-gradient(120deg,var(--c-wol),#711a4d);}
-  .h-verb{background:linear-gradient(120deg,var(--c-verb),#5c2810);}
-
-  h3.sub-head{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:1.05rem;
-    font-weight:700;
-    margin:34px 0 14px;
-    padding-bottom:6px;
-    border-bottom:2px solid var(--line);
-  }
-
-  /* ---------- ENDING TABLES ---------- */
-  .end-table{
-    display:grid;
-    border:1px solid var(--line);
-    border-radius:10px;
-    overflow:hidden;
-    background:var(--card);
-    margin-bottom:22px;
-  }
-  .end-table .row-labels{
-    display:grid;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.8rem;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    color:var(--ink-soft);
-    background:#f2ede3;
-    padding:10px 14px;
-  }
-  .cols1{grid-template-columns:1fr;}
-  .cols2{grid-template-columns:repeat(2,1fr);}
-  .cols3{grid-template-columns:repeat(3,1fr);}
-  .cols4{grid-template-columns:repeat(4,1fr);}
-  .end-table .genders{
-    display:grid;
-    gap:1px;
-    background:var(--line);
-  }
-  .genders.cols1{grid-template-columns:1fr;}
-  .genders.cols2{grid-template-columns:repeat(2,1fr);}
-  .genders.cols3{grid-template-columns:repeat(3,1fr);}
-  .genders.cols4{grid-template-columns:repeat(4,1fr);}
-  .gender-col{background:var(--card);padding:14px;}
-  .gender-col .g-label{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.72rem;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    color:var(--ink-soft);
-    margin-bottom:10px;
-    font-weight:700;
-  }
-  /* Desktop: rodzaje live in the top header row; hide per-column duplicates */
-  .end-table .row-labels + .genders .g-label{display:none;}
-  .end-block{
-    text-align:center;
-    border-radius:8px;
-    padding:10px 6px;
-    margin-bottom:6px;
-    font-weight:700;
-    font-size:1.15rem;
-  }
-  .end-block small{
-    display:block;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-weight:400;
-    font-size:0.68rem;
-    margin-top:3px;
-    letter-spacing:0.2px;
-  }
-  .end-adj{background:var(--gold-soft);color:#7a5c0e;border:1px solid #ecd48f;}
-  .end-noun{background:var(--red-soft);color:#8e1830;border:1px solid #f0b9c3;}
-  .noun-hdr, .adj-hdr{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.7rem;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    color:var(--ink-soft);
-    margin:14px 0 6px;
-  }
-  .adj-hdr{margin-top:0;}
-
-  /* Examples nested inside ending-rule columns */
-  .gender-col .col-examples{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    margin-top:12px;
-    padding-top:12px;
-    border-top:1px dashed var(--line);
-  }
-  .gender-col .ex,
-  .usage-card .ex{
-    padding:8px 10px;
-    background:#faf7f1;
-  }
-  .gender-col .ex .pl-line,
-  .usage-card .ex .pl-line{font-size:0.95rem;}
-  .gender-col .ex .uk-line,
-  .usage-card .ex .uk-line{font-size:0.82rem;}
-
-  /* ---------- EXAMPLE CARDS ---------- */
-  .examples{
-    display:grid;
-    gap:10px;
-    margin:14px 0 8px;
-  }
-  .ex{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-left:4px solid var(--accent, #b8203f);
-    border-radius:6px;
-    padding:10px 16px;
-  }
-  .ex .pl-line{font-size:1.08rem;}
-  .ex .pl-line b{font-weight:800;}
-  .ex .uk-line{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    color:var(--ink-soft);
-    font-size:0.92rem;
-    margin-top:2px;
-  }
-  .extra-tag{
-    display:inline-block;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.65rem;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    background:#eee4d2;
-    color:#7a5c0e;
-    padding:2px 7px;
-    border-radius:999px;
-    margin-left:8px;
-    vertical-align:middle;
-  }
-
-  /* ---------- NOTE BOXES ---------- */
-  .note{
-    border-radius:8px;
-    padding:16px 20px;
-    margin:18px 0;
-    font-size:0.98rem;
-  }
-  .note.info{background:#eaf1fb;border:1px solid #c7dbf3;}
-  .note.warn{background:#fdf1e0;border:1px solid #f2d69f;}
-  .note.danger{background:var(--red-soft);border:1px solid #f0b9c3;}
-  .note.pink{background:var(--c-wol-soft);border:1px solid #edb9d6;}
-  .note h4{
-    margin:0 0 8px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.95rem;
-  }
-  .note .uk-line{color:var(--ink-soft);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:0.9rem;}
-
-  /* ---------- ALTERNATION TABLES ---------- */
-  table.alt{
-    width:100%;
-    max-width:100%;
-    border-collapse:collapse;
-    margin:14px 0 22px;
-    font-size:0.95rem;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:8px;
-    overflow:hidden;
-    table-layout:fixed;
-  }
-  table.alt th{
-    background:#f2ede3;
-    text-align:left;
-    padding:9px 14px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.75rem;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    color:var(--ink-soft);
-    word-wrap:break-word;
-    overflow-wrap:anywhere;
-  }
-  table.alt td{
-    padding:9px 14px;
-    border-top:1px solid var(--line);
-    vertical-align:top;
-    word-wrap:break-word;
-    overflow-wrap:anywhere;
-  }
-  table.alt td.uk-cell{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    color:var(--ink-soft);
-    font-size:0.9rem;
-  }
-  table.alt .rule-sent{
-    display:block;
-    margin-top:6px;
-    font-weight:400;
-    font-size:0.9rem;
-    line-height:1.35;
-  }
-  table.alt .rule-sent.uk-cell{margin-top:2px;font-size:0.82rem;}
-
-  /* ---------- USAGE GRID ---------- */
-  .usage-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-    margin:18px 0;
-  }
-  .usage-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:16px 18px;
-  }
-  .usage-card h4{
-    margin:0 0 4px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.85rem;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    color:var(--accent,#b8203f);
-  }
-  .usage-card .uk-name{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.85rem;
-    color:var(--ink-soft);
-    margin-bottom:8px;
-    display:block;
-  }
-  .usage-card .pl-ex{font-size:0.98rem;margin-bottom:4px;}
-  .usage-card .uk-ex{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.88rem;
-    color:var(--ink-soft);
-  }
-
-  /* ---------- SUMMARY TABLES (section 8/9) ---------- */
-  .summary{
-    margin:18px 0 30px;
-    max-width:100%;
-  }
-  table.grid-t{
-    border-collapse:collapse;
-    width:100%;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:8px;
-    font-size:0.92rem;
-    table-layout:fixed;
-  }
-  table.grid-t caption{
-    caption-side:top;
-    text-align:left;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-weight:700;
-    padding:8px 4px;
-  }
-  table.grid-t th, table.grid-t td{
-    border:1px solid var(--line);
-    padding:8px 12px;
-    text-align:left;
-    word-wrap:break-word;
-    overflow-wrap:anywhere;
-  }
-  table.grid-t th{
-    background:#f2ede3;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.78rem;
-    text-transform:uppercase;
-    letter-spacing:0.4px;
-    color:var(--ink-soft);
-  }
-  table.grid-t td.case-label{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-weight:700;}
-
-  .prep-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-    margin:18px 0;
-  }
-  .prep-card{
-    border-radius:10px;
-    padding:16px 18px;
-    color:#fff;
-  }
-  .prep-card h4{margin:0 0 8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px;}
-  .prep-card .pl{font-size:1.02rem;}
-  .prep-card .uk{font-size:0.85rem;opacity:0.85;margin-top:6px;}
-
-  footer{
-    text-align:center;
-    color:var(--ink-soft);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    font-size:0.85rem;
-    padding:30px 0 10px;
-  }
-
-  @media (max-width:640px){
-    .page{padding:0 16px 64px;}
-    .usage-grid, .prep-grid{grid-template-columns:1fr;}
-
-    .case-head{
-      gap:4px 8px;
-      padding:8px 44px 8px 12px;
-      top:env(safe-area-inset-top, 0);
-    }
-    .case-head h2{font-size:1.35rem;line-height:1.15;}
-    .case-head .uk-name{
-      flex:1 0 100%;
-      font-size:0.88rem;
-      line-height:1.25;
-    }
-    .case-head .to-top{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:absolute;
-      right:8px;
-      top:50%;
-      transform:translateY(-50%);
-      width:32px;
-      height:32px;
-      margin:0;
-      padding:0;
-      border:1px solid rgba(255,255,255,0.45);
-      border-radius:8px;
-      background:rgba(255,255,255,0.12);
-      color:#fff;
-      font-size:1.05rem;
-      line-height:1;
-      cursor:pointer;
-      -webkit-tap-highlight-color:transparent;
-    }
-    .case-head .to-top:active{
-      background:rgba(255,255,255,0.25);
-    }
-
-    .end-table .genders.cols1,
-    .end-table .genders.cols2,
-    .end-table .genders.cols3,
-    .end-table .genders.cols4{grid-template-columns:1fr;}
-    .end-table .row-labels{display:none;}
-    .end-table .row-labels + .genders .g-label{
-      display:block;
-      background:#f2ede3;
-      margin:-14px -14px 12px;
-      padding:10px 14px;
-      border-bottom:1px solid var(--line);
-    }
-
-    table.alt{font-size:0.88rem;}
-    table.alt th, table.alt td{padding:8px 10px;}
-
-    /* Stack wide summary tables as cards — no horizontal scroll */
-    table.grid-t{
-      display:block;
-      border:0;
-      background:transparent;
-      font-size:0.9rem;
-    }
-    table.grid-t tbody{display:block;}
-    table.grid-t tr{
-      display:block;
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:8px;
-      margin-bottom:10px;
-      padding:4px 12px 8px;
-      overflow:hidden;
-    }
-    table.grid-t tr:first-child{display:none;}
-    table.grid-t th, table.grid-t td{
-      display:grid;
-      grid-template-columns:minmax(6.5rem,38%) 1fr;
-      gap:8px;
-      border:0;
-      border-top:1px solid var(--line);
-      padding:7px 0;
-      text-align:left;
-    }
-    table.grid-t td:first-child,
-    table.grid-t td.case-label{
-      display:block;
-      border-top:0;
-      padding:8px 0 4px;
-      font-size:0.95rem;
-    }
-    table.grid-t td:first-child + td{border-top:1px solid var(--line);}
-    table.grid-t td[data-label]::before{
-      content:attr(data-label);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-      font-size:0.68rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:0.4px;
-      color:var(--ink-soft);
-      line-height:1.3;
-    }
-  }
-</style>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
@@ -1215,6 +564,83 @@
       <p class="uk-line">Купив (шматок) сиру, (буханку) хліба, (трохи) цибулі.</p>
       <p class="pl">Порівняй: Zjadłem chleb (увесь) — Zjadłem chleba (шматок).</p>
     </div>
+
+    <h3 class="sub-head">2.6 Особові займенники — zaimki osobowe</h3>
+    <p>У dopełniaczu займенники <i class="pl">ty, on, ona, ono, oni, one</i> мають кілька форм: коротку (нейтральну), форму після прийменника (*) та довгу / емфатичну (**). У <i class="pl">ja</i> форма одна — <b>mnie</b>.</p>
+
+    <div class="summary">
+      <table class="grid-t">
+        <tr>
+          <th>Форма</th>
+          <th class="pl">ja</th><th class="pl">ty</th><th class="pl">on</th><th class="pl">ona</th><th class="pl">ono</th>
+          <th class="pl">my</th><th class="pl">wy</th><th class="pl">oni</th><th class="pl">one</th>
+        </tr>
+        <tr>
+          <td class="case-label">звичайна</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">cię</td>
+          <td class="pl" data-label="on">go</td>
+          <td class="pl" data-label="ona">jej</td>
+          <td class="pl" data-label="ono">go</td>
+          <td class="pl" data-label="my">nas</td>
+          <td class="pl" data-label="wy">was</td>
+          <td class="pl" data-label="oni">ich</td>
+          <td class="pl" data-label="one">ich</td>
+        </tr>
+        <tr>
+          <td class="case-label">по прийменнику *</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">ciebie</td>
+          <td class="pl" data-label="on">niego</td>
+          <td class="pl" data-label="ona">niej</td>
+          <td class="pl" data-label="ono">niego</td>
+          <td class="pl" data-label="my">nas</td>
+          <td class="pl" data-label="wy">was</td>
+          <td class="pl" data-label="oni">nich</td>
+          <td class="pl" data-label="one">nich</td>
+        </tr>
+        <tr>
+          <td class="case-label">емфаза **</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">ciebie</td>
+          <td class="pl" data-label="on">jego</td>
+          <td class="pl" data-label="ona">—</td>
+          <td class="pl" data-label="ono">jego</td>
+          <td class="pl" data-label="my">—</td>
+          <td class="pl" data-label="wy">—</td>
+          <td class="pl" data-label="oni">—</td>
+          <td class="pl" data-label="one">—</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="usage-grid">
+      <div class="usage-card" style="--accent:var(--c-dop)">
+        <h4>Звичайна форма</h4>
+        <span class="uk-name">Ta nauczycielka szuka…</span>
+        <div class="pl-ex">mnie, cię, go, jej, nas, was, ich</div>
+        <div class="uk-ex">мене, тебе, його, її, нас, вас, їх</div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:10px"><div class="pl-line">Nie widzę <b>go</b>.</div><div class="uk-line">Я його не бачу.</div></div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:8px"><div class="pl-line">Szukam <b>cię</b>.</div><div class="uk-line">Я тебе шукаю.</div></div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-dop)">
+        <h4>* Po przyimku</h4>
+        <span class="uk-name">To jest dla…</span>
+        <div class="pl-ex">mnie, ciebie, niego, niej, nas, was, nich</div>
+        <div class="uk-ex">після do, dla, od, u, bez…</div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:10px"><div class="pl-line">Idę do <b>niego</b>.</div><div class="uk-line">Іду до нього.</div></div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:8px"><div class="pl-line">Prezent dla <b>ciebie</b>.</div><div class="uk-line">Подарунок для тебе.</div></div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-dop)">
+        <h4>** Emfaza</h4>
+        <span class="uk-name">Aneta słucha tylko…</span>
+        <div class="pl-ex">mnie, ciebie, jego</div>
+        <div class="uk-ex">наголос, початок речення, кілька додатків</div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:10px"><div class="pl-line">Aneta słucha tylko <b>ciebie</b>!</div><div class="uk-line">Анета слухає тільки тебе!</div></div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:8px"><div class="pl-line"><b>Jego</b> naprawdę nikt nie lubi!</div><div class="uk-line">Його справді ніхто не любить!</div></div>
+        <div class="ex" style="--accent:var(--c-dop);margin-top:8px"><div class="pl-line">Nie widziałem ani jej, ani <b>jego</b>.</div><div class="uk-line">Я не бачив ні її, ні його.</div></div>
+      </div>
+    </div>
   </section>
 
   <!-- ========================= 3. CELOWNIK ========================= -->
@@ -1370,19 +796,115 @@
       <tr><td class="pl">żeński</td><td class="pl">tej, tamtej, jakiej</td><td class="uk-cell">цій, тій, якій</td></tr>
       <tr><td class="pl">nijaki</td><td class="pl">temu, tamtemu, jakiemu</td><td class="uk-cell">цьому, тому, якому</td></tr>
     </table>
-    <div class="note info">
-      <h4>Особові займенники давального</h4>
-      <p class="pl">mi, ci, mu, jej · nam, wam, im</p>
-      <p class="uk-line">мені, тобі, йому, їй · нам, вам, їм</p>
+
+    <h3 class="sub-head">3.6 Особові займенники — zaimki osobowe</h3>
+    <p>Особові займенники відмінюються за відмінками. У деяких відмінках є коротка і довга форма, а іноді ще форма після прийменника. У celowniku <i class="pl">ty, on, ona, ono, oni, one</i> мають кілька форм; у <i class="pl">ja</i> дві форми лише тут: <b>mi</b> і <b>mnie</b>. Паралельні таблиці: §&nbsp;2.6 Dopełniacz, §&nbsp;4.5 Biernik; зведена — §&nbsp;8.5.</p>
+
+    <div class="summary">
+      <table class="grid-t">
+        <tr>
+          <th>Форма</th>
+          <th class="pl">ja</th><th class="pl">ty</th><th class="pl">on</th><th class="pl">ona</th><th class="pl">ono</th>
+          <th class="pl">my</th><th class="pl">wy</th><th class="pl">oni</th><th class="pl">one</th>
+        </tr>
+        <tr>
+          <td class="case-label">звичайна</td>
+          <td class="pl" data-label="ja">mi</td>
+          <td class="pl" data-label="ty">ci</td>
+          <td class="pl" data-label="on">mu</td>
+          <td class="pl" data-label="ona">jej</td>
+          <td class="pl" data-label="ono">mu</td>
+          <td class="pl" data-label="my">nam</td>
+          <td class="pl" data-label="wy">wam</td>
+          <td class="pl" data-label="oni">im</td>
+          <td class="pl" data-label="one">im</td>
+        </tr>
+        <tr>
+          <td class="case-label">по прийменнику *</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">tobie</td>
+          <td class="pl" data-label="on">niemu</td>
+          <td class="pl" data-label="ona">niej</td>
+          <td class="pl" data-label="ono">niemu</td>
+          <td class="pl" data-label="my">nam</td>
+          <td class="pl" data-label="wy">wam</td>
+          <td class="pl" data-label="oni">nim</td>
+          <td class="pl" data-label="one">nim</td>
+        </tr>
+        <tr>
+          <td class="case-label">емфаза **</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">tobie</td>
+          <td class="pl" data-label="on">jemu</td>
+          <td class="pl" data-label="ona">—</td>
+          <td class="pl" data-label="ono">jemu</td>
+          <td class="pl" data-label="my">—</td>
+          <td class="pl" data-label="wy">—</td>
+          <td class="pl" data-label="oni">—</td>
+          <td class="pl" data-label="one">—</td>
+        </tr>
+      </table>
     </div>
 
-    <h3 class="sub-head">3.6 Вживання</h3>
+    <div class="usage-grid">
+      <div class="usage-card" style="--accent:var(--c-cel)">
+        <h4>Звичайна форма</h4>
+        <span class="uk-name">нейтральна позиція в реченні</span>
+        <div class="pl-ex">mi, ci, mu, jej, nam, wam, im</div>
+        <div class="uk-ex">мені, тобі, йому/йому, їй, нам, вам, їм</div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:10px"><div class="pl-line">Dziękuję <b>ci</b>.</div><div class="uk-line">Дякую тобі.</div></div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Smutno <b>mi</b>.</div><div class="uk-line">Мені сумно.</div></div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Podoba <b>jej się</b> ten film.</div><div class="uk-line">Їй подобається цей фільм.</div></div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Brakuje <b>nam</b> czasu.</div><div class="uk-line">Нам не вистачає часу.</div></div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-cel)">
+        <h4>* Po przyimku</h4>
+        <span class="uk-name">після прийменника</span>
+        <div class="pl-ex">mnie, tobie, niemu, niej, nam, wam, nim</div>
+        <div class="uk-ex">після dzięki, przeciwko, wbrew…</div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:10px"><div class="pl-line">Dzięki <b>tobie</b>.</div><div class="uk-line">Завдяки тобі.</div></div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Ona jest przeciwko <b>mnie</b>.</div><div class="uk-line">Вона проти мене.</div></div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Wbrew <b>niemu</b> pojechaliśmy.</div><div class="uk-line">Усупереч йому ми поїхали.</div></div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Przeciwko <b>nim</b>.</div><div class="uk-line">Проти них.</div></div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-cel)">
+        <h4>** Emfaza</h4>
+        <span class="uk-name">наголос, початок речення, кілька додатків</span>
+        <div class="pl-ex">mnie, tobie, jemu</div>
+        <div class="uk-ex">довгі форми ja / ty / on·ono</div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:10px"><div class="pl-line">Daj to tylko <b>mnie</b>!</div><div class="uk-line">Дай це тільки мені!</div></div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line"><b>Tobie</b> musimy podziękować.</div><div class="uk-line">Саме тобі ми маємо подякувати.</div></div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line"><b>Jemu</b> nie dam nic.</div><div class="uk-line">Йому я нічого не дам.</div></div>
+        <div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Musicie podziękować i jej, i <b>jemu</b>.</div><div class="uk-line">Треба подякувати і їй, і йому.</div></div>
+      </div>
+    </div>
+
+    <div class="note warn">
+      <h4>* Після прийменника</h4>
+      <p>Після прийменника (<i class="pl">dzięki, przeciwko, wbrew</i>…) займенники 3-ї особи починаються на <b>n-</b>: <i class="pl">niemu, niej, nim</i>. Для <i class="pl">ty</i> — довга форма <b>tobie</b>, для <i class="pl">ja</i> — завжди <b>mnie</b>.</p>
+      <p class="pl">Ona jest przeciwko <b>niemu</b> / <b>niej</b> / <b>nim</b>.</p>
+      <p class="uk-line">Вона проти нього / неї / них.</p>
+    </div>
+
+    <div class="note danger">
+      <h4>** Emfaza, początek zdania, więcej niż jedno dopełnienie</h4>
+      <p>Довгі форми <b>mnie, tobie, jemu</b> обов'язкові: на початку речення, при емоційному наголосі або коли в реченні більше ніж один додаток.</p>
+      <p class="pl"><b>Mnie</b> musicie podziękować. · Daję to tylko <b>tobie</b>! · Musicie podziękować i jej, i <b>mnie</b>.</p>
+      <p class="uk-line">Саме мені ви маєте подякувати. · Даю це тільки тобі! · Треба подякувати і їй, і мені.</p>
+    </div>
+
+    <div class="note info">
+      <h4>Коротко</h4>
+      <p class="pl">Smutno <b>mi</b> / <b>ci</b> / <b>mu</b> / <b>jej</b> / <b>nam</b> / <b>wam</b> / <b>im</b>.</p>
+      <p class="uk-line">Мені / тобі / йому / їй / нам / вам / їм сумно. — типова «коротка» парадигма celownika в середині речення.</p>
+    </div>
+
+    <h3 class="sub-head">3.7 Вживання</h3>
     <p>Celownik майже завжди позначає <b>непрямий додаток</b> — адресата дії. Поєднується з обмеженою кількістю прийменників.</p>
     <div class="usage-grid">
       <div class="usage-card" style="--accent:var(--c-cel)"><h4>Czasowniki adresata</h4><span class="uk-name">дієслова адресата</span><div class="pl-ex">dawać, pomagać, dziękować, wierzyć, pożyczać</div><div class="uk-ex">давати, допомагати, дякувати, вірити, позичати</div></div>
       <div class="usage-card" style="--accent:var(--c-cel)"><h4>Konstrukcje bezosobowe</h4><span class="uk-name">безособові конструкції</span><div class="pl-ex">Jest mi zimno. Udało mu się.</div><div class="uk-ex">Мені холодно. Йому вдалося.</div><div class="ex" style="--accent:var(--c-cel);margin-top:10px"><div class="pl-line">Śpieszy <b>mi się</b>.</div><div class="uk-line">Я поспішаю.</div></div><div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Przeszkadza <b>ci</b> hałas?</div><div class="uk-line">Тобі заважає шум?</div></div></div>
-      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Przyimki</h4><span class="uk-name">прийменники</span><div class="pl-ex">dzięki tobie, wbrew pozorom, przeciwko nam</div><div class="uk-ex">завдяки тобі, всупереч видимості, проти нас</div></div>
-      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Zaimki celownika</h4><span class="uk-name">займенники давального</span><div class="pl-ex">mi, ci, mu, jej, nam, wam, im</div><div class="uk-ex">мені, тобі, йому, їй, нам, вам, їм</div><div class="ex" style="--accent:var(--c-cel);margin-top:10px"><div class="pl-line">Brakuje <b>nam</b> czasu.</div><div class="uk-line">Нам не вистачає часу.</div></div><div class="ex" style="--accent:var(--c-cel);margin-top:8px"><div class="pl-line">Podoba <b>jej się</b> ten film.</div><div class="uk-line">Їй подобається цей фільм.</div></div></div>
+      <div class="usage-card" style="--accent:var(--c-cel)"><h4>Przyimki</h4><span class="uk-name">прийменники</span><div class="pl-ex">dzięki tobie, wbrew pozorom, przeciwko nam</div><div class="uk-ex">завдяки тобі, всупереч видимості, проти нас</div><div class="ex" style="--accent:var(--c-cel);margin-top:10px"><div class="pl-line">Zrobiłem to dzięki <b>niej</b>.</div><div class="uk-line">Я зробив це завдяки їй.</div></div></div>
     </div>
   </section>
 
@@ -1508,6 +1030,83 @@
     </div>
     <div class="note warn">
       <p><b>Заперечення «перемикає» відмінок:</b> <i class="pl">Mam samochód → Nie mam samochodu</i> (dop.) <span class="uk-line">Маю машину → Не маю машини.</span></p>
+    </div>
+
+    <h3 class="sub-head">4.5 Особові займенники — zaimki osobowe</h3>
+    <p>У bierniku займенники <i class="pl">ty, on, ona, ono, oni, one</i> мають коротку форму, форму після прийменника (*) та довгу / емфатичну (**). У <i class="pl">ja</i> форма одна — <b>mnie</b>.</p>
+
+    <div class="summary">
+      <table class="grid-t">
+        <tr>
+          <th>Форма</th>
+          <th class="pl">ja</th><th class="pl">ty</th><th class="pl">on</th><th class="pl">ona</th><th class="pl">ono</th>
+          <th class="pl">my</th><th class="pl">wy</th><th class="pl">oni</th><th class="pl">one</th>
+        </tr>
+        <tr>
+          <td class="case-label">звичайна</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">cię</td>
+          <td class="pl" data-label="on">go</td>
+          <td class="pl" data-label="ona">ją</td>
+          <td class="pl" data-label="ono">je</td>
+          <td class="pl" data-label="my">nas</td>
+          <td class="pl" data-label="wy">was</td>
+          <td class="pl" data-label="oni">ich</td>
+          <td class="pl" data-label="one">je</td>
+        </tr>
+        <tr>
+          <td class="case-label">по прийменнику *</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">ciebie</td>
+          <td class="pl" data-label="on">niego</td>
+          <td class="pl" data-label="ona">nią</td>
+          <td class="pl" data-label="ono">nie</td>
+          <td class="pl" data-label="my">nas</td>
+          <td class="pl" data-label="wy">was</td>
+          <td class="pl" data-label="oni">nich</td>
+          <td class="pl" data-label="one">nie</td>
+        </tr>
+        <tr>
+          <td class="case-label">емфаза **</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">ciebie</td>
+          <td class="pl" data-label="on">jego</td>
+          <td class="pl" data-label="ona">—</td>
+          <td class="pl" data-label="ono">jego</td>
+          <td class="pl" data-label="my">—</td>
+          <td class="pl" data-label="wy">—</td>
+          <td class="pl" data-label="oni">—</td>
+          <td class="pl" data-label="one">—</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="usage-grid">
+      <div class="usage-card" style="--accent:var(--c-bier)">
+        <h4>Звичайна форма</h4>
+        <span class="uk-name">Ta nauczycielka lubi…</span>
+        <div class="pl-ex">mnie, cię, go, ją, je, nas, was, ich</div>
+        <div class="uk-ex">мене, тебе, його, її, його/їх, нас, вас, їх</div>
+        <div class="ex" style="--accent:var(--c-bier);margin-top:10px"><div class="pl-line">Lubię <b>go</b>.</div><div class="uk-line">Я його люблю.</div></div>
+        <div class="ex" style="--accent:var(--c-bier);margin-top:8px"><div class="pl-line">Zapraszam <b>cię</b> na obiad.</div><div class="uk-line">Запрошую тебе на обід.</div></div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-bier)">
+        <h4>* Po przyimku</h4>
+        <span class="uk-name">Aneta czeka na…</span>
+        <div class="pl-ex">mnie, ciebie, niego, nią, nie, nas, was, nich</div>
+        <div class="uk-ex">після na, przez, za, o…</div>
+        <div class="ex" style="--accent:var(--c-bier);margin-top:10px"><div class="pl-line">Czekam na <b>nią</b>.</div><div class="uk-line">Чекаю на неї.</div></div>
+        <div class="ex" style="--accent:var(--c-bier);margin-top:8px"><div class="pl-line">Patrzę na <b>niego</b>.</div><div class="uk-line">Дивлюся на нього.</div></div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-bier)">
+        <h4>** Emfaza</h4>
+        <span class="uk-name">Aneta kocha tylko…</span>
+        <div class="pl-ex">mnie, ciebie, jego</div>
+        <div class="uk-ex">наголос, початок речення, кілька додатків</div>
+        <div class="ex" style="--accent:var(--c-bier);margin-top:10px"><div class="pl-line">Aneta kocha tylko <b>ciebie</b>!</div><div class="uk-line">Анета кохає тільки тебе!</div></div>
+        <div class="ex" style="--accent:var(--c-bier);margin-top:8px"><div class="pl-line"><b>Ciebie</b> naprawdę wszyscy lubią!</div><div class="uk-line">Тебе справді всі люблять!</div></div>
+        <div class="ex" style="--accent:var(--c-bier);margin-top:8px"><div class="pl-line">Znam i ją, i <b>jego</b>.</div><div class="uk-line">Знаю і її, і його.</div></div>
+      </div>
     </div>
   </section>
 
@@ -1836,33 +1435,191 @@
     </div>
     <p class="uk-line" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink-soft);font-size:0.9rem;"><i>ten / ta / to</i> — «цей / ця / це».</p>
 
-    <h3 class="sub-head">8.5 Особові займенники</h3>
+    <h3 class="sub-head">8.5 Особові займенники — zaimki osobowe</h3>
+    <p>Займенники відмінюються за відмінками. У D., C. і B. бувають коротка, довга (*) після прийменника та емфатична (**) форми. Повна парадигма:</p>
     <div class="summary">
       <table class="grid-t">
-        <tr><th>Przypadek</th><th class="pl">ja</th><th class="pl">ty</th><th class="pl">on</th><th class="pl">ono</th><th class="pl">ona</th><th class="pl">my</th><th class="pl">wy</th><th class="pl">oni</th><th class="pl">one</th></tr>
-        <tr><td class="case-label">M.</td><td class="pl">ja</td><td class="pl">ty</td><td class="pl">on</td><td class="pl">ono</td><td class="pl">ona</td><td class="pl">my</td><td class="pl">wy</td><td class="pl">oni</td><td class="pl">one</td></tr>
-        <tr><td class="case-label">D.</td><td class="pl">mnie</td><td class="pl">cię</td><td class="pl">go</td><td class="pl">go</td><td class="pl">jej</td><td class="pl">nas</td><td class="pl">was</td><td class="pl">ich</td><td class="pl">ich</td></tr>
-        <tr><td class="case-label">C.</td><td class="pl">mi</td><td class="pl">ci</td><td class="pl">mu</td><td class="pl">mu</td><td class="pl">jej</td><td class="pl">nam</td><td class="pl">wam</td><td class="pl">im</td><td class="pl">im</td></tr>
-        <tr><td class="case-label">B.</td><td class="pl">mnie</td><td class="pl">cię</td><td class="pl">go</td><td class="pl">je</td><td class="pl">ją</td><td class="pl">nas</td><td class="pl">was</td><td class="pl">ich</td><td class="pl">je</td></tr>
-        <tr><td class="case-label">N.</td><td class="pl">mną</td><td class="pl">tobą</td><td class="pl">nim</td><td class="pl">nim</td><td class="pl">nią</td><td class="pl">nami</td><td class="pl">wami</td><td class="pl">nimi</td><td class="pl">nimi</td></tr>
-        <tr><td class="case-label">Msc.</td><td class="pl">mnie</td><td class="pl">tobie</td><td class="pl">nim</td><td class="pl">nim</td><td class="pl">niej</td><td class="pl">nas</td><td class="pl">was</td><td class="pl">nich</td><td class="pl">nich</td></tr>
+        <tr><th>Przypadek</th><th class="pl">ja</th><th class="pl">ty</th><th class="pl">on</th><th class="pl">ona</th><th class="pl">ono</th><th class="pl">my</th><th class="pl">wy</th><th class="pl">oni</th><th class="pl">one</th></tr>
+        <tr>
+          <td class="case-label">M.</td>
+          <td class="pl" data-label="ja">ja</td>
+          <td class="pl" data-label="ty">ty</td>
+          <td class="pl" data-label="on">on</td>
+          <td class="pl" data-label="ona">ona</td>
+          <td class="pl" data-label="ono">ono</td>
+          <td class="pl" data-label="my">my</td>
+          <td class="pl" data-label="wy">wy</td>
+          <td class="pl" data-label="oni">oni</td>
+          <td class="pl" data-label="one">one</td>
+        </tr>
+        <tr>
+          <td class="case-label">D.</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">cię / ciebie* **</td>
+          <td class="pl" data-label="on">go / niego* / jego**</td>
+          <td class="pl" data-label="ona">jej / niej*</td>
+          <td class="pl" data-label="ono">go / niego* / jego**</td>
+          <td class="pl" data-label="my">nas</td>
+          <td class="pl" data-label="wy">was</td>
+          <td class="pl" data-label="oni">ich / nich*</td>
+          <td class="pl" data-label="one">ich / nich*</td>
+        </tr>
+        <tr>
+          <td class="case-label">C.</td>
+          <td class="pl" data-label="ja">mi / mnie* **</td>
+          <td class="pl" data-label="ty">ci / tobie* **</td>
+          <td class="pl" data-label="on">mu / niemu* / jemu**</td>
+          <td class="pl" data-label="ona">jej / niej*</td>
+          <td class="pl" data-label="ono">mu / niemu* / jemu**</td>
+          <td class="pl" data-label="my">nam</td>
+          <td class="pl" data-label="wy">wam</td>
+          <td class="pl" data-label="oni">im / nim*</td>
+          <td class="pl" data-label="one">im / nim*</td>
+        </tr>
+        <tr>
+          <td class="case-label">B.</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">cię / ciebie* **</td>
+          <td class="pl" data-label="on">go / niego* / jego**</td>
+          <td class="pl" data-label="ona">ją / nią*</td>
+          <td class="pl" data-label="ono">je / nie*</td>
+          <td class="pl" data-label="my">nas</td>
+          <td class="pl" data-label="wy">was</td>
+          <td class="pl" data-label="oni">ich / nich*</td>
+          <td class="pl" data-label="one">je / nie*</td>
+        </tr>
+        <tr>
+          <td class="case-label">N.</td>
+          <td class="pl" data-label="ja">mną</td>
+          <td class="pl" data-label="ty">tobą</td>
+          <td class="pl" data-label="on">nim</td>
+          <td class="pl" data-label="ona">nią</td>
+          <td class="pl" data-label="ono">nim</td>
+          <td class="pl" data-label="my">nami</td>
+          <td class="pl" data-label="wy">wami</td>
+          <td class="pl" data-label="oni">nimi</td>
+          <td class="pl" data-label="one">nimi</td>
+        </tr>
+        <tr>
+          <td class="case-label">Msc.</td>
+          <td class="pl" data-label="ja">mnie</td>
+          <td class="pl" data-label="ty">tobie</td>
+          <td class="pl" data-label="on">nim</td>
+          <td class="pl" data-label="ona">niej</td>
+          <td class="pl" data-label="ono">nim</td>
+          <td class="pl" data-label="my">nas</td>
+          <td class="pl" data-label="wy">was</td>
+          <td class="pl" data-label="oni">nich</td>
+          <td class="pl" data-label="one">nich</td>
+        </tr>
       </table>
     </div>
-    <p class="uk-line" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink-soft);font-size:0.9rem;">я, ти, він, воно, вона, ми, ви, вони (чол.-ос.), вони (не чол.-ос.). Довгі форми (mnie, tobie, jemu) — на початку речення або під наголосом.</p>
+    <div class="note info">
+      <h4>Приклади</h4>
+      <p class="pl">Lubię <b>go</b>. · Dziękuję <b>ci</b>. · Dlaczego interesujesz się <b>nimi</b>?</p>
+      <p class="uk-line">Я його люблю. · Дякую тобі. · Чому ти цікавишся ними?</p>
+    </div>
+    <div class="note warn">
+      <h4>* Po przyimku</h4>
+      <p>Після прийменника займенники 3-ї особи починаються на <b>n-</b>: <i class="pl">niego, niej, nich, nią, nie, niemu, nim</i>. Для <i class="pl">ty</i> — довга форма <b>ciebie / tobie</b>, для <i class="pl">ja</i> у celowniku — <b>mnie</b>.</p>
+      <p class="pl">Idę do <b>niego</b>. · Prezent dla <b>ciebie</b>. · Czekam na <b>nią</b>.</p>
+      <p class="uk-line">Іду до нього. · Подарунок для тебе. · Чекаю на неї.</p>
+    </div>
+    <div class="note danger">
+      <h4>** Emfaza, początek zdania</h4>
+      <p>Довгі форми на початку речення, при емоційному наголосі або коли додатків кілька: <b>jego, jemu, ciebie, tobie, mnie</b>.</p>
+      <p class="pl"><b>Jemu</b> nie dam nic. · Kocham tylko <b>jego</b>. · On lubi tylko <b>ciebie</b>.</p>
+      <p class="uk-line">Йому я нічого не дам. · Кохаю тільки його. · Він любить тільки тебе.</p>
+    </div>
+    <p class="uk-line" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink-soft);font-size:0.9rem;">Детальні таблиці за відмінками: §&nbsp;2.6 Dopełniacz · §&nbsp;3.6 Celownik · §&nbsp;4.5 Biernik.</p>
 
-    <h3 class="sub-head">8.6 Присвійні займенники mój (так само twój, swój)</h3>
+    <h3 class="sub-head">8.6 Присвійні займенники — zaimki dzierżawcze</h3>
+    <p class="questions pl">Czyj? Czyja? Czyje? · <i>mój, twój, nasz, wasz</i></p>
+    <p>Відмінюються за родом, відмінком і числом — як прикметники. У bierniku чоловічого роду живі = dopełniacz (<i class="pl">mojego</i>), неживі = mianownik (<i class="pl">mój</i>).</p>
+
+    <h4 class="sub-head" style="font-size:1.05rem;margin-top:22px;">Однина — mój</h4>
     <div class="summary">
       <table class="grid-t">
-        <tr><th>Przypadek</th><th class="pl">m. rodzaj</th><th class="pl">żeński</th><th class="pl">nijaki</th><th class="pl">m-osob.</th><th class="pl">niem-osob.</th></tr>
-        <tr><td class="case-label">M.</td><td class="pl">mój</td><td class="pl">moja</td><td class="pl">moje</td><td class="pl">moi</td><td class="pl">moje</td></tr>
-        <tr><td class="case-label">D.</td><td class="pl">mojego</td><td class="pl">mojej</td><td class="pl">mojego</td><td class="pl">moich</td><td class="pl">moich</td></tr>
-        <tr><td class="case-label">C.</td><td class="pl">mojemu</td><td class="pl">mojej</td><td class="pl">mojemu</td><td class="pl">moim</td><td class="pl">moim</td></tr>
-        <tr><td class="case-label">B.</td><td class="pl">mojego / mój</td><td class="pl">moją</td><td class="pl">moje</td><td class="pl">moich</td><td class="pl">moje</td></tr>
-        <tr><td class="case-label">N.</td><td class="pl">moim</td><td class="pl">moją</td><td class="pl">moim</td><td class="pl">moimi</td><td class="pl">moimi</td></tr>
-        <tr><td class="case-label">Msc.</td><td class="pl">moim</td><td class="pl">mojej</td><td class="pl">moim</td><td class="pl">moich</td><td class="pl">moich</td></tr>
+        <tr><th>Przypadek</th><th class="pl">m. żywotny</th><th class="pl">m. nieżywotny</th><th class="pl">żeński</th><th class="pl">nijaki</th></tr>
+        <tr><td class="case-label">M.</td><td class="pl" data-label="m. żyw.">mój</td><td class="pl" data-label="m. nieżyw.">mój</td><td class="pl" data-label="żeński">moja</td><td class="pl" data-label="nijaki">moje</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" data-label="m. żyw.">mojego</td><td class="pl" data-label="m. nieżyw.">mojego</td><td class="pl" data-label="żeński">mojej</td><td class="pl" data-label="nijaki">mojego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" data-label="m. żyw.">mojemu</td><td class="pl" data-label="m. nieżyw.">mojemu</td><td class="pl" data-label="żeński">mojej</td><td class="pl" data-label="nijaki">mojemu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl" data-label="m. żyw."><b>mojego</b></td><td class="pl" data-label="m. nieżyw."><b>mój</b></td><td class="pl" data-label="żeński"><b>moją</b></td><td class="pl" data-label="nijaki"><b>moje</b></td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" data-label="m. żyw.">moim</td><td class="pl" data-label="m. nieżyw.">moim</td><td class="pl" data-label="żeński">moją</td><td class="pl" data-label="nijaki">moim</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" data-label="m. żyw.">moim</td><td class="pl" data-label="m. nieżyw.">moim</td><td class="pl" data-label="żeński">mojej</td><td class="pl" data-label="nijaki">moim</td></tr>
       </table>
     </div>
-    <div class="note info"><p><i>mój</i> — «мій». <b>jego, jej, ich</b> — не відмінюються: <i class="pl">z jego bratem, o ich dzieciach</i> <span class="uk-line">(з його братом, про їхніх дітей)</span>.</p></div>
+
+    <h4 class="sub-head" style="font-size:1.05rem;margin-top:22px;">Однина — twój</h4>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">m. żywotny</th><th class="pl">m. nieżywotny</th><th class="pl">żeński</th><th class="pl">nijaki</th></tr>
+        <tr><td class="case-label">M.</td><td class="pl" data-label="m. żyw.">twój</td><td class="pl" data-label="m. nieżyw.">twój</td><td class="pl" data-label="żeński">twoja</td><td class="pl" data-label="nijaki">twoje</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" data-label="m. żyw.">twojego</td><td class="pl" data-label="m. nieżyw.">twojego</td><td class="pl" data-label="żeński">twojej</td><td class="pl" data-label="nijaki">twojego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" data-label="m. żyw.">twojemu</td><td class="pl" data-label="m. nieżyw.">twojemu</td><td class="pl" data-label="żeński">twojej</td><td class="pl" data-label="nijaki">twojemu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl" data-label="m. żyw."><b>twojego</b></td><td class="pl" data-label="m. nieżyw."><b>twój</b></td><td class="pl" data-label="żeński"><b>twoją</b></td><td class="pl" data-label="nijaki"><b>twoje</b></td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" data-label="m. żyw.">twoim</td><td class="pl" data-label="m. nieżyw.">twoim</td><td class="pl" data-label="żeński">twoją</td><td class="pl" data-label="nijaki">twoim</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" data-label="m. żyw.">twoim</td><td class="pl" data-label="m. nieżyw.">twoim</td><td class="pl" data-label="żeński">twojej</td><td class="pl" data-label="nijaki">twoim</td></tr>
+      </table>
+    </div>
+
+    <h4 class="sub-head" style="font-size:1.05rem;margin-top:22px;">Однина — nasz</h4>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">m. żywotny</th><th class="pl">m. nieżywotny</th><th class="pl">żeński</th><th class="pl">nijaki</th></tr>
+        <tr><td class="case-label">M.</td><td class="pl" data-label="m. żyw.">nasz</td><td class="pl" data-label="m. nieżyw.">nasz</td><td class="pl" data-label="żeński">nasza</td><td class="pl" data-label="nijaki">nasze</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" data-label="m. żyw.">naszego</td><td class="pl" data-label="m. nieżyw.">naszego</td><td class="pl" data-label="żeński">naszej</td><td class="pl" data-label="nijaki">naszego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" data-label="m. żyw.">naszemu</td><td class="pl" data-label="m. nieżyw.">naszemu</td><td class="pl" data-label="żeński">naszej</td><td class="pl" data-label="nijaki">naszemu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl" data-label="m. żyw."><b>naszego</b></td><td class="pl" data-label="m. nieżyw."><b>nasz</b></td><td class="pl" data-label="żeński"><b>naszą</b></td><td class="pl" data-label="nijaki"><b>nasze</b></td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" data-label="m. żyw.">naszym</td><td class="pl" data-label="m. nieżyw.">naszym</td><td class="pl" data-label="żeński">naszą</td><td class="pl" data-label="nijaki">naszym</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" data-label="m. żyw.">naszym</td><td class="pl" data-label="m. nieżyw.">naszym</td><td class="pl" data-label="żeński">naszej</td><td class="pl" data-label="nijaki">naszym</td></tr>
+      </table>
+    </div>
+
+    <h4 class="sub-head" style="font-size:1.05rem;margin-top:22px;">Однина — wasz</h4>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">m. żywotny</th><th class="pl">m. nieżywotny</th><th class="pl">żeński</th><th class="pl">nijaki</th></tr>
+        <tr><td class="case-label">M.</td><td class="pl" data-label="m. żyw.">wasz</td><td class="pl" data-label="m. nieżyw.">wasz</td><td class="pl" data-label="żeński">wasza</td><td class="pl" data-label="nijaki">wasze</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" data-label="m. żyw.">waszego</td><td class="pl" data-label="m. nieżyw.">waszego</td><td class="pl" data-label="żeński">waszej</td><td class="pl" data-label="nijaki">waszego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" data-label="m. żyw.">waszemu</td><td class="pl" data-label="m. nieżyw.">waszemu</td><td class="pl" data-label="żeński">waszej</td><td class="pl" data-label="nijaki">waszemu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl" data-label="m. żyw."><b>waszego</b></td><td class="pl" data-label="m. nieżyw."><b>wasz</b></td><td class="pl" data-label="żeński"><b>waszą</b></td><td class="pl" data-label="nijaki"><b>wasze</b></td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" data-label="m. żyw.">waszym</td><td class="pl" data-label="m. nieżyw.">waszym</td><td class="pl" data-label="żeński">waszą</td><td class="pl" data-label="nijaki">waszym</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" data-label="m. żyw.">waszym</td><td class="pl" data-label="m. nieżyw.">waszym</td><td class="pl" data-label="żeński">waszej</td><td class="pl" data-label="nijaki">waszym</td></tr>
+      </table>
+    </div>
+
+    <h4 class="sub-head" style="font-size:1.05rem;margin-top:22px;">Множина — męskoosobowy (Czyi?)</h4>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">moi</th><th class="pl">twoi</th><th class="pl">nasi</th><th class="pl">wasi</th></tr>
+        <tr><td class="case-label">M.</td><td class="pl" data-label="moi"><b>moi</b></td><td class="pl" data-label="twoi"><b>twoi</b></td><td class="pl" data-label="nasi"><b>nasi</b></td><td class="pl" data-label="wasi"><b>wasi</b></td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" data-label="moi">moich</td><td class="pl" data-label="twoi">twoich</td><td class="pl" data-label="nasi">naszych</td><td class="pl" data-label="wasi">waszych</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" data-label="moi">moim</td><td class="pl" data-label="twoi">twoim</td><td class="pl" data-label="nasi">naszym</td><td class="pl" data-label="wasi">waszym</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl" data-label="moi"><b>moich</b></td><td class="pl" data-label="twoi"><b>twoich</b></td><td class="pl" data-label="nasi"><b>naszych</b></td><td class="pl" data-label="wasi"><b>waszych</b></td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" data-label="moi">moimi</td><td class="pl" data-label="twoi">twoimi</td><td class="pl" data-label="nasi">naszymi</td><td class="pl" data-label="wasi">waszymi</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" data-label="moi">moich</td><td class="pl" data-label="twoi">twoich</td><td class="pl" data-label="nasi">naszych</td><td class="pl" data-label="wasi">waszych</td></tr>
+      </table>
+    </div>
+
+    <h4 class="sub-head" style="font-size:1.05rem;margin-top:22px;">Множина — niemęskoosobowy (Czyje?)</h4>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">moje</th><th class="pl">twoje</th><th class="pl">nasze</th><th class="pl">wasze</th></tr>
+        <tr><td class="case-label">M.</td><td class="pl" data-label="moje"><b>moje</b></td><td class="pl" data-label="twoje"><b>twoje</b></td><td class="pl" data-label="nasze"><b>nasze</b></td><td class="pl" data-label="wasze"><b>wasze</b></td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" data-label="moje">moich</td><td class="pl" data-label="twoje">twoich</td><td class="pl" data-label="nasze">naszych</td><td class="pl" data-label="wasze">waszych</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" data-label="moje">moim</td><td class="pl" data-label="twoje">twoim</td><td class="pl" data-label="nasze">naszym</td><td class="pl" data-label="wasze">waszym</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl" data-label="moje"><b>moje</b></td><td class="pl" data-label="twoje"><b>twoje</b></td><td class="pl" data-label="nasze"><b>nasze</b></td><td class="pl" data-label="wasze"><b>wasze</b></td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" data-label="moje">moimi</td><td class="pl" data-label="twoje">twoimi</td><td class="pl" data-label="nasze">naszymi</td><td class="pl" data-label="wasze">waszymi</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" data-label="moje">moich</td><td class="pl" data-label="twoje">twoich</td><td class="pl" data-label="nasze">naszych</td><td class="pl" data-label="wasze">waszych</td></tr>
+      </table>
+    </div>
+
+    <div class="note info">
+      <h4>czyj? / jego, jej, ich</h4>
+      <p>Питальний займенник <i class="pl">czyj? czyja? czyje?</i> відмінюється за родом, відмінком і числом так само, як <i class="pl">mój, twój, nasz, wasz</i>.</p>
+      <p>Натомість <b>jego, jej, ich</b> завжди мають ту саму форму (dopełniacz особових займенників) і не відмінюються: <i class="pl">z jego bratem, o jej domu, o ich dzieciach</i> <span class="uk-line">(з його братом, про її дім, про їхніх дітей)</span>.</p>
+    </div>
 
     <h3 class="sub-head">8.7 Усі чергування в одному місці</h3>
     <table class="alt">
@@ -1981,7 +1738,7 @@
     <p class="lede">Недоконані відповідають на <i class="pl">co robić?</i> і означають процес: <i class="pl">czytać, organizować, sprzątać</i>. Доконані — на <i class="pl">co zrobić?</i> і означають результат/подію: <i class="pl">przeczytać, zorganizować, sprzątnąć</i>.</p>
 
     <div class="summary">
-      <table class="grid-t">
+      <table class="grid-t grid-t-pair">
         <tr><th>Недоконані · Co robić?</th><th>Доконані · Co zrobić?</th></tr>
         <tr><td class="pl">pić</td><td class="pl"><b>wy</b>pić</td></tr>
         <tr><td class="pl">jeść</td><td class="pl"><b>z</b>jeść</td></tr>
