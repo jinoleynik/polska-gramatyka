@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Polska gramatyka — Відмінки і дієслова</title>
+<title>Polska gramatyka — Відмінки, дієслова, займенники і числівники</title>
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -18,7 +18,7 @@
   <div class="hero-inner">
     <p class="eyebrow pl">Довідник з практичною граматикою</p>
     <h1>Polska gramatyka</h1>
-    <p class="sub">Відмінки й дієслова польської мови — з таблицями, прикладами та перекладом на українську.</p>
+    <p class="sub">Відмінки, дієслова, займенники й числівники польської мови — з таблицями, прикладами та перекладом на українську.</p>
     <div class="chips">
       <a class="chip" href="#mianownik">Mianownik</a>
       <a class="chip" href="#dopelniacz">Dopełniacz</a>
@@ -28,6 +28,8 @@
       <a class="chip" href="#miejscownik">Miejscownik</a>
       <a class="chip" href="#wolacz">Wołacz</a>
       <a class="chip" href="#czasowniki">Czasowniki</a>
+      <a class="chip" href="#zaimki">Zaimki</a>
+      <a class="chip" href="#liczebniki">Liczebniki</a>
     </div>
   </div>
 </div>
@@ -81,6 +83,47 @@
         <li><a href="#strona-bierna"><span class="num">22.</span> Пасивні дієслова</a></li>
         <li><a href="#bezosobowe"><span class="num">23.</span> Безособові форми</a></li>
         <li><a href="#imieslowy"><span class="num">24.</span> Дієприкметники</a></li>
+      </ol>
+    </details>
+
+    <details class="nav-block" open>
+      <summary>
+        <span class="block-title">
+          <span class="pl">Zaimki</span>
+          <span class="uk-sub">Займенники</span>
+        </span>
+      </summary>
+      <ol>
+        <li><a href="#zaimki"><span class="num">25.</span> Огляд</a></li>
+        <li><a href="#zaimki-osobowe"><span class="num">26.</span> Особові</a></li>
+        <li><a href="#zaimki-pytajne"><span class="num">27.</span> Питальні</a></li>
+        <li><a href="#zaimki-nieokreslone"><span class="num">28.</span> Неозначені</a></li>
+        <li><a href="#zaimki-przeczace"><span class="num">29.</span> Заперечні</a></li>
+        <li><a href="#zaimki-dzierzawcze"><span class="num">30.</span> Присвійні</a></li>
+        <li><a href="#zaimki-wskazujace"><span class="num">31.</span> Вказівні</a></li>
+        <li><a href="#zaimek-sie"><span class="num">32.</span> Зворотний się</a></li>
+        <li><a href="#pan-pani"><span class="num">33.</span> Pan / pani / państwo</a></li>
+      </ol>
+    </details>
+
+    <details class="nav-block" open>
+      <summary>
+        <span class="block-title">
+          <span class="pl">Liczebniki</span>
+          <span class="uk-sub">Числівники</span>
+        </span>
+      </summary>
+      <ol>
+        <li><a href="#liczebniki"><span class="num">34.</span> Огляд · кількісні</a></li>
+        <li><a href="#liczebnik-jeden"><span class="num">35.</span> Jeden</a></li>
+        <li><a href="#liczebniki-2-4"><span class="num">36.</span> Dwa, trzy, cztery</a></li>
+        <li><a href="#liczebniki-5"><span class="num">37.</span> Pięć і далі</a></li>
+        <li><a href="#liczebniki-porzadkowe"><span class="num">38.</span> Порядкові</a></li>
+        <li><a href="#odmiana-porzadkowych"><span class="num">39.</span> Відмінювання порядкових</a></li>
+        <li><a href="#godzina-msc"><span class="num">40.</span> Час · місцевий</a></li>
+        <li><a href="#godzina-narz"><span class="num">41.</span> Час · орудний</a></li>
+        <li><a href="#godzina-dop"><span class="num">42.</span> Час · родовий</a></li>
+        <li><a href="#miesiace-daty"><span class="num">43.</span> Місяці та дати</a></li>
       </ol>
     </details>
   </aside>
@@ -2210,8 +2253,766 @@
     </div>
   </section>
 
+  <!-- ========================= 25. ZAIMKI ========================= -->
+  <section id="zaimki" class="case">
+    <div class="case-head h-pron">
+      <span class="num">25</span>
+      <h2 class="pl">Zaimki</h2>
+      <span class="uk-name">Займенники</span>
+    </div>
+    <p class="lede">Займенник — змінна частина мови, яка може замінити іменник, прикметник, прислівник чи числівник (але не дієслово) і виконує їхню функцію в реченні. Відмінюється за відмінками, числами й родами — залежно від того, що саме замінює.</p>
+    <div class="usage-grid">
+      <div class="usage-card" style="--accent:var(--c-pron)"><h4 class="pl">osobowe</h4><span class="uk-name">особові</span><div class="pl-ex">ja, ty, on, ona, ono, my, wy, oni, one</div><div class="uk-ex">замінюють іменники-особи</div></div>
+      <div class="usage-card" style="--accent:var(--c-pron)"><h4 class="pl">pytajne</h4><span class="uk-name">питальні</span><div class="pl-ex">kto?, co?, jaki?, który?</div><div class="uk-ex">питання про підмет чи ознаку</div></div>
+      <div class="usage-card" style="--accent:var(--c-pron)"><h4 class="pl">dzierżawcze</h4><span class="uk-name">присвійні</span><div class="pl-ex">mój, twój, nasz, wasz, jego, jej, ich</div><div class="uk-ex">належність</div></div>
+      <div class="usage-card" style="--accent:var(--c-pron)"><h4 class="pl">wskazujące</h4><span class="uk-name">вказівні</span><div class="pl-ex">ten, ta, to · ci, te</div><div class="uk-ex">вказівка з контексту</div></div>
+      <div class="usage-card" style="--accent:var(--c-pron)"><h4 class="pl">nieokreślone / przeczące</h4><span class="uk-name">неозначені / заперечні</span><div class="pl-ex">ktoś, coś · nikt, nic</div><div class="uk-ex">«хтось / ніхто»</div></div>
+      <div class="usage-card" style="--accent:var(--c-pron)"><h4 class="pl">zwrotne · pan/pani</h4><span class="uk-name">зворотний · звертання</span><div class="pl-ex">się / siebie · pan, pani, państwo</div><div class="uk-ex">дія на себе · ввічлива форма</div></div>
+    </div>
+    <div class="note info">
+      <h4>Джерело розділу</h4>
+      <p>Матеріал адаптовано з <a href="https://polski.info/grammar/pronouns?hl=uk" target="_blank" rel="noopener">polski.info / Займенники</a> — стисло, з таблицями й українськими поясненнями. Зведені парадигми особових і присвійних також у §&nbsp;8.5–8.6.</p>
+    </div>
+  </section>
+
+  <!-- ========================= 26. ZAIMKI OSOBOWE ========================= -->
+  <section id="zaimki-osobowe" class="case">
+    <div class="case-head h-pron">
+      <span class="num">26</span>
+      <h2 class="pl">Zaimki osobowe</h2>
+      <span class="uk-name">Особові займенники</span>
+    </div>
+    <p class="lede">Замінюють іменники. Відмінюються за відмінками. У D., C. і B. часто є коротка форма, довга / емфатична та форма після прийменника (з <b>n-</b> для 3-ї особи).</p>
+
+    <div class="note warn">
+      <h4>Короткі форми не на початку й не в кінці</h4>
+      <p>Форми <i class="pl">mi, cię, ci, go, mu</i> не ставлять на початку й наприкінці речення. Після прийменника — <i class="pl">niego, niemu, niej, nich…</i></p>
+    </div>
+    <div class="note info">
+      <h4>ja, ty, my, wy як підмет</h4>
+      <p>Особу 1-ї та 2-ї зазвичай показує закінчення дієслова: <i class="pl">Czytał<em>em</em> gazetę</i> замість <i class="pl">Ja czytałem gazetę</i>. Займенник додаємо, коли треба підкреслити саме цю особу.</p>
+    </div>
+
+    <h3 class="sub-head">26.1 Однина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">ja</th><th class="pl">ty</th><th class="pl">on</th><th class="pl">ona</th><th class="pl">ono</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">ja</td><td class="pl">ty</td><td class="pl">on</td><td class="pl">ona</td><td class="pl">ono</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">mnie</td><td class="pl">ciebie / cię</td><td class="pl">jego / niego / go</td><td class="pl">jej / niej</td><td class="pl">jego / niego / go</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">mnie / mi</td><td class="pl">tobie / ci</td><td class="pl">jemu / niemu / mu</td><td class="pl">jej / niej</td><td class="pl">jemu / niemu / mu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">mnie</td><td class="pl">ciebie / cię</td><td class="pl">jego / niego / go</td><td class="pl">ją / nią</td><td class="pl">je / nie</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">mną</td><td class="pl">tobą</td><td class="pl">nim</td><td class="pl">nią</td><td class="pl">nim</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">mnie</td><td class="pl">tobie</td><td class="pl">nim</td><td class="pl">niej</td><td class="pl">nim</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub-head">26.2 Множина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">my</th><th class="pl">wy</th><th class="pl">oni</th><th class="pl">one</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">my</td><td class="pl">wy</td><td class="pl">oni</td><td class="pl">one</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">nas</td><td class="pl">was</td><td class="pl">ich / nich</td><td class="pl">ich / nich</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">nam</td><td class="pl">wam</td><td class="pl">im / nim</td><td class="pl">im / nim</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">nas</td><td class="pl">was</td><td class="pl">ich / nich</td><td class="pl">je / nie</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">nami</td><td class="pl">wami</td><td class="pl">nimi</td><td class="pl">nimi</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">nas</td><td class="pl">was</td><td class="pl">nich</td><td class="pl">nich</td></tr>
+      </table>
+    </div>
+
+    <div class="note danger">
+      <h4>Коротка · після прийменника · емфаза</h4>
+      <p><b>Коротка</b> (середина речення): <i class="pl">Daj <b>mi</b> to. Znam <b>go</b>.</i></p>
+      <p><b>Після прийменника</b> (3-я особа на <b>n-</b>): <i class="pl">Idę do <b>niego</b>. Myślę o <b>niej</b>.</i> Для <i class="pl">ty</i> — довга: <i class="pl">dla <b>ciebie</b></i>; для <i class="pl">ja</i> — <i class="pl">do <b>mnie</b>, ze <b>mną</b></i>.</p>
+      <p><b>Емфаза / початок</b>: <i class="pl"><b>Jemu</b> nie dam nic. Kocham tylko <b>jego</b>.</i></p>
+    </div>
+    <p class="uk-line" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink-soft);font-size:0.9rem;">Зведена таблиця всіх осіб: §&nbsp;8.5 · деталі за відмінками: §&nbsp;2.6, §&nbsp;3.6, §&nbsp;4.5.</p>
+  </section>
+
+  <!-- ========================= 27. ZAIMKI PYTAJNE ========================= -->
+  <section id="zaimki-pytajne" class="case">
+    <div class="case-head h-pron">
+      <span class="num">27</span>
+      <h2 class="pl">Zaimki pytajne</h2>
+      <span class="uk-name">Питальні займенники</span>
+    </div>
+    <p class="lede">Вказують на підмет або його властивості, про які питаємо: <i class="pl">kto?, co?, jaki?, który?</i></p>
+
+    <h3 class="sub-head">27.1 kto · co</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">kto</th><th class="pl">co</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">kto</td><td class="pl">co</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">kogo</td><td class="pl">czego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">komu</td><td class="pl">czemu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">kogo</td><td class="pl">co</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">kim</td><td class="pl">czym</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">kim</td><td class="pl">czym</td></tr>
+      </table>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line"><b>Kogo</b> widzisz? · <b>Czego</b> szukasz?</div>
+        <div class="uk-line">Кого бачиш? · Чого шукаєш?</div>
+      </div>
+    </div>
+
+    <h3 class="sub-head">27.2 jaki — однина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">męski</th><th class="pl">żeński</th><th class="pl">nijaki</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">jaki</td><td class="pl">jaka</td><td class="pl">jakie</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">jakiego</td><td class="pl">jakiej</td><td class="pl">jakiego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">jakiemu</td><td class="pl">jakiej</td><td class="pl">jakiemu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">jakiego <span class="uk-line">(żyw.)</span> / jaki <span class="uk-line">(nieżyw.)</span></td><td class="pl">jaką</td><td class="pl">jakie</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">jakim</td><td class="pl">jaką</td><td class="pl">jakim</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">jakim</td><td class="pl">jakiej</td><td class="pl">jakim</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub-head">27.3 jaki — множина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">męskoosobowy</th><th class="pl">niemęskoosobowy</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">jacy</td><td class="pl">jakie</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" colspan="2">jakich</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" colspan="2">jakim</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">jakich</td><td class="pl">jakie</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" colspan="2">jakimi</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" colspan="2">jakich</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub-head">27.4 który — однина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">męski</th><th class="pl">żeński</th><th class="pl">nijaki</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">który</td><td class="pl">która</td><td class="pl">które</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">którego</td><td class="pl">której</td><td class="pl">którego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">któremu</td><td class="pl">której</td><td class="pl">któremu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">którego <span class="uk-line">(żyw.)</span> / który <span class="uk-line">(nieżyw.)</span></td><td class="pl">którą</td><td class="pl">które</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">którym</td><td class="pl">którą</td><td class="pl">którym</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">którym</td><td class="pl">której</td><td class="pl">którym</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub-head">27.5 który — множина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">męskoosobowy</th><th class="pl">niemęskoosobowy</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">którzy</td><td class="pl">które</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" colspan="2">których</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" colspan="2">którym</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">których</td><td class="pl">które</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" colspan="2">którymi</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" colspan="2">których</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========================= 28. ZAIMKI NIEOKREŚLONE ========================= -->
+  <section id="zaimki-nieokreslone" class="case">
+    <div class="case-head h-pron">
+      <span class="num">28</span>
+      <h2 class="pl">Zaimki nieokreślone</h2>
+      <span class="uk-name">Неозначені займенники</span>
+    </div>
+    <p class="lede">Часто закінчуються на <b>-ś</b> і походять від питальних: <i class="pl">kto? → ktoś, co? → coś, jaki? → jakiś</i>. Показують байдужість до конкретної особи, місця чи часу — «будь-хто / десь / колись».</p>
+
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Питальний</th><th>Неозначений</th><th class="uk-cell">Переклад</th></tr>
+        <tr><td class="pl">kto?</td><td class="pl">ktoś</td><td class="uk-cell">хтось</td></tr>
+        <tr><td class="pl">co?</td><td class="pl">coś</td><td class="uk-cell">щось</td></tr>
+        <tr><td class="pl">jaki? / jaka? / jakie?</td><td class="pl">jakiś / jakaś / jakieś</td><td class="uk-cell">якийсь / якась / якесь</td></tr>
+        <tr><td class="pl">który? / która?</td><td class="pl">któryś / któraś</td><td class="uk-cell">котрийсь / котрась</td></tr>
+        <tr><td class="pl">czyj?</td><td class="pl">czyjś</td><td class="uk-cell">чийсь</td></tr>
+        <tr><td class="pl">gdzie?</td><td class="pl">gdzieś</td><td class="uk-cell">десь</td></tr>
+        <tr><td class="pl">kiedy?</td><td class="pl">kiedyś</td><td class="uk-cell">колись</td></tr>
+      </table>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line"><b>Ktoś</b> dzwoni. · Widziałem <b>coś</b> dziwnego. · Spotkamy się <b>gdzieś</b>.</div>
+        <div class="uk-line">Хтось телефонує. · Я бачив щось дивне. · Зустрінемось десь.</div>
+      </div>
+    </div>
+    <div class="note info">
+      <p>Відмінювання як у відповідного питального: <i class="pl">kogoś, komuś, czymś, jakimś…</i></p>
+    </div>
+  </section>
+
+  <!-- ========================= 29. ZAIMKI PRZECZĄCE ========================= -->
+  <section id="zaimki-przeczace" class="case">
+    <div class="case-head h-pron">
+      <span class="num">29</span>
+      <h2 class="pl">Zaimki przeczące</h2>
+      <span class="uk-name">Заперечні займенники</span>
+    </div>
+    <p class="lede">Для заперечних речень. У польській — <b>подвійне заперечення</b>: заперечний займенник + <i class="pl">nie</i> при дієслові. Більшість походить від питальних: <i class="pl">kto → nikt, co → nic, gdzie → nigdzie</i>.</p>
+
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Питальний</th><th>Заперечний</th><th class="uk-cell">Переклад</th></tr>
+        <tr><td class="pl">kto?</td><td class="pl">nikt</td><td class="uk-cell">ніхто</td></tr>
+        <tr><td class="pl">co?</td><td class="pl">nic</td><td class="uk-cell">нічого</td></tr>
+        <tr><td class="pl">gdzie?</td><td class="pl">nigdzie</td><td class="uk-cell">ніде</td></tr>
+        <tr><td class="pl">kiedy?</td><td class="pl">nigdy</td><td class="uk-cell">ніколи</td></tr>
+        <tr><td class="pl">jaki?</td><td class="pl">żaden / nijaki</td><td class="uk-cell">жоден / ніякий</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub-head">29.1 Подвійне заперечення</h3>
+    <div class="note danger">
+      <h4>nic + nie + дієслово</h4>
+      <p>Заперечний займенник і заперечне дієслово йдуть разом — це норма, не «помилка».</p>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line"><b>Nigdzie nie</b> byłem.</div>
+        <div class="uk-line">Ніде не був.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line">A może <b>nigdzie nie</b> jedziemy?</div>
+        <div class="uk-line">А може, нікуди не їдемо?</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line"><b>Nigdy nie</b> widziałem żubra na własne oczy.</div>
+        <div class="uk-line">Ніколи не бачив зубра на власні очі.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line"><b>Nic</b> interesującego <b>nie</b> znalazłem.</div>
+        <div class="uk-line">Нічого цікавого не знайшов.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 30. ZAIMKI DZIERŻAWCZE ========================= -->
+  <section id="zaimki-dzierzawcze" class="case">
+    <div class="case-head h-pron">
+      <span class="num">30</span>
+      <h2 class="pl">Zaimki dzierżawcze</h2>
+      <span class="uk-name">Присвійні займенники</span>
+    </div>
+    <p class="lede">Позначають власника або відношення до особи. <i class="pl">mój, twój, nasz, wasz</i> відмінюються як прикметники (рід, відмінок, число іменника). <i class="pl">jego, jej, ich</i> <b>не змінюються</b>.</p>
+
+    <div class="note info">
+      <h4>Короткі книжні форми</h4>
+      <p><i class="pl">ma, me, mej, twe, mym…</i> — книжний стиль, у розмові рідкісні. Повні парадигми <i class="pl">mój / twój / nasz / wasz</i>: §&nbsp;8.6.</p>
+    </div>
+
+    <h3 class="sub-head">30.1 mój — зразок (однина)</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">m. żyw.</th><th class="pl">m. nieżyw.</th><th class="pl">żeński</th><th class="pl">nijaki</th></tr>
+        <tr><td class="case-label">M.</td><td class="pl">mój</td><td class="pl">mój</td><td class="pl">moja</td><td class="pl">moje</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">mojego</td><td class="pl">mojego</td><td class="pl">mojej</td><td class="pl">mojego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">mojemu</td><td class="pl">mojemu</td><td class="pl">mojej</td><td class="pl">mojemu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl"><b>mojego</b></td><td class="pl"><b>mój</b></td><td class="pl"><b>moją</b></td><td class="pl"><b>moje</b></td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">moim</td><td class="pl">moim</td><td class="pl">moją</td><td class="pl">moim</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">moim</td><td class="pl">moim</td><td class="pl">mojej</td><td class="pl">moim</td></tr>
+      </table>
+    </div>
+    <p class="uk-line" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink-soft);font-size:0.9rem;"><i>twój, nasz, wasz</i> — ті самі закінчення. Множина: <i class="pl">moi / moje, nasi / nasze…</i> → §&nbsp;8.6.</p>
+
+    <h3 class="sub-head">30.2 jego, jej, ich — без змін</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th class="pl">jego</th><th class="pl">jej</th><th class="pl">ich</th></tr>
+        <tr><td class="pl">jego brat · jego siostra</td><td class="pl">jej mama · jej wnuczek</td><td class="pl">ich dziadkowie</td></tr>
+        <tr><td class="pl">z jego bratem · o jego domu</td><td class="pl">z jej bratem · o jej domu</td><td class="pl">z ich dziećmi · o ich domu</td></tr>
+      </table>
+    </div>
+    <div class="note warn">
+      <p>Форма завжди та сама: <i class="pl">z jego bratem, o jej domu, o ich dzieciach</i> — не «jegim / jeją».</p>
+    </div>
+  </section>
+
+  <!-- ========================= 31. ZAIMKI WSKAZUJĄCE ========================= -->
+  <section id="zaimki-wskazujace" class="case">
+    <div class="case-head h-pron">
+      <span class="num">31</span>
+      <h2 class="pl">Zaimki wskazujące</h2>
+      <span class="uk-name">Вказівні займенники</span>
+    </div>
+    <p class="lede"><i class="pl">ten, ta, to</i> вказують на особу чи річ, уже відому з контексту, і відмінюються як прикметники. Виокремлюють предмет із групи.</p>
+
+    <h3 class="sub-head">31.1 Однина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">męski</th><th class="pl">żeński</th><th class="pl">nijaki</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">ten</td><td class="pl">ta</td><td class="pl">to</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">tego</td><td class="pl">tej</td><td class="pl">tego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">temu</td><td class="pl">tej</td><td class="pl">temu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">tego <span class="uk-line">(żyw.)</span> / ten <span class="uk-line">(nieżyw.)</span></td><td class="pl">tę</td><td class="pl">to</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">tym</td><td class="pl">tą</td><td class="pl">tym</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">tym</td><td class="pl">tej</td><td class="pl">tym</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub-head">31.2 Множина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">męskoosobowy</th><th class="pl">niemęskoosobowy</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">ci</td><td class="pl">te</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" colspan="2">tych</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" colspan="2">tym</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">tych</td><td class="pl">te</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" colspan="2">tymi</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" colspan="2">tych</td></tr>
+      </table>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line"><b>Ten</b> dom jest stary. · Lubię <b>tę</b> książkę. · <b>Ci</b> studenci są mili.</div>
+        <div class="uk-line">Цей будинок старий. · Люблю цю книгу. · Ці студенти приємні.</div>
+      </div>
+    </div>
+    <p class="uk-line" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink-soft);font-size:0.9rem;">Також у зведених таблицях: §&nbsp;8.4.</p>
+  </section>
+
+  <!-- ========================= 32. ZAIMEK SIĘ ========================= -->
+  <section id="zaimek-sie" class="case">
+    <div class="case-head h-pron">
+      <span class="num">32</span>
+      <h2 class="pl">Zaimek zwrotny się</h2>
+      <span class="uk-name">Зворотний займенник</span>
+    </div>
+    <p class="lede">Поєднується з дієсловами, коли підмет виконує дію щодо себе самого (підмет = об’єкт). Немає форми називного; однакові форми для однини й множини. Довша <i class="pl">siebie</i> — для акценту.</p>
+
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">się / siebie</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">—</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">się / siebie</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">sobie</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">się / siebie</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">sobą</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">sobie</td></tr>
+      </table>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line">Myję <b>się</b>. · Opowiadasz o <b>sobie</b>. · Jestem zadowolony z <b>siebie</b>.</div>
+        <div class="uk-line">Миюсь. · Розповідаєш про себе. · Я задоволений собою.</div>
+      </div>
+    </div>
+    <div class="note warn">
+      <p>Коли власник = підмет речення, частіше <i class="pl">swój</i>, а не <i class="pl">mój/twój</i>: <i class="pl">On kocha <b>swoją</b> żonę</i> (не «jego żonę» у значенні «свою»).</p>
+    </div>
+  </section>
+
+  <!-- ========================= 33. PAN / PANI / PAŃSTWO ========================= -->
+  <section id="pan-pani" class="case">
+    <div class="case-head h-pron">
+      <span class="num">33</span>
+      <h2 class="pl">Pan / pani / państwo</h2>
+      <span class="uk-name">Ввічливе звертання</span>
+    </div>
+    <p class="lede">До дорослих у офіційних ситуаціях — <i class="pl">pan / pani / państwo</i> (незнайомі, старші, авторитети). До близьких, сім’ї, друзів, дітей — на <i class="pl">ty</i> з дієсловом 2-ї особи (<i class="pl">Jak się masz?</i>); займенник <i class="pl">ty</i> часто опускають.</p>
+
+    <div class="usage-grid">
+      <div class="usage-card" style="--accent:var(--c-pron)">
+        <h4 class="pl">pan</h4>
+        <span class="uk-name">чол. однина · дієслово 3 ос. одн.</span>
+        <div class="pl-ex">Czy pan jest Polakiem? Czy pan mówi po polsku?</div>
+        <div class="uk-ex">Чи ви поляк? Чи ви говорите польською?</div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-pron)">
+        <h4 class="pl">pani</h4>
+        <span class="uk-name">жін. однина · дієслово 3 ос. одн.</span>
+        <div class="pl-ex">Czy pani jest Polką? Czy pani mieszka w Krakowie?</div>
+        <div class="uk-ex">Чи ви полячка? Чи ви живете в Кракові?</div>
+      </div>
+      <div class="usage-card" style="--accent:var(--c-pron)">
+        <h4 class="pl">państwo</h4>
+        <span class="uk-name">мн. · дієслово 3 ос. мн.</span>
+        <div class="pl-ex">Czy państwo pracują tutaj? Czy państwo są Polakami?</div>
+        <div class="uk-ex">Чи ви тут працюєте? Чи ви поляки?</div>
+      </div>
+    </div>
+
+    <h3 class="sub-head">33.1 Форми pana / pani / państwa</h3>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line">Witam <b>pana / panią</b> w naszym biurze. · Tutaj jest <b>pana / pani</b> komputer.</div>
+        <div class="uk-line">Вітаю вас у нашому офісі. · Ось ваш комп’ютер.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line">Jak się <b>pan / pani</b> nazywa? · Jak się <b>pan / pani</b> ma?</div>
+        <div class="uk-line">Як вас звати? · Як ви поживаєте?</div>
+      </div>
+    </div>
+
+    <h3 class="sub-head">33.2 Привітання й знайомство</h3>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line">Dzień dobry. → Dzień dobry <b>panu / pani / państwu</b>.</div>
+        <div class="uk-line">Добрий день. → Добрий день вам.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line">To jest pan Jan Kowalski. → Miło mi <b>pana</b> poznać.</div>
+        <div class="uk-line">Це пан Ян Ковальський. → Приємно познайомитись.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line">To jest pani Beata Kowalska. → Miło mi <b>panią</b> poznać.</div>
+        <div class="uk-line">Це пані Беата Ковальська. → Приємно познайомитись.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line">To jest pan Jan, pan Tomasz i pani Dorota. → Miło mi <b>państwa</b> poznać.</div>
+        <div class="uk-line">Це пан Ян, пан Томаш і пані Дорота. → Приємно з вами познайомитись.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-pron)">
+        <div class="pl-line">Miło mi pana poznać, <b>panie Marku</b>. · <b>Pani Krystyno</b>, czy może mi pani pomóc?</div>
+        <div class="uk-line">Приємно познайомитись, пане Мареку. · Пані Кристино, чи можете мені допомогти?</div>
+      </div>
+    </div>
+    <div class="note info">
+      <p>У звертанні з ім’ям — кличний: <i class="pl">panie Marku, pani Krystyno</i> (див. також §&nbsp;7 Wołacz).</p>
+    </div>
+  </section>
+
+  <!-- ========================= 34. LICZEBNIKI ========================= -->
+  <section id="liczebniki" class="case">
+    <div class="case-head h-num">
+      <span class="num">34</span>
+      <h2 class="pl">Liczebniki</h2>
+      <span class="uk-name">Числівники</span>
+    </div>
+    <p class="lede">Числівник позначає число, кількість, порядок і кратність. Відповідає на <i class="pl">ile? który z kolei?</i>. Кількісні (<i class="pl">ile? ilu?</i>) змінюються за відмінками й родами; порядкові — ще й за числами.</p>
+
+    <div class="usage-grid">
+      <div class="usage-card" style="--accent:var(--c-num)"><h4 class="pl">1–4</h4><span class="uk-name">іменник у називному</span><div class="pl-ex">1 samochód · 2, 3, 4 samochody</div><div class="uk-ex">узгодження з родом</div></div>
+      <div class="usage-card" style="--accent:var(--c-num)"><h4 class="pl">5+</h4><span class="uk-name">іменник у родовому</span><div class="pl-ex">5, 6, 7 samochodów</div><div class="uk-ex">як після кількості</div></div>
+      <div class="usage-card" style="--accent:var(--c-num)"><h4 class="pl">porządkowe</h4><span class="uk-name">порядкові</span><div class="pl-ex">pierwszy, druga, trzecie</div><div class="uk-ex">як прикметники</div></div>
+      <div class="usage-card" style="--accent:var(--c-num)"><h4 class="pl">czas · daty</h4><span class="uk-name">година й дати</span><div class="pl-ex">o drugiej · pierwszego maja</div><div class="uk-ex">місцевий / родовий</div></div>
+    </div>
+
+    <h3 class="sub-head">34.1 Основні кількісні</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>1–10</th><th>11–19</th><th>Десятки</th><th>Сотні+</th></tr>
+        <tr>
+          <td class="pl">1 jeden<br>2 dwa<br>3 trzy<br>4 cztery<br>5 pięć<br>6 sześć<br>7 siedem<br>8 osiem<br>9 dziewięć<br>10 dziesięć</td>
+          <td class="pl">11 jedenaście<br>12 dwanaście<br>13 trzynaście<br>14 czternaście<br>15 piętnaście<br>16 szesnaście<br>17 siedemnaście<br>18 osiemnaście<br>19 dziewiętnaście</td>
+          <td class="pl">20 dwadzieścia<br>30 trzydzieści<br>40 czterdzieści<br>50 pięćdziesiąt<br>60 sześćdziesiąt<br>70 siedemdziesiąt<br>80 osiemdziesiąt<br>90 dziewięćdziesiąt</td>
+          <td class="pl">100 sto<br>200 dwieście<br>300 trzysta<br>400 czterysta<br>500 pięćset<br>600 sześćset<br>700 siedemset<br>800 osiemset<br>900 dziewięćset</td>
+        </tr>
+      </table>
+    </div>
+    <div class="note info">
+      <p><i class="pl">21 dwadzieścia jeden · 121 sto dwadzieścia jeden</i> — складні числа читають зліва направо.</p>
+      <p><b>1000</b> <i class="pl">tysiąc</i> · <b>1&nbsp;000&nbsp;000</b> <i class="pl">milion</i> · <b>miliard</i> · <b>bilion</b> — не змінюються за родами; відмінюються як іменники чол. роду: <i class="pl">tysiąc, tysiąca, tysiącowi…</i></p>
+    </div>
+    <div class="note info">
+      <h4>Джерело розділу</h4>
+      <p>Матеріал адаптовано з <a href="https://polski.info/grammar/numerals?hl=uk" target="_blank" rel="noopener">polski.info / Числівники</a> — стисло, з таблицями й українськими поясненнями.</p>
+    </div>
+  </section>
+
+  <!-- ========================= 35. JEDEN ========================= -->
+  <section id="liczebnik-jeden" class="case">
+    <div class="case-head h-num">
+      <span class="num">35</span>
+      <h2 class="pl">Jeden</h2>
+      <span class="uk-name">Відмінювання «один»</span>
+    </div>
+    <p class="lede">В однині має форми чоловічого (<i class="pl">jeden</i>), жіночого (<i class="pl">jedna</i>) і середнього (<i class="pl">jedno</i>) роду.</p>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">męski</th><th class="pl">żeński</th><th class="pl">nijaki</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">jeden</td><td class="pl">jedna</td><td class="pl">jedno</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">jednego</td><td class="pl">jednej</td><td class="pl">jednego</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">jednemu</td><td class="pl">jednej</td><td class="pl">jednemu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">jednego <span class="uk-line">(żyw.)</span> / jeden <span class="uk-line">(nieżyw.)</span></td><td class="pl">jedną</td><td class="pl">jedno</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">jednym</td><td class="pl">jedną</td><td class="pl">jednym</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">jednym</td><td class="pl">jednej</td><td class="pl">jednym</td></tr>
+      </table>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-num)">
+        <div class="pl-line"><b>Jeden</b> samochód · <b>jedna</b> książka · <b>jedno</b> okno</div>
+        <div class="uk-line">один автомобіль · одна книга · одне вікно</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 36. DWA, TRZY, CZTERY ========================= -->
+  <section id="liczebniki-2-4" class="case">
+    <div class="case-head h-num">
+      <span class="num">36</span>
+      <h2 class="pl">Dwa, trzy, cztery</h2>
+      <span class="uk-name">Відмінювання 2–4</span>
+    </div>
+    <p class="lede">Форми залежать від роду / групи іменника. У чоловічо-особовій є два варіанти: <i class="pl">dwaj chłopcy</i> і <i class="pl">dwóch chłopców</i> (так само <i class="pl">trzej / trzech, czterej / czterech</i>).</p>
+
+    <h3 class="sub-head">36.1 Чоловічо-особова форма</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">dwa</th><th class="pl">trzy</th><th class="pl">cztery</th></tr>
+        <tr><td class="case-label">M.</td><td class="pl">dwaj / dwóch</td><td class="pl">trzej / trzech</td><td class="pl">czterej / czterech</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">dwóch</td><td class="pl">trzech</td><td class="pl">czterech</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">dwom / dwóm</td><td class="pl">trzem</td><td class="pl">czterem</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">dwóch</td><td class="pl">trzech</td><td class="pl">czterech</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">dwoma</td><td class="pl">trzema</td><td class="pl">czterema</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">dwóch</td><td class="pl">trzech</td><td class="pl">czterech</td></tr>
+        <tr><td class="case-label">W.</td><td class="pl">dwaj</td><td class="pl">trzej</td><td class="pl">czterej</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub-head">36.2 Жіноча форма</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">dwa</th><th class="pl">trzy</th><th class="pl">cztery</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">dwie</td><td class="pl">trzy</td><td class="pl">cztery</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">dwóch / dwu</td><td class="pl">trzech</td><td class="pl">czterech</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">dwom / dwu</td><td class="pl">trzem</td><td class="pl">czterem</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">dwie</td><td class="pl">trzy</td><td class="pl">cztery</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">dwiema / dwoma</td><td class="pl">trzema</td><td class="pl">czterema</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">dwóch / dwu</td><td class="pl">trzech</td><td class="pl">czterech</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub-head">36.3 Нечоловічо-особова і середній рід</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">dwa</th><th class="pl">trzy</th><th class="pl">cztery</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">dwa</td><td class="pl">trzy</td><td class="pl">cztery</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">dwóch</td><td class="pl">trzech</td><td class="pl">czterech</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">dwóm / dwu</td><td class="pl">trzem</td><td class="pl">czterem</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">dwa</td><td class="pl">trzy</td><td class="pl">cztery</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">dwoma</td><td class="pl">trzema</td><td class="pl">czterema</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">dwóch</td><td class="pl">trzech</td><td class="pl">czterech</td></tr>
+      </table>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-num)">
+        <div class="pl-line"><b>Dwaj</b> chłopcy / <b>dwóch</b> chłopców · <b>dwie</b> kobiety · <b>dwa</b> okna · <b>trzy</b> samochody</div>
+        <div class="uk-line">два хлопці · дві жінки · два вікна · три автомобілі</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 37. PIĘĆ I DALEJ ========================= -->
+  <section id="liczebniki-5" class="case">
+    <div class="case-head h-num">
+      <span class="num">37</span>
+      <h2 class="pl">Pięć i dalej</h2>
+      <span class="uk-name">Від 5 і далі</span>
+    </div>
+    <p class="lede">Зразок <i class="pl">pięć</i> — для <i class="pl">sześć, siedem, osiem, dziewięć, dziesięć…</i> і більшості кількісних від 5. Іменник після них — у родовому: <i class="pl">pięć samochodów</i>.</p>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">męskoosobowy</th><th class="pl">niemęskoosobowy</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">pięciu</td><td class="pl">pięć</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">pięciu</td><td class="pl">pięciu</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">pięciu</td><td class="pl">pięciu</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">pięciu</td><td class="pl">pięć</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">pięcioma</td><td class="pl">pięcioma</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">pięciu</td><td class="pl">pięciu</td></tr>
+      </table>
+    </div>
+    <div class="note warn">
+      <h4>Mianownik чоловічо-особовий</h4>
+      <p class="pl">Pięciu studentów przyszło. · Pięć studentek przyszło.</p>
+      <p class="uk-line">П’ятеро студентів прийшло. · П’ять студенток прийшло.</p>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-num)">
+        <div class="pl-line">Widzę <b>pięć</b> domów. · Rozmawiam z <b>pięcioma</b> kolegami.</div>
+        <div class="uk-line">Бачу п’ять будинків. · Розмовляю з п’ятьма колегами.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 38. PORZĄDKOWE ========================= -->
+  <section id="liczebniki-porzadkowe" class="case">
+    <div class="case-head h-num">
+      <span class="num">38</span>
+      <h2 class="pl">Liczebniki porządkowe</h2>
+      <span class="uk-name">Порядкові числівники</span>
+    </div>
+    <p class="lede">Позначають порядок при лічбі. Відповідають на <i class="pl">który? która? które z kolei?</i> Змінюються за відмінками, родами й числами — як прикметники.</p>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>1–10</th><th>11–20</th><th>Десятки / сотні</th></tr>
+        <tr>
+          <td class="pl">1. pierwszy, -a, -e<br>2. drugi, -a, -e<br>3. trzeci, -a, -e<br>4. czwarty, -a, -e<br>5. piąty, -a, -e<br>6. szósty, -a, -e<br>7. siódmy, -a, -e<br>8. ósmy, -a, -e<br>9. dziewiąty, -a, -e<br>10. dziesiąty, -a, -e</td>
+          <td class="pl">11. jedenasty, -a, -e<br>12. dwunasty, -a, -e<br>13. trzynasty, -a, -e<br>14. czternasty, -a, -e<br>15. piętnasty, -a, -e<br>16. szesnasty, -a, -e<br>17. siedemnasty, -a, -e<br>18. osiemnasty, -a, -e<br>19. dziewiętnasty, -a, -e<br>20. dwudziesty, -a, -e</td>
+          <td class="pl">30. trzydziesty<br>40. czterdziesty<br>50. pięćdziesiąty<br>60. sześćdziesiąty<br>70. siedemdziesiąty<br>80. osiemdziesiąty<br>90. dziewięćdziesiąty<br>100. setny<br>200. dwusetny<br>1000. tysięczny</td>
+        </tr>
+      </table>
+    </div>
+    <div class="note info">
+      <p>Складні: <i class="pl">dwudziesty pierwszy, sto drugi, dwieście jedenasty, dwa tysiące osiemnasty</i> — відмінюються обидві частини (або остання + узгодження): <i class="pl">dwudziestego pierwszego</i>.</p>
+    </div>
+  </section>
+
+  <!-- ========================= 39. ODMIANA PORZĄDKOWYCH ========================= -->
+  <section id="odmiana-porzadkowych" class="case">
+    <div class="case-head h-num">
+      <span class="num">39</span>
+      <h2 class="pl">Odmiana porządkowych</h2>
+      <span class="uk-name">Відмінювання порядкових</span>
+    </div>
+    <p class="lede">Зразок <i class="pl">szesnasty</i>. В однині — три роди; у множині — чоловічо-особова й нечоловічо-особова. У bierniku чоловічого: живі = dopełniacz, неживі = mianownik.</p>
+
+    <h3 class="sub-head">39.1 Однина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">m. żyw.</th><th class="pl">m. nieżyw.</th><th class="pl">nijaki</th><th class="pl">żeński</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">szesnasty</td><td class="pl">szesnasty</td><td class="pl">szesnaste</td><td class="pl">szesnasta</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl">szesnastego</td><td class="pl">szesnastego</td><td class="pl">szesnastego</td><td class="pl">szesnastej</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl">szesnastemu</td><td class="pl">szesnastemu</td><td class="pl">szesnastemu</td><td class="pl">szesnastej</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl"><b>szesnastego</b></td><td class="pl"><b>szesnasty</b></td><td class="pl"><b>szesnaste</b></td><td class="pl"><b>szesnastą</b></td></tr>
+        <tr><td class="case-label">N.</td><td class="pl">szesnastym</td><td class="pl">szesnastym</td><td class="pl">szesnastym</td><td class="pl">szesnastą</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl">szesnastym</td><td class="pl">szesnastym</td><td class="pl">szesnastym</td><td class="pl">szesnastej</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sub-head">39.2 Множина</h3>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Przypadek</th><th class="pl">męskoosobowy</th><th class="pl">niemęskoosobowy</th></tr>
+        <tr><td class="case-label">M. = W.</td><td class="pl">szesnaści</td><td class="pl">szesnaste</td></tr>
+        <tr><td class="case-label">D.</td><td class="pl" colspan="2">szesnastych</td></tr>
+        <tr><td class="case-label">C.</td><td class="pl" colspan="2">szesnastym</td></tr>
+        <tr><td class="case-label">B.</td><td class="pl">szesnastych</td><td class="pl">szesnaste</td></tr>
+        <tr><td class="case-label">N.</td><td class="pl" colspan="2">szesnastymi</td></tr>
+        <tr><td class="case-label">Msc.</td><td class="pl" colspan="2">szesnastych</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========================= 40. GODZINA — MIEJSCOWNIK ========================= -->
+  <section id="godzina-msc" class="case">
+    <div class="case-head h-num">
+      <span class="num">40</span>
+      <h2 class="pl">O której? · miejscownik</h2>
+      <span class="uk-name">Час у місцевому</span>
+    </div>
+    <p class="lede">На <i class="pl">o której godzinie?</i> / <i class="pl">po której?</i> — порядковий у місцевому (жіночий рід, бо <i class="pl">godzina</i>): <i class="pl">Obiad jem o czternastej. Z pracy wracam po szesnastej.</i></p>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Godzina</th><th class="pl">która?</th><th class="pl">o której?</th><th>Godzina</th><th class="pl">która?</th><th class="pl">o której?</th></tr>
+        <tr><td>1:00</td><td class="pl">pierwsza</td><td class="pl">pierwsz<b>ej</b></td><td>13:00</td><td class="pl">trzynasta</td><td class="pl">trzynast<b>ej</b></td></tr>
+        <tr><td>2:00</td><td class="pl">druga</td><td class="pl">drugi<b>ej</b></td><td>14:00</td><td class="pl">czternasta</td><td class="pl">czternast<b>ej</b></td></tr>
+        <tr><td>3:00</td><td class="pl">trzecia</td><td class="pl">trzeci<b>ej</b></td><td>15:00</td><td class="pl">piętnasta</td><td class="pl">piętnast<b>ej</b></td></tr>
+        <tr><td>4:00</td><td class="pl">czwarta</td><td class="pl">czwart<b>ej</b></td><td>16:00</td><td class="pl">szesnasta</td><td class="pl">szesnast<b>ej</b></td></tr>
+        <tr><td>5:00</td><td class="pl">piąta</td><td class="pl">piąt<b>ej</b></td><td>17:00</td><td class="pl">siedemnasta</td><td class="pl">siedemnast<b>ej</b></td></tr>
+        <tr><td>6:00</td><td class="pl">szósta</td><td class="pl">szóst<b>ej</b></td><td>18:00</td><td class="pl">osiemnasta</td><td class="pl">osiemnast<b>ej</b></td></tr>
+        <tr><td>7:00</td><td class="pl">siódma</td><td class="pl">siódm<b>ej</b></td><td>19:00</td><td class="pl">dziewiętnasta</td><td class="pl">dziewiętnast<b>ej</b></td></tr>
+        <tr><td>8:00</td><td class="pl">ósma</td><td class="pl">ósm<b>ej</b></td><td>20:00</td><td class="pl">dwudziesta</td><td class="pl">dwudziest<b>ej</b></td></tr>
+        <tr><td>9:00</td><td class="pl">dziewiąta</td><td class="pl">dziewiąt<b>ej</b></td><td>21:00</td><td class="pl">dwudziesta pierwsza</td><td class="pl">dwudziest<b>ej</b> pierwsz<b>ej</b></td></tr>
+        <tr><td>10:00</td><td class="pl">dziesiąta</td><td class="pl">dziesiąt<b>ej</b></td><td>22:00</td><td class="pl">dwudziesta druga</td><td class="pl">dwudziest<b>ej</b> drugi<b>ej</b></td></tr>
+        <tr><td>11:00</td><td class="pl">jedenasta</td><td class="pl">jedenast<b>ej</b></td><td>23:00</td><td class="pl">dwudziesta trzecia</td><td class="pl">dwudziest<b>ej</b> trzeci<b>ej</b></td></tr>
+        <tr><td>12:00</td><td class="pl">dwunasta</td><td class="pl">dwunast<b>ej</b></td><td>24:00</td><td class="pl">dwudziesta czwarta</td><td class="pl">dwudziest<b>ej</b> czwart<b>ej</b></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========================= 41. GODZINA — NARZĘDNIK ========================= -->
+  <section id="godzina-narz" class="case">
+    <div class="case-head h-num">
+      <span class="num">41</span>
+      <h2 class="pl">Między którą? · narzędnik</h2>
+      <span class="uk-name">Час в орудному</span>
+    </div>
+    <p class="lede">На <i class="pl">między którą a którą godziną?</i> / <i class="pl">przed którą?</i> — орудний жіночого роду: закінчення <b>-ą</b>.</p>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>Godzina</th><th class="pl">która?</th><th class="pl">między / przed którą?</th><th>Godzina</th><th class="pl">która?</th><th class="pl">między / przed którą?</th></tr>
+        <tr><td>1:00</td><td class="pl">pierwsza</td><td class="pl">pierwsz<b>ą</b></td><td>13:00</td><td class="pl">trzynasta</td><td class="pl">trzynast<b>ą</b></td></tr>
+        <tr><td>2:00</td><td class="pl">druga</td><td class="pl">drug<b>ą</b></td><td>14:00</td><td class="pl">czternasta</td><td class="pl">czternast<b>ą</b></td></tr>
+        <tr><td>3:00</td><td class="pl">trzecia</td><td class="pl">trzeci<b>ą</b></td><td>15:00</td><td class="pl">piętnasta</td><td class="pl">piętnast<b>ą</b></td></tr>
+        <tr><td>4:00</td><td class="pl">czwarta</td><td class="pl">czwart<b>ą</b></td><td>16:00</td><td class="pl">szesnasta</td><td class="pl">szesnast<b>ą</b></td></tr>
+        <tr><td>5:00</td><td class="pl">piąta</td><td class="pl">piąt<b>ą</b></td><td>17:00</td><td class="pl">siedemnasta</td><td class="pl">siedemnast<b>ą</b></td></tr>
+        <tr><td>6:00</td><td class="pl">szósta</td><td class="pl">szóst<b>ą</b></td><td>18:00</td><td class="pl">osiemnasta</td><td class="pl">osiemnast<b>ą</b></td></tr>
+        <tr><td>7:00</td><td class="pl">siódma</td><td class="pl">siódm<b>ą</b></td><td>19:00</td><td class="pl">dziewiętnasta</td><td class="pl">dziewiętnast<b>ą</b></td></tr>
+        <tr><td>8:00</td><td class="pl">ósma</td><td class="pl">ósm<b>ą</b></td><td>20:00</td><td class="pl">dwudziesta</td><td class="pl">dwudziest<b>ą</b></td></tr>
+        <tr><td>9:00</td><td class="pl">dziewiąta</td><td class="pl">dziewiąt<b>ą</b></td><td>21:00</td><td class="pl">dwudziesta pierwsza</td><td class="pl">dwudziest<b>ą</b> pierwsz<b>ą</b></td></tr>
+        <tr><td>10:00</td><td class="pl">dziesiąta</td><td class="pl">dziesiąt<b>ą</b></td><td>22:00</td><td class="pl">dwudziesta druga</td><td class="pl">dwudziest<b>ą</b> drug<b>ą</b></td></tr>
+        <tr><td>11:00</td><td class="pl">jedenasta</td><td class="pl">jedenast<b>ą</b></td><td>23:00</td><td class="pl">dwudziesta trzecia</td><td class="pl">dwudziest<b>ą</b> trzeci<b>ą</b></td></tr>
+        <tr><td>12:00</td><td class="pl">dwunasta</td><td class="pl">dwunast<b>ą</b></td><td>24:00</td><td class="pl">dwudziesta czwarta</td><td class="pl">dwudziest<b>ą</b> czwart<b>ą</b></td></tr>
+      </table>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-num)">
+        <div class="pl-line">Spotkanie jest <b>między drugą a trzecią</b>. · Przyjdź <b>przed ósmą</b>.</div>
+        <div class="uk-line">Зустріч між другою і третьою. · Прийди перед восьмою.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 42. GODZINA — DOPEŁNIACZ ========================= -->
+  <section id="godzina-dop" class="case">
+    <div class="case-head h-num">
+      <span class="num">42</span>
+      <h2 class="pl">Do której? · dopełniacz</h2>
+      <span class="uk-name">Час у родовому</span>
+    </div>
+    <p class="lede">На <i class="pl">do której? od której? około której? od której do której?</i> — родовий жіночого роду (ті самі закінчення <b>-ej</b>, що в місцевому).</p>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-num)">
+        <div class="pl-line">Do domu wrócę <b>do trzeciej</b>.</div>
+        <div class="uk-line">Додому повернуся до третьої.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-num)">
+        <div class="pl-line">Warsztat jest czynny <b>od dziewiątej</b>.</div>
+        <div class="uk-line">Майстерня працює з дев’ятої.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-num)">
+        <div class="pl-line">W pracy jestem <b>od ósmej do szesnastej</b>.</div>
+        <div class="uk-line">На роботі я з восьмої до шістнадцятої.</div>
+      </div>
+      <div class="ex" style="--accent:var(--c-num)">
+        <div class="pl-line">Wychodzę <b>około szesnastej</b>.</div>
+        <div class="uk-line">Виходжу близько шістнадцятої.</div>
+      </div>
+    </div>
+    <div class="note info">
+      <p>Форми як у таблиці §&nbsp;40 (<i class="pl">pierwszej, drugiej, trzeciej… dwudziestej pierwszej</i>) — лише прийменник інший: <i class="pl">do / od / około</i> замість <i class="pl">o / po</i>.</p>
+    </div>
+  </section>
+
+  <!-- ========================= 43. MIESIĄCE I DATY ========================= -->
+  <section id="miesiace-daty" class="case">
+    <div class="case-head h-num">
+      <span class="num">43</span>
+      <h2 class="pl">Miesiące i daty</h2>
+      <span class="uk-name">Місяці та дати</span>
+    </div>
+    <p class="lede">Порядкові в датах — як прикметники; найчастіше називний і родовий. Назви місяців — як іменники чол. роду; <i class="pl">luty</i> відмінюється як прикметник.</p>
+    <div class="summary">
+      <table class="grid-t">
+        <tr><th>#</th><th class="pl">miesiąc</th><th class="pl">który? (M.)</th><th class="pl">którego? (D.)</th><th class="pl">data</th></tr>
+        <tr><td>1</td><td class="pl">styczeń</td><td class="pl">pierwszy</td><td class="pl">pierwszego</td><td class="pl">pierwszego stycznia</td></tr>
+        <tr><td>2</td><td class="pl">luty</td><td class="pl">drugi</td><td class="pl">drugiego</td><td class="pl">drugiego lutego</td></tr>
+        <tr><td>3</td><td class="pl">marzec</td><td class="pl">trzeci</td><td class="pl">trzeciego</td><td class="pl">trzeciego marca</td></tr>
+        <tr><td>4</td><td class="pl">kwiecień</td><td class="pl">czwarty</td><td class="pl">czwartego</td><td class="pl">czwartego kwietnia</td></tr>
+        <tr><td>5</td><td class="pl">maj</td><td class="pl">piąty</td><td class="pl">piątego</td><td class="pl">piątego maja</td></tr>
+        <tr><td>6</td><td class="pl">czerwiec</td><td class="pl">szósty</td><td class="pl">szóstego</td><td class="pl">szóstego czerwca</td></tr>
+        <tr><td>7</td><td class="pl">lipiec</td><td class="pl">siódmy</td><td class="pl">siódmego</td><td class="pl">siódmego lipca</td></tr>
+        <tr><td>8</td><td class="pl">sierpień</td><td class="pl">ósmy</td><td class="pl">ósmego</td><td class="pl">ósmego sierpnia</td></tr>
+        <tr><td>9</td><td class="pl">wrzesień</td><td class="pl">dziewiąty</td><td class="pl">dziewiątego</td><td class="pl">dziewiątego września</td></tr>
+        <tr><td>10</td><td class="pl">październik</td><td class="pl">dziesiąty</td><td class="pl">dziesiątego</td><td class="pl">dziesiątego października</td></tr>
+        <tr><td>11</td><td class="pl">listopad</td><td class="pl">jedenasty</td><td class="pl">jedenastego</td><td class="pl">jedenastego listopada</td></tr>
+        <tr><td>12</td><td class="pl">grudzień</td><td class="pl">dwunasty</td><td class="pl">dwunastego</td><td class="pl">dwunastego grudnia</td></tr>
+      </table>
+    </div>
+    <div class="examples">
+      <div class="ex" style="--accent:var(--c-num)">
+        <div class="pl-line">Dziś jest <b>pierwszy maja</b>. · Urodziny mam <b>dwudziestego trzeciego marca</b>.</div>
+        <div class="uk-line">Сьогодні перше травня. · День народження маю двадцять третього березня.</div>
+      </div>
+    </div>
+    <div class="note warn">
+      <h4>luty</h4>
+      <p class="pl">luty → lutego, lutemu, lutym (як прикметник), не «lutia».</p>
+    </div>
+  </section>
+
   <footer>
-    Довідник: відмінки + дієслова · матеріал адаптовано з polski.info · переклад і приклади українською
+    Довідник: відмінки + дієслова + займенники + числівники · матеріал адаптовано з polski.info · переклад і приклади українською
   </footer>
 
   </div><!-- /.wrap -->

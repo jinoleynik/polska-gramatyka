@@ -13,6 +13,8 @@
   --c-miej:#0e7a6e;   --c-miej-soft:#e2f4f1;
   --c-wol:#9c2469;    --c-wol-soft:#f8e6f0;
   --c-verb:#8a3d1a;   --c-verb-soft:#f7ebe3;
+  --c-pron:#2f4f7a;   --c-pron-soft:#e8eef5;
+  --c-num:#385f6b;    --c-num-soft:#e6eef1;
 
   --gold:#d1a02e;
   --gold-soft:#fbf1da;
@@ -257,6 +259,8 @@ section.case{margin-bottom:64px;}
 .h-miej{background:linear-gradient(120deg,var(--c-miej),#0a5850);}
 .h-wol{background:linear-gradient(120deg,var(--c-wol),#711a4d);}
 .h-verb{background:linear-gradient(120deg,var(--c-verb),#5c2810);}
+.h-pron{background:linear-gradient(120deg,var(--c-pron),#1e3454);}
+.h-num{background:linear-gradient(120deg,var(--c-num),#244550);}
 
 h3.sub-head{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
