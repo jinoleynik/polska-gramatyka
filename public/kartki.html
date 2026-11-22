@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Картки — польські букви і цифри</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a2a2e;
+    --bg: #f3efe6;
+    --panel: #fffdf8;
+    --line: rgba(26, 42, 46, 0.1);
+    --card-w: 148px;
+    --card-h: 196px;
+    --gap: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px 8px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    letter-spacing: -0.02em;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 10px 14px;
+  }
+
+  .check {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .check input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--ink);
+    cursor: pointer;
+  }
+
+  .stat {
+    font-weight: 700;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  button.ghost {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background: #fff;
+    color: var(--ink);
+  }
+
+  button.ghost:hover { background: #f7f3eb; }
+
+  .hint {
+    padding: 4px 24px 12px;
+    font-size: 0.85rem;
+    opacity: 0.55;
+  }
+
+  .stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 24px 0 48px;
+  }
+
+  .track {
+    display: flex;
+    align-items: stretch;
+    gap: var(--gap);
+    padding: 0 24px;
+    width: max-content;
+    min-height: var(--card-h);
+  }
+
+  .card {
+    position: relative;
+    flex: 0 0 var(--card-w);
+    width: var(--card-w);
+    height: var(--card-h);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    color: #fff;
+    user-select: none;
+    box-shadow:
+      0 10px 22px rgba(26, 42, 46, 0.16),
+      inset 0 1px 0 rgba(255,255,255,0.35);
+    border: 2px solid rgba(255,255,255,0.35);
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      margin 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.28s ease;
+  }
+
+  .card.entering {
+    animation: slide-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .card.leaving {
+    pointer-events: none;
+    z-index: 2;
+    animation: fly-up 0.32s ease-in forwards;
+  }
+
+  .card.collapsing {
+    flex-basis: 0 !important;
+    width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: calc(var(--gap) * -1);
+    opacity: 0;
+    border-width: 0;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  .card-symbol {
+    font-size: 4rem;
+    line-height: 1;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.12);
+  }
+
+  .card-kind {
+    margin-top: 10px;
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .card-actions {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    backdrop-filter: blur(4px);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .icon-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.06);
+  }
+
+  .icon-btn:active { transform: scale(0.96); }
+
+  .icon-btn.speaking {
+    background: rgba(255, 255, 255, 0.55);
+    animation: pulse 0.9s ease-in-out infinite;
+  }
+
+  .icon-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  @keyframes fly-up {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-90px) scale(0.85); }
+  }
+
+  @keyframes slide-in {
+    0% { opacity: 0; transform: translateX(48px) scale(0.96); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --card-w: 120px;
+      --card-h: 164px;
+      --gap: 10px;
+    }
+    .top { padding: 14px 14px 6px; }
+    .hint { padding: 2px 14px 10px; }
+    .track { padding: 0 14px; }
+    .card-symbol { font-size: 3.2rem; }
+    .icon-btn { width: 36px; height: 36px; }
+  }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">Картки</div>
+    <div class="controls">
+      <label class="check"><input type="checkbox" id="optLetters" checked> Букви</label>
+      <label class="check"><input type="checkbox" id="optDigits" checked> Цифри</label>
+      <span class="stat">Пройдено: <strong id="doneCount">0</strong></span>
+      <button type="button" class="ghost" id="reshuffleBtn">Новий ряд</button>
+    </div>
+  </div>
+
+  <p class="hint">🔊 озвучити · ✓ прибрати — ряд зсунеться, збоку під’їде нова</p>
+
+  <div class="stage">
+    <div class="track" id="track" aria-live="polite"></div>
+  </div>
+
+<script>
+(() => {
+  const track = document.getElementById("track");
+  const doneCountEl = document.getElementById("doneCount");
+  const optLetters = document.getElementById("optLetters");
+  const optDigits = document.getElementById("optDigits");
+  const reshuffleBtn = document.getElementById("reshuffleBtn");
+
+  const CARD_COUNT = 7;
+  const PL_LETTERS = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ".split("");
+  const DIGITS = "0123456789".split("");
+  const COLORS = [
+    "#e85d4c", "#f0a202", "#2a9d8f", "#457b9d",
+    "#e76f51", "#6a994e", "#d64045", "#3d5a80",
+    "#bc4749", "#f4a261", "#2d6a4f", "#c9a227"
+  ];
+
+  let doneCount = 0;
+  let polishVoice = null;
+  let speakingBtn = null;
+  let busy = false;
+
+  function pick(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function loadVoice() {
+    const voices = speechSynthesis.getVoices();
+    polishVoice =
+      voices.find((v) => v.lang === "pl-PL") ||
+      voices.find((v) => v.lang.toLowerCase().startsWith("pl")) ||
+      null;
+  }
+
+  loadVoice();
+  if (typeof speechSynthesis !== "undefined") {
+    speechSynthesis.onvoiceschanged = loadVoice;
+  }
+
+  function randomItem() {
+    const kinds = [];
+    if (optLetters.checked) kinds.push("litera");
+    if (optDigits.checked) kinds.push("cyfra");
+    if (!kinds.length) {
+      optLetters.checked = true;
+      kinds.push("litera");
+    }
+    const kind = pick(kinds);
+    return {
+      symbol: kind === "litera" ? pick(PL_LETTERS) : pick(DIGITS),
+      kind
+    };
+  }
+
+  function speakTextFor(symbol) {
+    // Uppercase letters are often read as "duże A" — speak lowercase letter sound.
+    if (/^\d$/.test(symbol)) return symbol;
+    return symbol.toLocaleLowerCase("pl-PL");
+  }
+
+  function speak(text, btn) {
+    if (typeof speechSynthesis === "undefined") return;
+    speechSynthesis.cancel();
+    if (speakingBtn) speakingBtn.classList.remove("speaking");
+
+    const utter = new SpeechSynthesisUtterance(speakTextFor(text));
+    utter.lang = "pl-PL";
+    utter.rate = 0.9;
+    if (polishVoice) utter.voice = polishVoice;
+
+    speakingBtn = btn;
+    btn.classList.add("speaking");
+    utter.onend = utter.onerror = () => {
+      btn.classList.remove("speaking");
+      if (speakingBtn === btn) speakingBtn = null;
+    };
+    speechSynthesis.speak(utter);
+  }
+
+  function createCard(item, { entering = false } = {}) {
+    const card = document.createElement("article");
+    card.className = "card" + (entering ? " entering" : "");
+    card.style.background = pick(COLORS);
+    card.dataset.symbol = item.symbol;
+
+    const kindLabel = item.kind === "litera" ? "Litera" : "Cyfra";
+
+    card.innerHTML = `
+      <div class="card-symbol">${item.symbol}</div>
+      <div class="card-kind">${kindLabel}</div>
+      <div class="card-actions">
+        <button type="button" class="icon-btn speak-btn" aria-label="Озвучити ${item.symbol}" title="Озвучити">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+        </button>
+        <button type="button" class="icon-btn check-btn" aria-label="Пройдено, нова картка" title="Пройдено">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+        </button>
+      </div>
+    `;
+
+    card.querySelector(".speak-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      speak(item.symbol, e.currentTarget);
+    });
+
+    card.querySelector(".check-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      completeCard(card);
+    });
+
+    return card;
+  }
+
+  function completeCard(card) {
+    if (busy || card.classList.contains("leaving")) return;
+    busy = true;
+
+    doneCount += 1;
+    doneCountEl.textContent = String(doneCount);
+    card.classList.add("leaving");
+
+    window.setTimeout(() => {
+      card.classList.remove("leaving");
+      card.classList.add("collapsing");
+
+      const next = createCard(randomItem(), { entering: true });
+      track.appendChild(next);
+
+      window.setTimeout(() => {
+        card.remove();
+        busy = false;
+      }, 360);
+    }, 300);
+  }
+
+  function fillTrack() {
+    if (typeof speechSynthesis !== "undefined") speechSynthesis.cancel();
+    busy = false;
+    track.innerHTML = "";
+    for (let i = 0; i < CARD_COUNT; i++) {
+      track.appendChild(createCard(randomItem()));
+    }
+  }
+
+  reshuffleBtn.addEventListener("click", fillTrack);
+  optLetters.addEventListener("change", fillTrack);
+  optDigits.addEventListener("change", fillTrack);
+
+  fillTrack();
+})();
+</script>
+</body>
+</html>

@@ -95,6 +95,20 @@ a{color:inherit;}
   transition:background .15s;
 }
 .chip:hover{background:rgba(255,255,255,0.15);}
+.practice-label{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:0.72rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:#f3c9d0;
+  margin:20px 0 0;
+}
+.chips-practice{margin-top:10px;}
+.chip-practice{
+  background:rgba(255,255,255,0.12);
+  border-color:rgba(255,240,238,0.75);
+}
+.chip-practice:hover{background:rgba(255,255,255,0.22);}
 
 /* ---------- NAV / TOC ---------- */
 .side-nav{

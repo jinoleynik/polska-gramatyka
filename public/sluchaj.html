@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Слухай — обери картку</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a2a2e;
+    --bg: #f3efe6;
+    --panel: #fffdf8;
+    --line: rgba(26, 42, 46, 0.1);
+    --ok: #2a9d8f;
+    --bad: #d64045;
+    --card-w: min(220px, calc((100vw - 96px) / 3));
+    --card-h: min(290px, calc(var(--card-w) * 1.32));
+    --gap: clamp(12px, 2.5vw, 28px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 90% 60% at 50% 0%, #ffe8c8 0%, transparent 55%),
+      var(--bg);
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px 8px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    letter-spacing: -0.02em;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 10px 14px;
+  }
+
+  .check {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .check input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--ink);
+    cursor: pointer;
+  }
+
+  .stat {
+    font-weight: 700;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  button.ghost {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background: #fff;
+    color: var(--ink);
+  }
+
+  button.ghost:hover { background: #f7f3eb; }
+
+  .field-pick {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .field-pick select {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.88rem;
+    max-width: min(260px, 52vw);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 8px 10px;
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .hint {
+    padding: 4px 24px 12px;
+    font-size: 0.85rem;
+    opacity: 0.55;
+  }
+
+  .stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 16px 24px 48px;
+  }
+
+  .feedback {
+    min-height: 1.4em;
+    font-weight: 700;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .feedback.show { opacity: 1; }
+  .feedback.ok { color: var(--ok); }
+  .feedback.bad { color: var(--bad); }
+
+  .board {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: var(--gap);
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .card-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 var(--card-w);
+    width: var(--card-w);
+  }
+
+  .card-slot.entering {
+    animation: pop-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .card-slot.locked {
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  .card-speak {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 48px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 14px;
+    cursor: pointer;
+    background: var(--panel);
+    color: var(--ink);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .card-speak:hover { background: #f7f3eb; }
+  .card-speak:active { transform: scale(0.97); }
+
+  .card-speak.speaking {
+    background: #e4f5f2;
+    border-color: rgba(42, 157, 143, 0.35);
+    color: var(--ok);
+    animation: pulse 0.9s ease-in-out infinite;
+  }
+
+  .card-speak svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex: 0 0 auto;
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    height: var(--card-h);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    color: #fff;
+    user-select: none;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.35);
+    box-shadow:
+      0 10px 22px rgba(26, 42, 46, 0.16),
+      inset 0 1px 0 rgba(255,255,255,0.35);
+    transition:
+      transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.2s ease,
+      opacity 0.25s ease;
+  }
+
+  .card:hover { transform: translateY(-4px) scale(1.02); }
+  .card:active { transform: scale(0.97); }
+
+  .card.correct {
+    animation: correct-pulse 0.45s ease;
+    box-shadow:
+      0 0 0 4px rgba(42, 157, 143, 0.55),
+      0 12px 28px rgba(26, 42, 46, 0.2);
+  }
+
+  .card.wrong {
+    animation: shake 0.4s ease;
+  }
+
+  .card-symbol {
+    font-size: clamp(4.5rem, 8vw, 6.5rem);
+    line-height: 1;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.12);
+  }
+
+  .card-kind {
+    margin-top: 14px;
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .speak-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.15rem;
+    border: none;
+    border-radius: 18px;
+    padding: 16px 28px;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(145deg, #1a2a2e, #2f4a52);
+    box-shadow: 0 10px 24px rgba(26, 42, 46, 0.22);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+
+  .speak-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(26, 42, 46, 0.28);
+  }
+
+  .speak-btn:active { transform: translateY(0) scale(0.98); }
+
+  .speak-btn.speaking {
+    background: linear-gradient(145deg, #2a9d8f, #1d7a6f);
+    animation: pulse 0.9s ease-in-out infinite;
+  }
+
+  .speak-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+  }
+
+  @keyframes pop-in {
+    0% { opacity: 0; transform: translateY(18px) scale(0.92); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes correct-pulse {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  @media (min-width: 900px) {
+    :root {
+      --card-w: min(250px, calc((100vw - 120px) / 3));
+      --card-h: min(330px, calc(var(--card-w) * 1.32));
+      --gap: clamp(16px, 3vw, 36px);
+    }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --card-w: min(118px, calc((100vw - 48px) / 3));
+      --card-h: min(164px, calc(var(--card-w) * 1.38));
+      --gap: 10px;
+    }
+    .top { padding: 14px 14px 6px; }
+    .hint { padding: 2px 14px 10px; }
+    .stage { padding: 12px 14px 36px; gap: 22px; }
+    .card { border-radius: 18px; }
+    .card-symbol { font-size: 3.2rem; }
+    .card-kind { margin-top: 10px; font-size: 0.72rem; }
+    .card-speak {
+      min-height: 40px;
+      font-size: 0.8rem;
+      border-radius: 10px;
+      padding: 8px 10px;
+      gap: 6px;
+    }
+    .card-speak svg { width: 16px; height: 16px; }
+    .speak-btn { font-size: 0.95rem; padding: 12px 18px; border-radius: 16px; }
+  }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">Слухай</div>
+    <div class="controls">
+      <label class="field-pick">
+        Мова
+        <select id="langSelect" aria-label="Мова озвучки">
+          <option value="uk">Українська</option>
+          <option value="pl">Польська</option>
+          <option value="en">Англійська</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="optLetters" checked> Букви</label>
+      <label class="check"><input type="checkbox" id="optDigits" checked> Цифри</label>
+      <label class="field-pick">
+        Голос
+        <select id="voiceSelect" aria-label="Голос озвучки"></select>
+      </label>
+      <span class="stat">Вірно: <strong id="scoreCount">0</strong></span>
+      <span class="stat">Серія: <strong id="streakCount">0</strong></span>
+      <button type="button" class="ghost" id="nextBtn">Нові картки</button>
+    </div>
+  </div>
+
+  <p class="hint">Послухай завдання, обери картку · над карткою — прослухати її звук</p>
+
+  <div class="stage">
+    <p class="feedback" id="feedback" aria-live="polite"></p>
+    <div class="board" id="board" aria-live="polite"></div>
+    <button type="button" class="speak-btn" id="speakBtn" aria-label="Повторити завдання">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+      </svg>
+      Повторити
+    </button>
+  </div>
+
+<script>
+(() => {
+  const board = document.getElementById("board");
+  const speakBtn = document.getElementById("speakBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const feedbackEl = document.getElementById("feedback");
+  const scoreCountEl = document.getElementById("scoreCount");
+  const streakCountEl = document.getElementById("streakCount");
+  const optLetters = document.getElementById("optLetters");
+  const optDigits = document.getElementById("optDigits");
+  const langSelect = document.getElementById("langSelect");
+  const voiceSelect = document.getElementById("voiceSelect");
+
+  const CARD_COUNT = 3;
+  const LANG_KEY = "sluchaj-lang";
+  const DIGITS = "0123456789".split("");
+  const COLORS = [
+    "#e85d4c", "#f0a202", "#2a9d8f", "#457b9d",
+    "#e76f51", "#6a994e", "#d64045", "#3d5a80",
+    "#bc4749", "#f4a261", "#2d6a4f", "#c9a227"
+  ];
+
+  const LANGS = {
+    uk: {
+      code: "uk-UA",
+      prefix: "uk",
+      letters: "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ".split(""),
+      letterLabel: "Літера",
+      digitLabel: "Цифра",
+      digits: {
+        "0": "нуль", "1": "один", "2": "два", "3": "три", "4": "чотири",
+        "5": "п\u2019ять", "6": "шість", "7": "сім", "8": "вісім", "9": "дев\u2019ять"
+      },
+      // Назви букв — щоб TTS не читав кирилицю як англійські літери
+      letterNames: {
+        "А": "а", "Б": "бе", "В": "ве", "Г": "ге", "Ґ": "ґе", "Д": "де",
+        "Е": "е", "Є": "є", "Ж": "же", "З": "зе", "И": "и", "І": "і",
+        "Ї": "ї", "Й": "йот", "К": "ка", "Л": "ел", "М": "ем", "Н": "ен",
+        "О": "о", "П": "пе", "Р": "ер", "С": "ес", "Т": "те", "У": "у",
+        "Ф": "еф", "Х": "ха", "Ц": "це", "Ч": "че", "Ш": "ша", "Щ": "ща",
+        "Ь": "м\u2019який знак", "Ю": "ю", "Я": "я"
+      }
+    },
+    pl: {
+      code: "pl-PL",
+      prefix: "pl",
+      letters: "AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ".split(""),
+      letterLabel: "Litera",
+      digitLabel: "Cyfra",
+      digits: {
+        "0": "zero", "1": "jeden", "2": "dwa", "3": "trzy", "4": "cztery",
+        "5": "pięć", "6": "sześć", "7": "siedem", "8": "osiem", "9": "dziewięć"
+      },
+      letterNames: {
+        "A": "a", "Ą": "ą", "B": "be", "C": "ce", "Ć": "cie", "D": "de",
+        "E": "e", "Ę": "ę", "F": "ef", "G": "gie", "H": "ha", "I": "i",
+        "J": "jot", "K": "ka", "L": "el", "Ł": "eł", "M": "em", "N": "en",
+        "Ń": "eń", "O": "o", "Ó": "o kreskowane", "P": "pe", "R": "er",
+        "S": "es", "Ś": "eś", "T": "te", "U": "u", "W": "wu", "Y": "y",
+        "Z": "zet", "Ź": "ziet", "Ż": "żet"
+      }
+    },
+    en: {
+      code: "en-US",
+      prefix: "en",
+      letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+      letterLabel: "Letter",
+      digitLabel: "Digit",
+      digits: {
+        "0": "zero", "1": "one", "2": "two", "3": "three", "4": "four",
+        "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine"
+      },
+      letterNames: {
+        "A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "F": "F",
+        "G": "G", "H": "H", "I": "I", "J": "J", "K": "K", "L": "L",
+        "M": "M", "N": "N", "O": "O", "P": "P", "Q": "Q", "R": "R",
+        "S": "S", "T": "T", "U": "U", "V": "V", "W": "W", "X": "X",
+        "Y": "Y", "Z": "Z"
+      }
+    }
+  };
+
+  const SPEAK_ICON = `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+    </svg>
+  `;
+
+  let score = 0;
+  let streak = 0;
+  let selectedVoice = null;
+  let targetSymbol = null;
+  let busy = false;
+  let speakingEl = null;
+  let autoSpeakTimer = null;
+  let roundItems = [];
+
+  function storageGet(key) {
+    try { return localStorage.getItem(key); } catch (_) { return null; }
+  }
+
+  function storageSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (_) {}
+  }
+
+  let currentLang = storageGet(LANG_KEY) || "uk";
+  if (!LANGS[currentLang]) currentLang = "uk";
+  langSelect.value = currentLang;
+
+  function lang() {
+    return LANGS[currentLang];
+  }
+
+  function voiceKey() {
+    return `sluchaj-voice-uri-${currentLang}`;
+  }
+
+  function pick(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function normalizeLangTag(tag) {
+    return String(tag || "").toLowerCase().replace(/_/g, "-");
+  }
+
+  function matchesLang(voice) {
+    const tag = normalizeLangTag(voice.lang);
+    const prefix = lang().prefix;
+    return tag === prefix || tag.startsWith(prefix + "-");
+  }
+
+  function voiceId(voice) {
+    return `${voice.name}||${normalizeLangTag(voice.lang)}`;
+  }
+
+  function voiceLabel(voice) {
+    const local = voice.localService ? "" : " · онлайн";
+    return `${voice.name} (${voice.lang})${local}`;
+  }
+
+  function voicesForLang() {
+    if (typeof speechSynthesis === "undefined") return [];
+    const exact = normalizeLangTag(lang().code);
+    return speechSynthesis
+      .getVoices()
+      .filter(matchesLang)
+      .sort((a, b) => {
+        const aExact = normalizeLangTag(a.lang) === exact ? 0 : 1;
+        const bExact = normalizeLangTag(b.lang) === exact ? 0 : 1;
+        if (aExact !== bExact) return aExact - bExact;
+        // Локальні голоси стабільніші за «онлайн»
+        if (a.localService !== b.localService) return a.localService ? -1 : 1;
+        return a.name.localeCompare(b.name, "uk");
+      });
+  }
+
+  function preferredVoice(voices) {
+    const saved = storageGet(voiceKey());
+    if (saved) {
+      const match =
+        voices.find((v) => voiceId(v) === saved) ||
+        voices.find((v) => v.voiceURI === saved) ||
+        voices.find((v) => v.name === saved);
+      if (match) return match;
+    }
+    const exact = normalizeLangTag(lang().code);
+    return (
+      voices.find((v) => normalizeLangTag(v.lang) === exact && /lesya|ukrainian|україн/i.test(v.name)) ||
+      voices.find((v) => normalizeLangTag(v.lang) === exact) ||
+      voices[0] ||
+      null
+    );
+  }
+
+  function populateVoices() {
+    try {
+      if (typeof speechSynthesis === "undefined") {
+        voiceSelect.innerHTML = "<option>Немає озвучки</option>";
+        voiceSelect.disabled = true;
+        selectedVoice = null;
+        return;
+      }
+
+      const all = speechSynthesis.getVoices();
+      if (!all.length) {
+        voiceSelect.innerHTML = "";
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "Завантаження голосів…";
+        voiceSelect.appendChild(opt);
+        voiceSelect.disabled = true;
+        selectedVoice = null;
+        return;
+      }
+
+      const voices = voicesForLang();
+      voiceSelect.innerHTML = "";
+
+      if (!voices.length) {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "Немає голосів для цієї мови";
+        voiceSelect.appendChild(opt);
+        voiceSelect.disabled = true;
+        selectedVoice = null;
+        return;
+      }
+
+      voiceSelect.disabled = false;
+      for (const voice of voices) {
+        const opt = document.createElement("option");
+        opt.value = voiceId(voice);
+        opt.textContent = voiceLabel(voice);
+        voiceSelect.appendChild(opt);
+      }
+
+      selectedVoice = preferredVoice(voices);
+      if (selectedVoice) {
+        voiceSelect.value = voiceId(selectedVoice);
+        storageSet(voiceKey(), voiceId(selectedVoice));
+      }
+    } catch (_) {
+      voiceSelect.innerHTML = "<option>Помилка голосів</option>";
+      voiceSelect.disabled = true;
+      selectedVoice = null;
+    }
+  }
+
+  populateVoices();
+  if (typeof speechSynthesis !== "undefined") {
+    speechSynthesis.onvoiceschanged = populateVoices;
+  }
+
+  function pool() {
+    const cfg = lang();
+    const items = [];
+    if (optLetters.checked) {
+      for (const symbol of cfg.letters) items.push({ symbol, kind: "letter" });
+    }
+    if (optDigits.checked) {
+      for (const symbol of DIGITS) items.push({ symbol, kind: "digit" });
+    }
+    if (!items.length) {
+      optLetters.checked = true;
+      for (const symbol of cfg.letters) items.push({ symbol, kind: "letter" });
+    }
+    return items;
+  }
+
+  function speakTextFor(symbol) {
+    const cfg = lang();
+    if (/^\d$/.test(symbol)) return cfg.digits[symbol] || symbol;
+    const upper = symbol.toLocaleUpperCase(cfg.code);
+    if (cfg.letterNames && cfg.letterNames[upper]) return cfg.letterNames[upper];
+    return symbol.toLocaleLowerCase(cfg.code);
+  }
+
+  function resolveVoice() {
+    const voices = voicesForLang();
+    if (!voices.length) return null;
+
+    const selectedId = voiceSelect.value;
+    const fromSelect =
+      voices.find((v) => voiceId(v) === selectedId) ||
+      voices.find((v) => v.voiceURI === selectedId) ||
+      voices.find((v) => v.name === selectedId);
+    if (fromSelect) return fromSelect;
+
+    if (selectedVoice) {
+      const fresh =
+        voices.find((v) => voiceId(v) === voiceId(selectedVoice)) ||
+        voices.find((v) => v.name === selectedVoice.name && normalizeLangTag(v.lang) === normalizeLangTag(selectedVoice.lang));
+      if (fresh) return fresh;
+    }
+    return preferredVoice(voices);
+  }
+
+  function clearSpeaking() {
+    if (speakingEl) {
+      speakingEl.classList.remove("speaking");
+      speakingEl = null;
+    }
+    speakBtn.classList.remove("speaking");
+  }
+
+  let speakTimer = null;
+
+  function speakSymbol(symbol, highlightEl) {
+    if (!symbol || typeof speechSynthesis === "undefined") return;
+
+    if (speakTimer) {
+      window.clearTimeout(speakTimer);
+      speakTimer = null;
+    }
+
+    // Chrome/Safari: cancel() одразу перед speak() часто скидає голос на англійський default
+    try { speechSynthesis.cancel(); } catch (_) {}
+    clearSpeaking();
+
+    const voice = resolveVoice();
+    selectedVoice = voice;
+
+    if (!voice) {
+      setFeedback("Немає голосу для цієї мови", "bad");
+      return;
+    }
+
+    const text = speakTextFor(symbol);
+    const voiceLang = voice.lang || lang().code;
+
+    speakingEl = highlightEl || speakBtn;
+    speakingEl.classList.add("speaking");
+
+    speakTimer = window.setTimeout(() => {
+      speakTimer = null;
+      try {
+        if (speechSynthesis.paused) speechSynthesis.resume();
+
+        // Голос беремо знову з актуального getVoices() — інакше браузер ігнорує stale-об'єкт
+        const freshVoice =
+          voicesForLang().find((v) => voiceId(v) === voiceId(voice)) ||
+          voicesForLang().find((v) => v.name === voice.name) ||
+          voice;
+
+        const utter = new SpeechSynthesisUtterance();
+        utter.text = text;
+        utter.rate = 0.85;
+        utter.pitch = 1;
+        utter.voice = freshVoice;
+        utter.lang = freshVoice.lang || voiceLang;
+
+        utter.onend = utter.onerror = clearSpeaking;
+        speechSynthesis.speak(utter);
+      } catch (err) {
+        clearSpeaking();
+        console.error(err);
+      }
+    }, 60);
+  }
+
+  function speakTarget() {
+    speakSymbol(targetSymbol, speakBtn);
+  }
+
+  function setFeedback(text, kind) {
+    feedbackEl.textContent = text;
+    feedbackEl.className = "feedback show" + (kind ? " " + kind : "");
+  }
+
+  function clearFeedback() {
+    feedbackEl.textContent = "";
+    feedbackEl.className = "feedback";
+  }
+
+  function createCard(item, index, color) {
+    const cfg = lang();
+    const slot = document.createElement("div");
+    slot.className = "card-slot entering";
+    slot.style.animationDelay = `${index * 60}ms`;
+
+    const speak = document.createElement("button");
+    speak.type = "button";
+    speak.className = "card-speak";
+    speak.setAttribute("aria-label", `Озвучити ${item.symbol}`);
+    speak.innerHTML = `${SPEAK_ICON}<span>Озвучити</span>`;
+    speak.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (busy) return;
+      speakSymbol(item.symbol, speak);
+    });
+
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "card";
+    card.style.background = color;
+    card.dataset.symbol = item.symbol;
+    const kindLabel = item.kind === "letter" ? cfg.letterLabel : cfg.digitLabel;
+    card.setAttribute("aria-label", `${kindLabel} ${item.symbol}`);
+    card.innerHTML = `
+      <div class="card-symbol">${item.symbol}</div>
+      <div class="card-kind">${kindLabel}</div>
+    `;
+    card.addEventListener("click", () => onPick(card, item.symbol));
+
+    slot.append(speak, card);
+    return slot;
+  }
+
+  function lockBoard() {
+    for (const slot of board.querySelectorAll(".card-slot")) {
+      slot.classList.add("locked");
+    }
+  }
+
+  function onPick(card, symbol) {
+    if (busy) return;
+
+    if (symbol === targetSymbol) {
+      busy = true;
+      score += 1;
+      streak += 1;
+      scoreCountEl.textContent = String(score);
+      streakCountEl.textContent = String(streak);
+      card.classList.add("correct");
+      lockBoard();
+      setFeedback("Так!", "ok");
+
+      window.setTimeout(() => {
+        nextRound();
+      }, 650);
+      return;
+    }
+
+    streak = 0;
+    streakCountEl.textContent = "0";
+    card.classList.remove("wrong");
+    void card.offsetWidth;
+    card.classList.add("wrong");
+    setFeedback("Спробуй ще", "bad");
+  }
+
+  function nextRound() {
+    if (autoSpeakTimer) {
+      window.clearTimeout(autoSpeakTimer);
+      autoSpeakTimer = null;
+    }
+    if (typeof speechSynthesis !== "undefined") speechSynthesis.cancel();
+    clearSpeaking();
+    busy = false;
+    clearFeedback();
+
+    const source = pool();
+    const chosen = shuffle(source).slice(0, Math.min(CARD_COUNT, source.length));
+
+    while (chosen.length < CARD_COUNT) {
+      chosen.push(pick(source));
+    }
+
+    roundItems = shuffle(chosen);
+    targetSymbol = pick(roundItems).symbol;
+
+    const usedColors = shuffle(COLORS).slice(0, CARD_COUNT);
+    board.innerHTML = "";
+    roundItems.forEach((item, i) => {
+      board.appendChild(createCard(item, i, usedColors[i]));
+    });
+
+    autoSpeakTimer = window.setTimeout(() => {
+      autoSpeakTimer = null;
+      speakTarget();
+    }, 420);
+  }
+
+  langSelect.addEventListener("change", () => {
+    currentLang = langSelect.value;
+    storageSet(LANG_KEY, currentLang);
+    populateVoices();
+    nextRound();
+  });
+
+  voiceSelect.addEventListener("change", () => {
+    try {
+      selectedVoice = resolveVoice();
+      if (selectedVoice) {
+        storageSet(voiceKey(), voiceId(selectedVoice));
+        if (targetSymbol) speakTarget();
+      }
+    } catch (_) {}
+  });
+
+  speakBtn.addEventListener("click", speakTarget);
+  nextBtn.addEventListener("click", nextRound);
+  optLetters.addEventListener("change", nextRound);
+  optDigits.addEventListener("change", nextRound);
+
+  try {
+    nextRound();
+  } catch (err) {
+    feedbackEl.textContent = "Помилка завантаження карток";
+    feedbackEl.className = "feedback show bad";
+    console.error(err);
+  }
+})();
+</script>
+</body>
+</html>
