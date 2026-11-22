@@ -11,6 +11,7 @@
     "deploy": "firebase deploy",
     "deploy:hosting": "firebase deploy --only hosting",
     "deploy:firestore": "firebase deploy --only firestore:rules,firestore:indexes",
+    "tts:generate": "node scripts/generate-tts.mjs",
     "firebase:login": "firebase login",
     "firebase:use": "firebase use --add"
   },

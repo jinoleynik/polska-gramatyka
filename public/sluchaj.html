@@ -373,10 +373,6 @@
       </label>
       <label class="check"><input type="checkbox" id="optLetters" checked> Букви</label>
       <label class="check"><input type="checkbox" id="optDigits" checked> Цифри</label>
-      <label class="field-pick">
-        Голос
-        <select id="voiceSelect" aria-label="Голос озвучки"></select>
-      </label>
       <span class="stat">Вірно: <strong id="scoreCount">0</strong></span>
       <span class="stat">Серія: <strong id="streakCount">0</strong></span>
       <button type="button" class="ghost" id="nextBtn">Нові картки</button>
@@ -396,6 +392,8 @@
     </button>
   </div>
 
+  <audio id="ttsAudio" playsinline webkit-playsinline preload="auto" hidden></audio>
+
 <script>
 (() => {
   const board = document.getElementById("board");
@@ -407,7 +405,7 @@
   const optLetters = document.getElementById("optLetters");
   const optDigits = document.getElementById("optDigits");
   const langSelect = document.getElementById("langSelect");
-  const voiceSelect = document.getElementById("voiceSelect");
+  const ttsAudio = document.getElementById("ttsAudio");
 
   const CARD_COUNT = 3;
   const LANG_KEY = "sluchaj-lang";
@@ -421,7 +419,7 @@
   const LANGS = {
     uk: {
       code: "uk-UA",
-      prefix: "uk",
+      tts: "uk",
       letters: "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ".split(""),
       letterLabel: "Літера",
       digitLabel: "Цифра",
@@ -429,19 +427,22 @@
         "0": "нуль", "1": "один", "2": "два", "3": "три", "4": "чотири",
         "5": "п\u2019ять", "6": "шість", "7": "сім", "8": "вісім", "9": "дев\u2019ять"
       },
-      // Назви букв — щоб TTS не читав кирилицю як англійські літери
+      // Довші фрази — Google TTS плутає короткі «ес»/«еф» тощо
       letterNames: {
-        "А": "а", "Б": "бе", "В": "ве", "Г": "ге", "Ґ": "ґе", "Д": "де",
-        "Е": "е", "Є": "є", "Ж": "же", "З": "зе", "И": "и", "І": "і",
-        "Ї": "ї", "Й": "йот", "К": "ка", "Л": "ел", "М": "ем", "Н": "ен",
-        "О": "о", "П": "пе", "Р": "ер", "С": "ес", "Т": "те", "У": "у",
-        "Ф": "еф", "Х": "ха", "Ц": "це", "Ч": "че", "Ш": "ша", "Щ": "ща",
-        "Ь": "м\u2019який знак", "Ю": "ю", "Я": "я"
+        "А": "літера а", "Б": "літера бе", "В": "літера ве", "Г": "літера ге",
+        "Ґ": "літера ґе", "Д": "літера де", "Е": "літера е", "Є": "літера є",
+        "Ж": "літера же", "З": "літера зе", "И": "літера и", "І": "літера і",
+        "Ї": "літера ї", "Й": "літера йот", "К": "літера ка", "Л": "літера ел",
+        "М": "літера ем", "Н": "літера ен", "О": "літера о", "П": "літера пе",
+        "Р": "літера ер", "С": "літера ес", "Т": "літера те", "У": "літера у",
+        "Ф": "літера еф", "Х": "літера ха", "Ц": "літера це", "Ч": "літера че",
+        "Ш": "літера ша", "Щ": "літера ща", "Ь": "м\u2019який знак",
+        "Ю": "літера ю", "Я": "літера я"
       }
     },
     pl: {
       code: "pl-PL",
-      prefix: "pl",
+      tts: "pl",
       letters: "AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ".split(""),
       letterLabel: "Litera",
       digitLabel: "Cyfra",
@@ -450,17 +451,20 @@
         "5": "pięć", "6": "sześć", "7": "siedem", "8": "osiem", "9": "dziewięć"
       },
       letterNames: {
-        "A": "a", "Ą": "ą", "B": "be", "C": "ce", "Ć": "cie", "D": "de",
-        "E": "e", "Ę": "ę", "F": "ef", "G": "gie", "H": "ha", "I": "i",
-        "J": "jot", "K": "ka", "L": "el", "Ł": "eł", "M": "em", "N": "en",
-        "Ń": "eń", "O": "o", "Ó": "o kreskowane", "P": "pe", "R": "er",
-        "S": "es", "Ś": "eś", "T": "te", "U": "u", "W": "wu", "Y": "y",
-        "Z": "zet", "Ź": "ziet", "Ż": "żet"
+        "A": "litera a", "Ą": "litera ą", "B": "litera be", "C": "litera ce",
+        "Ć": "litera cie", "D": "litera de", "E": "litera e", "Ę": "litera ę",
+        "F": "litera ef", "G": "litera gie", "H": "litera ha", "I": "litera i",
+        "J": "litera jot", "K": "litera ka", "L": "litera el", "Ł": "litera eł",
+        "M": "litera em", "N": "litera en", "Ń": "litera eń", "O": "litera o",
+        "Ó": "litera o kreskowane", "P": "litera pe", "R": "litera er",
+        "S": "litera es", "Ś": "litera eś", "T": "litera te", "U": "litera u",
+        "W": "litera wu", "Y": "litera y", "Z": "litera zet", "Ź": "litera ziet",
+        "Ż": "litera żet"
       }
     },
     en: {
       code: "en-US",
-      prefix: "en",
+      tts: "en",
       letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
       letterLabel: "Letter",
       digitLabel: "Digit",
@@ -468,12 +472,14 @@
         "0": "zero", "1": "one", "2": "two", "3": "three", "4": "four",
         "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine"
       },
+      // Фонетичні назви: одинока «S» у Google TTS часто звучить як F
       letterNames: {
-        "A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "F": "F",
-        "G": "G", "H": "H", "I": "I", "J": "J", "K": "K", "L": "L",
-        "M": "M", "N": "N", "O": "O", "P": "P", "Q": "Q", "R": "R",
-        "S": "S", "T": "T", "U": "U", "V": "V", "W": "W", "X": "X",
-        "Y": "Y", "Z": "Z"
+        "A": "ay", "B": "bee", "C": "cee", "D": "dee", "E": "ee",
+        "F": "eff", "G": "jee", "H": "aitch", "I": "eye", "J": "jay",
+        "K": "kay", "L": "el", "M": "em", "N": "en", "O": "oh",
+        "P": "pee", "Q": "cue", "R": "ar", "S": "ess", "T": "tee",
+        "U": "you", "V": "vee", "W": "double you", "X": "ex",
+        "Y": "why", "Z": "zee"
       }
     }
   };
@@ -486,12 +492,14 @@
 
   let score = 0;
   let streak = 0;
-  let selectedVoice = null;
   let targetSymbol = null;
   let busy = false;
   let speakingEl = null;
   let autoSpeakTimer = null;
   let roundItems = [];
+
+  ttsAudio.setAttribute("playsinline", "true");
+  ttsAudio.setAttribute("webkit-playsinline", "true");
 
   function storageGet(key) {
     try { return localStorage.getItem(key); } catch (_) { return null; }
@@ -509,10 +517,6 @@
     return LANGS[currentLang];
   }
 
-  function voiceKey() {
-    return `sluchaj-voice-uri-${currentLang}`;
-  }
-
   function pick(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
@@ -524,118 +528,6 @@
       [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
-  }
-
-  function normalizeLangTag(tag) {
-    return String(tag || "").toLowerCase().replace(/_/g, "-");
-  }
-
-  function matchesLang(voice) {
-    const tag = normalizeLangTag(voice.lang);
-    const prefix = lang().prefix;
-    return tag === prefix || tag.startsWith(prefix + "-");
-  }
-
-  function voiceId(voice) {
-    return `${voice.name}||${normalizeLangTag(voice.lang)}`;
-  }
-
-  function voiceLabel(voice) {
-    const local = voice.localService ? "" : " · онлайн";
-    return `${voice.name} (${voice.lang})${local}`;
-  }
-
-  function voicesForLang() {
-    if (typeof speechSynthesis === "undefined") return [];
-    const exact = normalizeLangTag(lang().code);
-    return speechSynthesis
-      .getVoices()
-      .filter(matchesLang)
-      .sort((a, b) => {
-        const aExact = normalizeLangTag(a.lang) === exact ? 0 : 1;
-        const bExact = normalizeLangTag(b.lang) === exact ? 0 : 1;
-        if (aExact !== bExact) return aExact - bExact;
-        // Локальні голоси стабільніші за «онлайн»
-        if (a.localService !== b.localService) return a.localService ? -1 : 1;
-        return a.name.localeCompare(b.name, "uk");
-      });
-  }
-
-  function preferredVoice(voices) {
-    const saved = storageGet(voiceKey());
-    if (saved) {
-      const match =
-        voices.find((v) => voiceId(v) === saved) ||
-        voices.find((v) => v.voiceURI === saved) ||
-        voices.find((v) => v.name === saved);
-      if (match) return match;
-    }
-    const exact = normalizeLangTag(lang().code);
-    return (
-      voices.find((v) => normalizeLangTag(v.lang) === exact && /lesya|ukrainian|україн/i.test(v.name)) ||
-      voices.find((v) => normalizeLangTag(v.lang) === exact) ||
-      voices[0] ||
-      null
-    );
-  }
-
-  function populateVoices() {
-    try {
-      if (typeof speechSynthesis === "undefined") {
-        voiceSelect.innerHTML = "<option>Немає озвучки</option>";
-        voiceSelect.disabled = true;
-        selectedVoice = null;
-        return;
-      }
-
-      const all = speechSynthesis.getVoices();
-      if (!all.length) {
-        voiceSelect.innerHTML = "";
-        const opt = document.createElement("option");
-        opt.value = "";
-        opt.textContent = "Завантаження голосів…";
-        voiceSelect.appendChild(opt);
-        voiceSelect.disabled = true;
-        selectedVoice = null;
-        return;
-      }
-
-      const voices = voicesForLang();
-      voiceSelect.innerHTML = "";
-
-      if (!voices.length) {
-        const opt = document.createElement("option");
-        opt.value = "";
-        opt.textContent = "Немає голосів для цієї мови";
-        voiceSelect.appendChild(opt);
-        voiceSelect.disabled = true;
-        selectedVoice = null;
-        return;
-      }
-
-      voiceSelect.disabled = false;
-      for (const voice of voices) {
-        const opt = document.createElement("option");
-        opt.value = voiceId(voice);
-        opt.textContent = voiceLabel(voice);
-        voiceSelect.appendChild(opt);
-      }
-
-      selectedVoice = preferredVoice(voices);
-      if (selectedVoice) {
-        voiceSelect.value = voiceId(selectedVoice);
-        storageSet(voiceKey(), voiceId(selectedVoice));
-      }
-    } catch (_) {
-      voiceSelect.innerHTML = "<option>Помилка голосів</option>";
-      voiceSelect.disabled = true;
-      selectedVoice = null;
-    }
-  }
-
-  populateVoices();
-  if (typeof speechSynthesis !== "undefined") {
-    speechSynthesis.onvoiceschanged = populateVoices;
   }
 
   function pool() {
@@ -662,26 +554,6 @@
     return symbol.toLocaleLowerCase(cfg.code);
   }
 
-  function resolveVoice() {
-    const voices = voicesForLang();
-    if (!voices.length) return null;
-
-    const selectedId = voiceSelect.value;
-    const fromSelect =
-      voices.find((v) => voiceId(v) === selectedId) ||
-      voices.find((v) => v.voiceURI === selectedId) ||
-      voices.find((v) => v.name === selectedId);
-    if (fromSelect) return fromSelect;
-
-    if (selectedVoice) {
-      const fresh =
-        voices.find((v) => voiceId(v) === voiceId(selectedVoice)) ||
-        voices.find((v) => v.name === selectedVoice.name && normalizeLangTag(v.lang) === normalizeLangTag(selectedVoice.lang));
-      if (fresh) return fresh;
-    }
-    return preferredVoice(voices);
-  }
-
   function clearSpeaking() {
     if (speakingEl) {
       speakingEl.classList.remove("speaking");
@@ -690,59 +562,57 @@
     speakBtn.classList.remove("speaking");
   }
 
-  let speakTimer = null;
+  function audioKey(symbol) {
+    if (/^\d$/.test(symbol)) return `d-${symbol}`;
+    return `l-${symbol.codePointAt(0).toString(16)}`;
+  }
+
+  function localTtsUrl(symbol) {
+    return `tts/${currentLang}/${audioKey(symbol)}.mp3`;
+  }
+
+  function stopAudio() {
+    ttsAudio.onended = null;
+    ttsAudio.onerror = null;
+    try {
+      ttsAudio.pause();
+      ttsAudio.currentTime = 0;
+    } catch (_) {}
+    clearSpeaking();
+  }
 
   function speakSymbol(symbol, highlightEl) {
-    if (!symbol || typeof speechSynthesis === "undefined") return;
+    if (!symbol) return;
 
-    if (speakTimer) {
-      window.clearTimeout(speakTimer);
-      speakTimer = null;
-    }
-
-    // Chrome/Safari: cancel() одразу перед speak() часто скидає голос на англійський default
-    try { speechSynthesis.cancel(); } catch (_) {}
-    clearSpeaking();
-
-    const voice = resolveVoice();
-    selectedVoice = voice;
-
-    if (!voice) {
-      setFeedback("Немає голосу для цієї мови", "bad");
-      return;
-    }
-
-    const text = speakTextFor(symbol);
-    const voiceLang = voice.lang || lang().code;
+    stopAudio();
+    clearFeedback();
 
     speakingEl = highlightEl || speakBtn;
     speakingEl.classList.add("speaking");
 
-    speakTimer = window.setTimeout(() => {
-      speakTimer = null;
-      try {
-        if (speechSynthesis.paused) speechSynthesis.resume();
+    const src = localTtsUrl(symbol);
+    const token = Symbol("speak");
+    speakSymbol._token = token;
 
-        // Голос беремо знову з актуального getVoices() — інакше браузер ігнорує stale-об'єкт
-        const freshVoice =
-          voicesForLang().find((v) => voiceId(v) === voiceId(voice)) ||
-          voicesForLang().find((v) => v.name === voice.name) ||
-          voice;
+    const done = () => {
+      if (speakSymbol._token === token) clearSpeaking();
+    };
 
-        const utter = new SpeechSynthesisUtterance();
-        utter.text = text;
-        utter.rate = 0.85;
-        utter.pitch = 1;
-        utter.voice = freshVoice;
-        utter.lang = freshVoice.lang || voiceLang;
+    ttsAudio.onended = done;
+    ttsAudio.onerror = () => {
+      done();
+      setFeedback("Не вдалося відтворити звук", "bad");
+    };
 
-        utter.onend = utter.onerror = clearSpeaking;
-        speechSynthesis.speak(utter);
-      } catch (err) {
-        clearSpeaking();
-        console.error(err);
-      }
-    }, 60);
+    // Важливо для iPad: play() синхронно в обробнику тапу, без await/setTimeout
+    ttsAudio.src = src;
+    const play = ttsAudio.play();
+    if (play && typeof play.catch === "function") {
+      play.catch(() => {
+        done();
+        setFeedback("Увімкни звук на iPad і натисни ще раз", "bad");
+      });
+    }
   }
 
   function speakTarget() {
@@ -831,8 +701,7 @@
       window.clearTimeout(autoSpeakTimer);
       autoSpeakTimer = null;
     }
-    if (typeof speechSynthesis !== "undefined") speechSynthesis.cancel();
-    clearSpeaking();
+    stopAudio();
     busy = false;
     clearFeedback();
 
@@ -861,18 +730,7 @@
   langSelect.addEventListener("change", () => {
     currentLang = langSelect.value;
     storageSet(LANG_KEY, currentLang);
-    populateVoices();
     nextRound();
-  });
-
-  voiceSelect.addEventListener("change", () => {
-    try {
-      selectedVoice = resolveVoice();
-      if (selectedVoice) {
-        storageSet(voiceKey(), voiceId(selectedVoice));
-        if (targetSymbol) speakTarget();
-      }
-    } catch (_) {}
   });
 
   speakBtn.addEventListener("click", speakTarget);
